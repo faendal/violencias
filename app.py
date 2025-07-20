@@ -45,7 +45,7 @@ def train_model_for(
     return model, ts
 
 def main():
-    st.title("Forecast de Casos de Violencia")
+    st.title("Pronóstico de Casos de Violencia en el Departamento de Antioquia")
     st.sidebar.header("Filtros")
 
     df = load_data()
@@ -77,7 +77,7 @@ def main():
         model, ts = train_model_for(sel_cat, sel_subreg, sel_subcat, sel_mun)
 
         # Forecast
-        future = model.make_future_dataframe(periods=years, freq="Y")
+        future = model.make_future_dataframe(periods=years, freq="YE")
         fcst   = model.predict(future)
 
         # Separa histórico y forecast
