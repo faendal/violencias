@@ -4,17 +4,9 @@ from prophet import Prophet
 import plotly.graph_objects as go
 
 @st.cache_data
-def load_data() -> pd.DataFrame:
-    """Carga y fusiona Consolidado.xlsx y CopoNieve.xlsx."""
-    df_con = pd.read_excel("Consolidado.xlsx")
-    df_copo = pd.read_excel("CopoNieve.xlsx")
-    df = pd.merge(
-        df_con,
-        df_copo[["municipio","subcategoria","categoria","subregion"]],
-        on=["municipio","subcategoria"],
-        how="left"
-    )
-    return df
+def load_data(path: str = "Consolidado.xlsx") -> pd.DataFrame:
+    """Carga el Excel completo con todas las columnas necesarias."""
+    return pd.read_excel(path)
 
 @st.cache_resource
 def train_model_for(
@@ -22,10 +14,10 @@ def train_model_for(
     subregion: str,
     subcategoria: str,
     municipio: str
-):
+) -> tuple[Prophet, pd.DataFrame]:
     """
-    Filtra según los cuatro niveles (o 'Todos'),
-    agrupa por año, entrena Prophet y devuelve (model, ts).
+    Filtra según los cuatro niveles (o 'Todos'), agrupa por año,
+    entrena un Prophet y devuelve (modelo, ts) donde ts tiene columnas ['ds','y'].
     """
     df = load_data()
     df_f = df.copy()
@@ -38,20 +30,18 @@ def train_model_for(
     if municipio    != "Todos":
         df_f = df_f[df_f["municipio"]  == municipio]
 
-    # Serie temporal
+    # Construimos la serie anual
     ts = (
         df_f
         .groupby("año", as_index=False)["casos"]
         .sum()
-        .rename(columns={"casos":"y"})
+        .rename(columns={"casos": "y"})
     )
     ts["ds"] = pd.to_datetime(ts["año"].astype(str) + "-01-01")
-    ts = ts[["ds","y"]].sort_values("ds")
+    ts = ts[["ds", "y"]].sort_values("ds")
 
-    # Entrenamiento
     model = Prophet(yearly_seasonality=True)
     model.fit(ts)
-
     return model, ts
 
 def main():
@@ -64,52 +54,58 @@ def main():
     cats = ["Todos"] + sorted(df["categoria"].dropna().unique())
     sel_cat = st.sidebar.selectbox("Categoría", cats)
 
-    # 2) Subregión
-    df_cat = df if sel_cat=="Todos" else df[df["categoria"]==sel_cat]
+    # 2) Subregión (filtrada por categoría)
+    df_cat = df if sel_cat == "Todos" else df[df["categoria"] == sel_cat]
     subregs = ["Todos"] + sorted(df_cat["subregion"].dropna().unique())
     sel_subreg = st.sidebar.selectbox("Subregión", subregs)
 
-    # 3) Subcategoría
-    df_subreg = df_cat if sel_subreg=="Todos" else df_cat[df_cat["subregion"]==sel_subreg]
+    # 3) Subcategoría (filtrada por categoría + subregión)
+    df_subreg = (
+        df_cat
+        if sel_subreg == "Todos"
+        else df_cat[df_cat["subregion"] == sel_subreg]
+    )
     subcats = ["Todos"] + sorted(df_subreg["subcategoria"].dropna().unique())
     sel_subcat = st.sidebar.selectbox("Subcategoría", subcats)
 
-    # 4) Municipio
-    df_subcat = df_subreg if sel_subcat=="Todos" else df_subreg[df_subreg["subcategoria"]==sel_subcat]
+    # 4) Municipio (filtrado por los tres anteriores)
+    df_subcat = (
+        df_subreg
+        if sel_subcat == "Todos"
+        else df_subreg[df_subreg["subcategoria"] == sel_subcat]
+    )
     muns = ["Todos"] + sorted(df_subcat["municipio"].dropna().unique())
     sel_mun = st.sidebar.selectbox("Municipio", muns)
 
-    # Horizonte
+    # Horizonte de predicción
     years = st.sidebar.slider("Años a pronosticar", 1, 10, 5)
 
     if st.sidebar.button("Generar Pronóstico"):
-        # Entrena y obtiene la serie histórica
         model, ts = train_model_for(sel_cat, sel_subreg, sel_subcat, sel_mun)
 
-        # Pronóstico
         future = model.make_future_dataframe(periods=years, freq="Y")
         fcst   = model.predict(future)
 
-        # Separa histórico de forecast
+        # Separar histórico de forecast
         last_hist   = ts["ds"].max()
         fcst_future = fcst[fcst["ds"] > last_hist]
 
-        # Construye la figura
+        # Construir gráfico
         fig = go.Figure()
 
-        # Histórico
+        # a) Históricos
         fig.add_trace(go.Scatter(
             x=ts["ds"], y=ts["y"],
             name="Histórico", mode="lines+markers"
         ))
 
-        # Pronóstico
+        # b) Pronóstico
         fig.add_trace(go.Scatter(
             x=fcst_future["ds"], y=fcst_future["yhat"],
             name="Pronóstico", mode="lines"
         ))
 
-        # Intervalo de confianza
+        # c) Intervalo de confianza
         fig.add_trace(go.Scatter(
             x=pd.concat([fcst_future["ds"], fcst_future["ds"][::-1]]),
             y=pd.concat([fcst_future["yhat_upper"], fcst_future["yhat_lower"][::-1]]),
@@ -119,7 +115,7 @@ def main():
             name="Intervalo confianza"
         ))
 
-        # Línea separadora
+        # d) Línea separadora
         fig.add_shape(
             type="line",
             x0=last_hist, x1=last_hist,
@@ -135,6 +131,7 @@ def main():
             margin=dict(l=40, r=40, t=60, b=40)
         )
 
+        # Ajuste automático al ancho del canvas
         st.plotly_chart(fig, use_container_width=True)
 
 if __name__ == "__main__":
