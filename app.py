@@ -3,109 +3,113 @@ import streamlit as st
 from prophet import Prophet
 import plotly.graph_objects as go
 
-
 @st.cache_data
-def load_data(path: str) -> pd.DataFrame:
-    """Load data from an Excel file.
-
-    Args:
-        path (str): Path to the Excel file.
-
-    Returns:
-        pd.DataFrame: DataFrame containing the loaded data.
-    """
-    return pd.read_excel(path)
-
+def load_data() -> pd.DataFrame:
+    """Carga y fusiona Consolidado.xlsx y CopoNieve.xlsx."""
+    df_con = pd.read_excel("Consolidado.xlsx")
+    df_copo = pd.read_excel("CopoNieve.xlsx")
+    df = pd.merge(
+        df_con,
+        df_copo[["municipio","subcategoria","categoria","subregion"]],
+        on=["municipio","subcategoria"],
+        how="left"
+    )
+    return df
 
 @st.cache_resource
 def train_model_for(
     categoria: str,
     subregion: str,
-    municipio: str, 
-    subcategoria: str) -> tuple[Prophet, pd.DataFrame]:
+    subcategoria: str,
+    municipio: str
+):
     """
-    Filter data for a specific municipality and subcategory, then train a Prophet model.
-
-    Args:
-        categoria (str): Category of the data.
-        subregion (str): Subregion of the data.
-        municipio (str): Municipality to filter the data.
-        subcategoria (str): Subcategory to filter the data.
-
-    Returns:
-        tuple[Prophet, pd.DataFrame]: A tuple containing the trained Prophet model and the filtered DataFrame.
+    Filtra según los cuatro niveles (o 'Todos'),
+    agrupa por año, entrena Prophet y devuelve (model, ts).
     """
-    df = load_data("Consolidado.xlsx")
-    
-    df_filt = df.copy()
-    if categoria != "Todos":
-        df_filt = df_filt[df_filt["categoria"] == categoria]
-    if subregion != "Todos":
-        df_filt = df_filt[df_filt["subregion"] == subregion]
-    if municipio != "Todos":
-        df_filt = df_filt[df_filt["municipio"] == municipio]
+    df = load_data()
+    df_f = df.copy()
+    if categoria    != "Todos":
+        df_f = df_f[df_f["categoria"]  == categoria]
+    if subregion    != "Todos":
+        df_f = df_f[df_f["subregion"]  == subregion]
     if subcategoria != "Todos":
-        df_filt = df_filt[df_filt["subcategoria"] == subcategoria]
-    
+        df_f = df_f[df_f["subcategoria"] == subcategoria]
+    if municipio    != "Todos":
+        df_f = df_f[df_f["municipio"]  == municipio]
+
+    # Serie temporal
     ts = (
-        df_filt
+        df_f
         .groupby("año", as_index=False)["casos"]
         .sum()
-        .rename(columns={"casos": "y"})
+        .rename(columns={"casos":"y"})
     )
-    
     ts["ds"] = pd.to_datetime(ts["año"].astype(str) + "-01-01")
-    ts = ts[["ds", "y"]].sort_values("ds")
-    
+    ts = ts[["ds","y"]].sort_values("ds")
+
+    # Entrenamiento
     model = Prophet(yearly_seasonality=True)
     model.fit(ts)
-    
-    return model
 
+    return model, ts
 
 def main():
-    st.title("Pronóstico de Casos de Violencia en el Departamento de Antioquia")
+    st.title("Forecast de Casos de Violencia")
     st.sidebar.header("Filtros")
 
-    df = load_data("Consolidado.xlsx")
-    
+    df = load_data()
+
+    # 1) Categoría
     cats = ["Todos"] + sorted(df["categoria"].dropna().unique())
     sel_cat = st.sidebar.selectbox("Categoría", cats)
 
-    df_cat = df if sel_cat == "Todos" else df[df["categoria"] == sel_cat]
+    # 2) Subregión
+    df_cat = df if sel_cat=="Todos" else df[df["categoria"]==sel_cat]
     subregs = ["Todos"] + sorted(df_cat["subregion"].dropna().unique())
     sel_subreg = st.sidebar.selectbox("Subregión", subregs)
 
-    df_subreg = df_cat if sel_subreg == "Todos" else df_cat[df_cat["subregion"] == sel_subreg]
+    # 3) Subcategoría
+    df_subreg = df_cat if sel_subreg=="Todos" else df_cat[df_cat["subregion"]==sel_subreg]
     subcats = ["Todos"] + sorted(df_subreg["subcategoria"].dropna().unique())
     sel_subcat = st.sidebar.selectbox("Subcategoría", subcats)
 
-    df_subcat = df_subreg if sel_subcat == "Todos" else df_subreg[df_subreg["subcategoria"] == sel_subcat]
+    # 4) Municipio
+    df_subcat = df_subreg if sel_subcat=="Todos" else df_subreg[df_subreg["subcategoria"]==sel_subcat]
     muns = ["Todos"] + sorted(df_subcat["municipio"].dropna().unique())
     sel_mun = st.sidebar.selectbox("Municipio", muns)
 
+    # Horizonte
     years = st.sidebar.slider("Años a pronosticar", 1, 10, 5)
 
     if st.sidebar.button("Generar Pronóstico"):
+        # Entrena y obtiene la serie histórica
         model, ts = train_model_for(sel_cat, sel_subreg, sel_subcat, sel_mun)
+
+        # Pronóstico
         future = model.make_future_dataframe(periods=years, freq="Y")
         fcst   = model.predict(future)
 
-        last_hist  = ts["ds"].max()
+        # Separa histórico de forecast
+        last_hist   = ts["ds"].max()
         fcst_future = fcst[fcst["ds"] > last_hist]
 
+        # Construye la figura
         fig = go.Figure()
-        
+
+        # Histórico
         fig.add_trace(go.Scatter(
             x=ts["ds"], y=ts["y"],
             name="Histórico", mode="lines+markers"
         ))
-        
+
+        # Pronóstico
         fig.add_trace(go.Scatter(
             x=fcst_future["ds"], y=fcst_future["yhat"],
             name="Pronóstico", mode="lines"
         ))
-        
+
+        # Intervalo de confianza
         fig.add_trace(go.Scatter(
             x=pd.concat([fcst_future["ds"], fcst_future["ds"][::-1]]),
             y=pd.concat([fcst_future["yhat_upper"], fcst_future["yhat_lower"][::-1]]),
@@ -114,7 +118,8 @@ def main():
             line=dict(color="rgba(0,0,0,0)"),
             name="Intervalo confianza"
         ))
-        
+
+        # Línea separadora
         fig.add_shape(
             type="line",
             x0=last_hist, x1=last_hist,
