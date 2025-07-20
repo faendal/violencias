@@ -46,7 +46,7 @@ def train_model_for(
 
 def main():
     
-    st.set_page_config(layout="wide", page_title="Forecast de Casos de Violencia")
+    st.set_page_config(layout="wide", page_title="Pronóstico de Casos de Violencia")
     st.title("Pronóstico de Casos de Violencia en el Departamento de Antioquia")
     st.sidebar.header("Filtros")
 
