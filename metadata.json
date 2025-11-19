@@ -1,0 +1,1066 @@
+{
+    "fields": [
+        {
+            "name": "cod_eve",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Código Evento según CIE-10 o INS"
+        },
+        {
+            "name": "fec_not",
+            "type": "date",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Fecha Notificación. AAAA-MM-DD (Año-Mes-Día\nseparado por guiones) (Norma\nISO 8601,NTC 1034)"
+        },
+        {
+            "name": "semana",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Semana epidemiológica según calendario vigente Rango.1-53."
+        },
+        {
+            "name": "año",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Año correspondiente a la Semana Epidemiológica"
+        },
+        {
+            "name": "cod_pre",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Código asignado en el SGSSS a los prestadores de servicios de salud que se hayan registrado en el 'Registro Especial de Prestadores de Servicios de Salud' Ejemplo:52 001 00001"
+        },
+        {
+            "name": "cod_sub",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Código asignado en el SGSSS a los prestadores de servicios de salud que indica sede ó territorio."
+        },
+        {
+            "name": "edad_",
+            "type": "number",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Edad en números enteros del paciente.Se registra 0 solo para mortinatos o evento In Utero"
+        },
+        {
+            "name": "uni_med_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Unidad de medida de la edad. 0 = No aplica 1 = Años 2 = Meses 3 = Días 4 = Horas 5 = Minutos"
+        },
+        {
+            "name": "nacionali_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Código Nacionalidad"
+        },
+        {
+            "name": "nombre_nacionalidad",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Nombre Nacionalidad"
+        },
+        {
+            "name": "sexo_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Sexo. M = Hombre F = Mujer I= Indeterminado"
+        },
+        {
+            "name": "cod_pais_o",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Codigo País de ocurrencia del caso"
+        },
+        {
+            "name": "cod_dpto_o",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Código del Departamento de ocurrencia\ndel caso según registro Divipola fuente DANE.\nEjemplo:Nariño = 52"
+        },
+        {
+            "name": "cod_mun_o",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Código del Municipio de ocurrencia del\ncaso.  El código del municipio tiene dependencia directa con el\nDepartamento según DANE. Ejemplo:Pasto = 001"
+        },
+        {
+            "name": "area_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Área de ocurrencia del caso. 1 = Cabecera Municipal 2 = Centro Poblado 3 = Rural\nDisperso"
+        },
+        {
+            "name": "localidad_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Localidad o Comuna Procedencia/Ocurrencia"
+        },
+        {
+            "name": "cen_pobla_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Centro Poblado Procedencia/Ocurrencia"
+        },
+        {
+            "name": "vereda_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Vereda Procedencia/Ocurrencia"
+        },
+        {
+            "name": "bar_ver_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Barrio Vereda Localidad de Procedencia/ocurrencia\ndel caso. Asociado a tabla de barrios definidos por la entidad territorial"
+        },
+        {
+            "name": "ocupacion_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Ocupación del paciente. según la codificación vigente (Decreto 654 publicado el 16 de junio de 2021 por el Ministerio de Trabajo yla resolución 0771 del 7 de julio de 2021)."
+        },
+        {
+            "name": "tip_ss_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Tipo de Régimen en Salud. C = Contributivo S = Subsidiado\nP = Excepción E = Especial N =\nNo Asegurado I=\nIndeterminado/Pendiente"
+        },
+        {
+            "name": "cod_ase_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Código Administradora responsable de la atención del\npaciente, asignado por MSP."
+        },
+        {
+            "name": "per_etn_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Pertenencia Étnica. Es el código asignado por el DANE a la pertenencia étnica, se omiten las etnias consideradas en la clasificación DANE que no tienen evidencia epidemiológica\nde comportamiento especial para los eventos de interés en salud pública.Se usa la codificación estándar para las de interés:\n1 = Indígena\n2 = ROM,Gitano\n3 = Raizal\n4 = Palenquero\n5 = Negro,Mulato,Afro\nColombiano\n6 = Otro"
+        },
+        {
+            "name": "nom_grupo_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Nombre del grupo índigena de\npertenencia"
+        },
+        {
+            "name": "estrato_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Estrato socioeconómico. 1 = Estrato_1 2 = Estrato_2 3 = Estrato_3 4 = Estrato_4 5 = Estrato_5 6 = Estrato_6"
+        },
+        {
+            "name": "gp_discapa",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Grupo Poblacional - Persona en\nsituación de discapacidad. 1 = Sí 2 = No"
+        },
+        {
+            "name": "gp_desplaz",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Grupo Poblacional - Desplazados.1 = Sí 2 = No"
+        },
+        {
+            "name": "gp_migrant",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Grupo Poblacional - Migrantes. 1 = Sí 2 = No"
+        },
+        {
+            "name": "gp_carcela",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Grupo Poblacional - Población privada. 1 = Sí 2 = No\nde la libertad"
+        },
+        {
+            "name": "gp_gestan",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Grupo Poblacional - Gestantes. 1 = Sí 2 = No"
+        },
+        {
+            "name": "sem_ges_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Semanas de gestación. \u003E=1 AND \u003C=45"
+        },
+        {
+            "name": "gp_indigen",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Grupo Poblacional - Habitante de calle. 1 = Sí 2 = No"
+        },
+        {
+            "name": "gp_pobicbf",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Grupo Poblacional - Población infantil a\ncargo del ICBF. 1 = Sí 2 = No"
+        },
+        {
+            "name": "gp_mad_com",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Grupo Poblacional - Madres\nComunitarias. 1 = Sí 2 = No"
+        },
+        {
+            "name": "gp_desmovi",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Grupo Poblacional - Desmovilizados.1 = Sí 2 = No"
+        },
+        {
+            "name": "gp_psiquia",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Grupo Poblacional - Población en\ncentros psiquiátricos. 1 = Sí 2 = No"
+        },
+        {
+            "name": "gp_vic_vio",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Grupo Poblacional - Víctima de violencia\narmada. 1 = Sí 2 = No"
+        },
+        {
+            "name": "gp_otros",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Grupo Poblacional - Otros. 1 = Sí 2 = No"
+        },
+        {
+            "name": "fuente",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Fuente. 1 = Notificación rutinaria 2 = Busqueda Activa Institucional 3 = Vigilancia intensificada 4 = Busqueda Activa Comunitaria 5 = Investigaciones"
+        },
+        {
+            "name": "cod_pais_r",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Código del país de\nResidencia del paciente."
+        },
+        {
+            "name": "cod_dpto_r",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Código del Departamento Según registro Divipola fuente DANE.\nEjemplo:Nariño = 52"
+        },
+        {
+            "name": "cod_mun_r",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Código del Municipio Según registro Divipola fuente DANE.\nEjemplo:Pasto = 001"
+        },
+        {
+            "name": "fec_con_",
+            "type": "date",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Fecha Consulta. AAAA-MM-DD (Año-Mes-Día separado por guiones) (Norma ISO 8601,NTC 1034)"
+        },
+        {
+            "name": "ini_sin_",
+            "type": "date",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Fecha Inicio de Síntomas. AAAA-MM-DD (Año-Mes-Día\nseparado por guiones) (Norma\nISO 8601,NTC 1034)"
+        },
+        {
+            "name": "tip_cas_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Clasificación inicial del caso. 1 = Sospechoso 2 = Probable 3 = Confirmado por Laboratorio 4 = Confirmado por Clínica 5 = Confirmado por Nexo Epidemiológico."
+        },
+        {
+            "name": "pac_hos_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Hospitalizado. 1 = Sí\n2 = No"
+        },
+        {
+            "name": "fec_hos_",
+            "type": "date",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Fecha Hospitalización. AAAA-MM-DD (Año-Mes-Día separado por guiones) (Norma ISO 8601,NTC 1034)"
+        },
+        {
+            "name": "con_fin_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Condición final. 0 = No sabe, no responde 1 = Vivo 2 = Muerto"
+        },
+        {
+            "name": "fec_def_",
+            "type": "date",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Fecha Defunción. AAAA-MM-DD (Año-Mes-Día separado por guiones) (Norma ISO 8601,NTC 1034)"
+        },
+        {
+            "name": "ajuste_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Seguimiento y clasificación final del\ncaso. 0 = No aplica, No Ajusta,1ª Vez. 3 = Confirmado por Laboratorio 4 = Confirmado por Clínica 5 = Confirmador por Nexo Epidemiológico.6 = Descartado 7 = Otro ajuste D = Descarte por error de digitacion"
+        },
+        {
+            "name": "fecha_nto_",
+            "type": "date",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Fecha De Nacimiento. AAAA-MM-DD (Año-Mes-Día separado por guiones) (Norma ISO 8601,NTC 1034)"
+        },
+        {
+            "name": "cer_def_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Numero del certificado defunción"
+        },
+        {
+            "name": "cbmte_",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Causa básica de defunción. Código de la CIE-10"
+        },
+        {
+            "name": "fec_aju_",
+            "type": "date",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Fecha del ajuste del registro. AAAA-MM-DD (Año-Mes-Día separados por guiones). Corresponde a la fecha del sistema (systemdate) o a la fecha efectiva de digitación del\nregistro o realizar un ajuste a un registro previo."
+        },
+        {
+            "name": "fm_fuerza",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Fuerza. 1 = GAB 2 = CGF 3 = EJC 4 = ARC 5 = FAC 6 = HMC 7 = POL 8 = SIN"
+        },
+        {
+            "name": "fm_unidad",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Código de la Unidad Militar según tabla de Unidades Militares"
+        },
+        {
+            "name": "fm_grado",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Código de la Grado Militar según tabla de Grados Militares"
+        },
+        {
+            "name": "naturaleza",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Modalidad. 1= Violencia Física 2= Violencia Psicológica 3= Negligencia y Abandono"
+        },
+        {
+            "name": "nat_viosex",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Violencia sexual. 5 = Acoso sexual 6 = Acceso carnal 7 = Explotación sexual 10 = Trata de personas 12= Actos sexuales 14 = Otras violencas sexuales 15 = Mutilación Genital"
+        },
+        {
+            "name": "actividad",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "13 = Líderes(as) cívicos 24 = Estudiante 26 = Otro 28 =Trabajador(a) domestico(a)\n 29 = Persona en situación de prostitución 30 = Campesino/a\n31 = Persona dedicada al cuidado del hogar 32 = Persona que cuida a otras \n33 = Ninguna"
+        },
+        {
+            "name": "orient_sex",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Orientación sexual. 1 = Homosexual 2 = Bisexual 5 = Heterosexual 6 = Asexual"
+        },
+        {
+            "name": "ident_gene",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Identidad de Gènero. 1 = Masculino 2 = Femenino 3 =\nTransgénero"
+        },
+        {
+            "name": "consum_spa",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Situación o condición de vulnerabilidad -\nPersona consumidora de (SPA). 1= Si 2= No"
+        },
+        {
+            "name": "mujer_cabf",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Situación o condición de vulnerabilidad -\nPersona con jefatura de hogar. 1= Si 2= No"
+        },
+        {
+            "name": "antec",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Antecedente de violencia. 1= Si 2= No"
+        },
+        {
+            "name": "sust_vict",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Presencia de alcohol u otra sustancia en la Víctima. 1= Si 2= No"
+        },
+        {
+            "name": "sexo_agre",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Sexo del agresor (a). M = Masculino F = Femenino I= Intersexual"
+        },
+        {
+            "name": "r_fam_vic",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Relación o parentesco del agresor con\nla víctima Familiar. 9 = Padre 10 = Madre 22 = Pareja 23 = Ex-pareja 24 = Familiar 25 = Ninguno"
+        },
+        {
+            "name": "conv_agre",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Convive con el agresor. 1= Si 2= No"
+        },
+        {
+            "name": "r_nofiliar",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Agresor no familiar. 1= Profesor (a) 2= Amigo (a) 3=\nCompañero (a) de trabajo 4=\nCompañero (a) de estudio 6=\nDesconocido (a) 7=Vecino (a)\n8=Conocido (a) sin ningún trato\n10 = Otro 11 = Jefe 12 =\nSacerdote/Pastor 13 = Servidor\n(a) Público"
+        },
+        {
+            "name": "zona_conf",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Hecho violento en el marco del conflicto\narmado. 1= Si 2= No"
+        },
+        {
+            "name": "armas",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Mecanismo utilizado para la agresión.\n1 = ahorcamiento/estrangulamiento/s ofocación 2 = Caídas 3 = Contundente y cortocontundente 4 = Cortante,cortopunzante, punzante \n11 = Proyectil arma de fuego 12 = Quemaduras por fuego o llama \n13 = Quemaduras por ácido,álcalis,o sustancias corrosivas \n14 = Quemadura por líquido hirviente 15 = otros mecanismos 16 = Sustancias de\nuso doméstico que causan irritación\n\nBases de datos iguales o anteriores a 2014:\n5= Electrocución y electrofulguración (Se homologa a 15 'Otro' en diccionario actual)\n6= Explosivos (Se homologa a 15 'Otro' en diccionario actual)\n7= Inmersión/sumersión (Se homologa a 15 'Otro' en diccionario actual)\n8= Intoxicación (Se homologa a '15' Otro en diccionario actual)\n9= Minas antipersona (Se homologa a '15' Otro en diccionario actual)\n10= Mordedura (Se homologa a '15' Otro en diccionario actual"
+        },
+        {
+            "name": "que_cara",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Sitio anatómico comprometido por la\nQuemadura - cara. 1 = Sí 2 = No"
+        },
+        {
+            "name": "que_cuello",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Sitio anatómico comprometido por la\nQuemadura - cuello. 2 = Sí 2 = No"
+        },
+        {
+            "name": "que_mano",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Sitio anatómico comprometido por la\nQuemadura - manos. 3 = Sí 2 = No"
+        },
+        {
+            "name": "que_pie",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Sitio anatómico comprometido por la\nQuemadura - pies. 4 = Sí 2 = No"
+        },
+        {
+            "name": "que_pliegu",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Sitio anatómico comprometido por la\nQuemadura - pliegues (axila,\nantecubital,popliteo etc). 5 = Sí 2 = No"
+        },
+        {
+            "name": "que_genita",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Sitio anatómico comprometido por la\nQuemadura - Genitales. 6 = Sí 2 = No"
+        },
+        {
+            "name": "que_tronco",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Sitio anatómico comprometido por la\nQuemadura - tronco. 7 = Sí 2 = No"
+        },
+        {
+            "name": "que_miesup",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Sitio anatómico comprometido por la\nQuemadura - Miembro superior (\nexcluye mano). 8 = Sí 2 = No"
+        },
+        {
+            "name": "que_mieinf",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Sitio anatómico comprometido por la\nQuemadura - Miembro inferior (excluye\npie). 9 = Sí 2 = No"
+        },
+        {
+            "name": "cla_gra",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "En caso de quemadura,clasificación\ndel grado. 1 = Primer grado 2 = Segundo\ngrado 3 = Tercer grado"
+        },
+        {
+            "name": "ext_que",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "En caso de quemadura clasificación de\nla extensión. 1 = menor o igual a 5% 2 = 6%-\n14% 3 = mayor o igual a 15%"
+        },
+        {
+            "name": "fec_hecho",
+            "type": "date",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Fecha del hecho. AAAA-MM-DD (Año-Mes-Día\nseparado por guiones) (Norma\nISO 8601,NTC 1034)"
+        },
+        {
+            "name": "escenario",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "1 = Vía Pública 2 = Vivienda 3 = Establecimiento educativo 4 = Lugar de trabajo\n7 = Otro 8 = Comercio yáreas de servicios (Tienda,centro comercial,etc) \n9 = otros Espacios abiertos (bosques,potreros,etc) 10 = Lugares de esparcimiento con\nexpendio de alcohol 11 = Institución de salud 12 = Área deportiva y recreativa\n\nBases de datos iguales o inferiores a 2014\n5= Sitio de diversión ( Se homologa a 12 = Área deportiva y recreativa en diccionario actual) 6= Deportivo ( Se homologa a 12 = Área deportiva y recreativa en diccionario actual)"
+        },
+        {
+            "name": "ambito_lug",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Ámbito de la violencia según lugar de\nocurrencia. 1 = Escolar 2 = Laboral 3 = Institucional 4 = Virtual 5 = Comunitario 6 = Hogar 7 = Otros\námbitos"
+        },
+        {
+            "name": "sp_its",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Acciones en salud Profilaxis ITS - VIH. 1= Si 2= No"
+        },
+        {
+            "name": "prof_hep_b",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Acciones en salud Profilaxis Hepatitis B. 1= Si 2= No"
+        },
+        {
+            "name": "prof_otras",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Acciones en salud Profilaxis Otras ITS. 1= Si 2= No"
+        },
+        {
+            "name": "ac_anticon",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Acciones en salud Anticoncepción de\nemergencia. 1= Si 2= No"
+        },
+        {
+            "name": "ac_ive",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Acciones en salud Orientación IVE. 1= Si 2= No"
+        },
+        {
+            "name": "ac_mental",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Acciones en salud Atención en salud\nmental. 1= Si 2= No"
+        },
+        {
+            "name": "remit_prot",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Acciones en salud Remisión a\nprotección. 1= Si 2= No"
+        },
+        {
+            "name": "inf_aut",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Acciones en salud Informe a la Autoridad\ncompetente. 1= Si 2= No"
+        },
+        {
+            "name": "evi_mlegal",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Recolección de evidencia médico legal. 1= Si 2= No"
+        },
+        {
+            "name": "estadotran",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Estado de transformación. 1 = Digitado con SIVIGILA2014 o ya fue transformado 2 = El registro debe ser objeto de\ntransformación"
+        },
+        {
+            "name": "edad_agre",
+            "type": "number",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Edad del agresor"
+        },
+        {
+            "name": "hora_hecho",
+            "type": "date",
+            "format": "default",
+            "constraints": {
+                "required": false
+            },
+            "description": "Hora del Hecho"
+        },
+        {
+            "name": "nom_eve",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Nombre del Evento"
+        },
+        {
+            "name": "nom_upgd",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Nombre de la Unidad Primaria Generadora de Datos"
+        },
+        {
+            "name": "npais_proce",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Nombre país de Procedencia"
+        },
+        {
+            "name": "ndep_proce",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Nombre Departamento de Procedencia"
+        },
+        {
+            "name": "nmun_proce",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Municipio de Procedencia"
+        },
+        {
+            "name": "npais_resi",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Pais Residencia"
+        },
+        {
+            "name": "ndep_resi",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Departamento Residencia"
+        },
+        {
+            "name": "nmun_resi",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Municipio de Residencia"
+        },
+        {
+            "name": "ndep_notif",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Nombre Departamento que notifica"
+        },
+        {
+            "name": "nmun_notif",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Nombre Municipio que notifica"
+        },
+        {
+            "name": "nreg",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Número Registros"
+        },
+        {
+            "name": "clasificación_final",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Clasificación final del caso"
+        },
+        {
+            "name": "codigo_barrio",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Código Barrio"
+        },
+        {
+            "name": "codigo_comuna",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Código Comuna de Residencia"
+        },
+        {
+            "name": "nombre_barrio",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Nombre Barrio Residencia"
+        },
+        {
+            "name": "nombre_comuna",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Nombre  Comuna  Residencia"
+        },
+        {
+            "name": "grupo_edad_quinque",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Grupo Edad Quinquenios"
+        },
+        {
+            "name": "grupo_edad_ciclo",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Grupo Edad  según ciclo de vida"
+        },
+        {
+            "name": "periodo_epid",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Periodo Epidemiológico"
+        },
+        {
+            "name": "mes_caso",
+            "type": "string",
+            "format": "default",
+            "constraints": {
+                "required": true
+            },
+            "description": "Mes de reporte caso"
+        }
+    ]
+}

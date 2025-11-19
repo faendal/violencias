@@ -1,0 +1,1086 @@
+id_comuna_barrio,cod_mpio_dane,nombre_municipio,codigo_comuna,nombre_comuna,codigo_barrio,nombre_barrio
+CBA_000001,05001,Medellin,01,01 Popular,0103,Popular
+CBA_000002,05001,Medellin,07,07 Robledo,0710,López De Mesa
+CBA_000003,05001,Medellin,01,01 Popular,0112,Carpinelo
+CBA_000004,05001,Medellin,90,90 Corregimiento De Santa Elena,9003,Llanaditas
+CBA_000005,05001,Medellin,15,15 Guayabal,1511,La Colina
+CBA_000006,05001,Medellin,04,04 Aranjuez,0402,San Isidro
+CBA_000007,05001,Medellin,01,01 Popular,0111,La Avanzada
+CBA_000008,05001,Medellin,99,Sin Información,9999,Sin Información
+CBA_000009,05001,Medellin,60,60 Corregimiento De San Cristobal,6016,Suburbano Travesias
+CBA_000010,05001,Medellin,16,16 Belén,1610,El Rincón
+CBA_000011,05001,Medellin,07,07 Robledo,0711,El Diamante
+CBA_000012,05001,Medellin,11,11 Laureles,1104,San Joaquín
+CBA_000013,05001,Medellin,09,09 Buenos Aires,0907,Buenos Aires
+CBA_000014,05001,Medellin,04,04 Aranjuez,0405,Moravia
+CBA_000015,05001,Medellin,16,16 Belén,1606,Las Playas
+CBA_000016,05001,Medellin,05,05 Castilla,0514,Alfonso López
+CBA_000017,05001,Medellin,13,13 San Javier,1302,Olaya Herrera
+CBA_000018,05001,Medellin,08,08 Villa Hermosa,0814,San Antonio
+CBA_000019,05001,Medellin,03,03 Manrique,0305,El Raizal
+CBA_000020,05001,Medellin,60,60 Corregimiento De San Cristobal,6098,Área De Expansión Pajarito
+CBA_000021,05001,Medellin,03,03 Manrique,0303,Campo Valdés No. 2
+CBA_000022,05001,Medellin,06,06 Doce De Octubre,0602,Doce De Octubre No.1
+CBA_000023,05001,Medellin,06,06 Doce De Octubre,0606,San Martín De Porres
+CBA_000024,05001,Medellin,05,05 Castilla,0511,Castilla
+CBA_000025,05001,Medellin,04,04 Aranjuez,0401,Berlin
+CBA_000026,05001,Medellin,07,07 Robledo,0713,Aures No.1
+CBA_000027,05001,Medellin,09,09 Buenos Aires,0902,Barrio De Jesús
+CBA_000028,05001,Medellin,07,07 Robledo,0712,Aures No. 2
+CBA_000029,05001,Medellin,01,01 Popular,0102,Santo Domingo Savio No. 2
+CBA_000030,05001,Medellin,07,07 Robledo,0713,El Picacho
+CBA_000031,05001,Medellin,03,03 Manrique,0309,Versalles No. 1
+CBA_000032,05001,Medellin,02,02 Santa Cruz,0207,Villa Del Socorro
+CBA_000033,05001,Medellin,09,09 Buenos Aires,0910,Cataluña
+CBA_000034,05001,Medellin,09,09 Buenos Aires,0911,Gerona
+CBA_000035,05001,Medellin,03,03 Manrique,0302,Las Granjas
+CBA_000036,05001,Medellin,09,09 Buenos Aires,0905,Alejandro Echavarría
+CBA_000037,05001,Medellin,08,08 Villa Hermosa,0816,Villa Turbay
+CBA_000038,05001,Medellin,08,08 Villa Hermosa,0819,Villa Liliam
+CBA_000039,05001,Medellin,12,12 La America,1204,La América
+CBA_000040,05001,Medellin,11,11 Laureles,1110,La Castellana
+CBA_000041,05001,Medellin,08,08 Villa Hermosa,0808,Enciso
+CBA_000042,05001,Medellin,02,02 Santa Cruz,0201,La Isla
+CBA_000043,05001,Medellin,06,06 Doce De Octubre,0601,Santander
+CBA_000044,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8000,Cabecera San Antonio De Prado
+CBA_000045,05001,Medellin,02,02 Santa Cruz,0211,La Rosa
+CBA_000046,05001,Medellin,06,06 Doce De Octubre,0609,Picachito
+CBA_000047,05001,Medellin,03,03 Manrique,0304,Santa Inés
+CBA_000048,05001,Medellin,04,04 Aranjuez,0415,Miranda
+CBA_000049,05001,Medellin,09,09 Buenos Aires,0913,Loreto
+CBA_000050,05001,Medellin,13,13 San Javier,1316,El Salado
+CBA_000051,05001,Medellin,08,08 Villa Hermosa,0813,Villatina
+CBA_000052,05001,Medellin,01,01 Popular,0101,Santo Domingo Savio No. 1
+CBA_000053,05001,Medellin,03,03 Manrique,0315,San José La Cima No.2
+CBA_000054,05001,Medellin,16,16 Belén,1605,San Bernardo
+CBA_000055,05001,Medellin,11,11 Laureles,1112,El Velódromo
+CBA_000056,05001,Medellin,16,16 Belén,1617,Las Mercedes
+CBA_000057,05001,Medellin,06,06 Doce De Octubre,0608,Picacho
+CBA_000058,05001,Medellin,02,02 Santa Cruz,0209,Moscú No. 2
+CBA_000059,05001,Medellin,16,16 Belén,1612,La Gloria
+CBA_000060,05001,Medellin,11,11 Laureles,1101,Carlos E. Restrepo
+CBA_000061,05308,Girardota,99,Sin Información,9999,Sin Información
+CBA_000062,05001,Medellin,10,10 La Candelaria,1001,Prado
+CBA_000063,05001,Medellin,09,09 Buenos Aires,0912,El Salvador
+CBA_000064,05001,Medellin,10,10 La Candelaria,1017,Los Ángeles
+CBA_000065,05001,Medellin,05,05 Castilla,0504,Tejelo
+CBA_000066,05001,Medellin,14,14 El Poblado,1403,Villa Carlota
+CBA_000067,05001,Medellin,09,09 Buenos Aires,0914,Asomadera No. 1
+CBA_000068,05001,Medellin,02,02 Santa Cruz,0210,Santa Cruz
+CBA_000069,05001,Medellin,07,07 Robledo,0724,Monteclaro
+CBA_000070,05001,Medellin,01,01 Popular,0109,El Compromiso
+CBA_000071,05001,Medellin,08,08 Villa Hermosa,0810,El Pinal
+CBA_000072,05001,Medellin,08,08 Villa Hermosa,0807,Los Mangos
+CBA_000073,05001,Medellin,10,10 La Candelaria,1014,Las Palmas
+CBA_000074,05001,Medellin,05,05 Castilla,0502,Las Brisas
+CBA_000075,05001,Medellin,06,06 Doce De Octubre,0607,Kennedy
+CBA_000076,05001,Medellin,06,06 Doce De Octubre,0603,Doce De Octubre N.2
+CBA_000077,05001,Medellin,03,03 Manrique,0309,Versalles N.1
+CBA_000078,05088,Bello,02,02 Santa Cruz,0208,Villa Niza
+CBA_000079,05001,Medellin,04,04 Aranjuez,0410,Campo Valdés N.1
+CBA_000080,05001,Medellin,07,07 Robledo,0717,Robledo
+CBA_000081,05001,Medellin,04,04 Aranjuez,0411,Las Esmeraldas
+CBA_000082,05001,Medellin,02,02 Santa Cruz,0208,Villa Niza
+CBA_000083,05001,Medellin,12,12 La America,1203,Los Pinos
+CBA_000084,05001,Medellin,08,08 Villa Hermosa,0806,Llanaditas
+CBA_000085,05001,Medellin,04,04 Aranjuez,0413,Aranjuez
+CBA_000086,05001,Medellin,02,02 Santa Cruz,0202,Playón De Los Comuneros
+CBA_000087,05001,Medellin,10,10 La Candelaria,9004,Las Palmas
+CBA_000088,05001,Medellin,03,03 Manrique,0307,Manrique Central N.2
+CBA_000089,05001,Medellin,15,15 Guayabal,1510,Guayabal
+CBA_000090,05001,Medellin,09,09 Buenos Aires,0902,Barrios De Jesus
+CBA_000091,05001,Medellin,01,01 Popular,0109,Aldea Pablo Vi
+CBA_000092,05001,Medellin,09,09 Buenos Aires,0904,Los Cerros El Vergel
+CBA_000093,05001,Medellin,10,10 La Candelaria,1019,La Candelaria
+CBA_000094,05001,Medellin,08,08 Villa Hermosa,0812,La Libertad
+CBA_000095,05001,Medellin,13,13 San Javier,1307,Juan Xxiii La Quiebra
+CBA_000096,05001,Medellin,07,07 Robledo,0723,Pajarito
+CBA_000097,05001,Medellin,03,03 Manrique,0308,Manrique Oriental
+CBA_000098,05001,Medellin,07,07 Robledo,0713,Aures N.1
+CBA_000099,05001,Medellin,14,14 El Poblado,1411,Los Balsos N.1
+CBA_000100,05001,Medellin,03,03 Manrique,0303,Campo Valdés N.2
+CBA_000101,05001,Medellin,10,10 La Candelaria,1013,Barrio Colón
+CBA_000102,05001,Medellin,03,03 Manrique,0313,María Cano Carambolas
+CBA_000103,05001,Medellin,13,13 San Javier,1302,Blanquizal
+CBA_000104,05001,Medellin,16,16 Belén,1616,Las Violetas
+CBA_000105,05001,Medellin,03,03 Manrique,0310,Versalles No. 2
+CBA_000106,05001,Medellin,11,11 Laureles,1115,Cuarta Brigada
+CBA_000107,05001,Medellin,70,70 Corregimiento De Altavista,7006,Suburbano Altavista
+CBA_000108,05001,Medellin,03,03 Manrique,0311,La Cruz
+CBA_000109,05001,Medellin,05,05 Castilla,0509,Girardot
+CBA_000110,05001,Medellin,06,06 Doce De Octubre,0610,Picachito
+CBA_000111,05001,Medellin,13,13 San Javier,1306,La Pradera
+CBA_000112,05001,Medellin,02,02 Santa Cruz,0205,La Francia
+CBA_000113,05001,Medellin,12,12 La America,1213,Calasanz Parte Alta
+CBA_000114,05001,Medellin,05,05 Castilla,0507,Héctor Abad Gómez
+CBA_000115,05001,Medellin,01,01 Popular,0107,San Pablo
+CBA_000116,05001,Medellin,02,02 Santa Cruz,0206,Andalucía
+CBA_000117,05001,Medellin,13,13 San Javier,1301,El Pesebre
+CBA_000118,05001,Medellin,08,08 Villa Hermosa,0809,Sucre
+CBA_000119,05001,Medellin,05,05 Castilla,0505,Boyacá
+CBA_000120,05001,Medellin,11,11 Laureles,1108,Laureles
+CBA_000121,05001,Medellin,11,11 Laureles,1113,El Estadio
+CBA_000122,05001,Medellin,14,14 El Poblado,1422,La Aguacatala
+CBA_000123,05001,Medellin,90,90 Corregimiento De Santa Elena,9003,Piedras Blancas Represa
+CBA_000124,05001,Medellin,04,04 Aranjuez,0410,Campo Valdés No. 1
+CBA_000125,05001,Medellin,15,15 Guayabal,1503,Trinidad
+CBA_000126,05001,Medellin,01,01 Popular,0106,Villa Guadalupe
+CBA_000127,05001,Medellin,04,04 Aranjuez,0412,La Piñuela
+CBA_000128,05001,Medellin,13,13 San Javier,1309,San Javier No.1
+CBA_000129,05001,Medellin,06,06 Doce De Octubre,0610,Mirador Del Doce
+CBA_000130,05001,Medellin,07,07 Robledo,0711,Bello Horizonte
+CBA_000131,05001,Medellin,04,04 Aranjuez,0407,Sevilla
+CBA_000132,05001,Medellin,05,05 Castilla,0513,Francisco Antonio Zea
+CBA_000133,05001,Medellin,13,13 San Javier,1303,Calasanz Parte Alta
+CBA_000134,05001,Medellin,14,14 El Poblado,1420,Astorga
+CBA_000135,05001,Medellin,06,06 Doce De Octubre,0604,Pedregal
+CBA_000136,05001,Medellin,13,13 San Javier,1315,Nuevos Conquistadores
+CBA_000137,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8098,Área De Expansión San Antonio De Prado
+CBA_000138,05001,Medellin,08,08 Villa Hermosa,0801,Villa Hermosa
+CBA_000139,05001,Medellin,13,13 San Javier,1314,Las Independencias
+CBA_000140,05001,Medellin,04,04 Aranjuez,0409,Manrique Central N.1
+CBA_000141,05001,Medellin,04,04 Aranjuez,0414,Brasilia
+CBA_000142,05001,Medellin,05,05 Castilla,0508,Belalcázar
+CBA_000143,05001,Medellin,07,07 Robledo,0722,Olaya Herrera
+CBA_000144,05001,Medellin,02,02 Santa Cruz,0209,Moscú N.1
+CBA_000145,05001,Medellin,16,16 Belén,1603,Belén
+CBA_000146,05001,Medellin,14,14 El Poblado,1416,Alejandria
+CBA_000147,05001,Medellin,06,06 Doce De Octubre,0605,La Esperanza
+CBA_000148,05001,Medellin,07,07 Robledo,0718,Cucaracho
+CBA_000149,05001,Medellin,01,01 Popular,0104,Granizal
+CBA_000150,05001,Medellin,90,90 Corregimiento De Santa Elena,9008,Piedras Blancas
+CBA_000151,05001,Medellin,01,01 Popular,0105,Moscú N.2
+CBA_000152,05001,Medellin,60,60 Corregimiento De San Cristobal,6014,Yolombo
+CBA_000153,05001,Medellin,70,70 Corregimiento De Altavista,7003,Aguas Frias
+CBA_000154,05001,Medellin,03,03 Manrique,0301,La Salle
+CBA_000155,05001,Medellin,16,16 Belén,1609,La Hondonada
+CBA_000156,05001,Medellin,05,05 Castilla,0503,Florencia
+CBA_000157,05001,Medellin,09,09 Buenos Aires,0908,Miraflores
+CBA_000158,05001,Medellin,60,60 Corregimiento De San Cristobal,6000,Cabecera Urbana San Cristobal
+CBA_000159,05001,Medellin,60,60 Corregimiento De San Cristobal,6097,Area De Expansion Altos De Calasanz
+CBA_000160,05001,Medellin,02,02 Santa Cruz,0204,La Frontera
+CBA_000161,05001,Medellin,09,09 Buenos Aires,0903,Bomboná No. 2
+CBA_000162,05001,Medellin,01,01 Popular,0105,Moscú No. 2
+CBA_000163,05001,Medellin,15,15 Guayabal,1504,Santa Fé
+CBA_000164,05001,Medellin,16,16 Belén,1607,Diego Echavarría
+CBA_000165,05001,Medellin,07,07 Robledo,0720,Santa Margarita
+CBA_000166,05001,Medellin,60,60 Corregimiento De San Cristobal,6014,Suburbano La Loma
+CBA_000167,05001,Medellin,11,11 Laureles,1114,Los Colores
+CBA_000168,05088,Bello,06,06 Doce De Octubre,0604,Pedregal
+CBA_000169,05001,Medellin,13,13 San Javier,1318,Antonio Nariño
+CBA_000170,05001,Medellin,14,14 El Poblado,1409,El Tesoro
+CBA_000171,05001,Medellin,12,12 La America,1206,Santa Lucía
+CBA_000172,05088,Bello,09,09 Buenos Aires,0902,Barrio De Jesús
+CBA_000173,05001,Medellin,04,04 Aranjuez,0408,San Pedro
+CBA_000174,05001,Medellin,90,90 Corregimiento De Santa Elena,9003,Piedras Blancas
+CBA_000175,05001,Medellin,14,14 El Poblado,1404,Castropol
+CBA_000176,05001,Medellin,11,11 Laureles,1110,Santa Teresita
+CBA_000177,05001,Medellin,11,11 Laureles,1105,Los Conquistadores
+CBA_000178,05001,Medellin,70,70 Corregimiento De Altavista,7097,Área De Expansión Belén Rincón
+CBA_000179,05001,Medellin,06,06 Doce De Octubre,0602,Doce De Octubre N.1
+CBA_000180,05001,Medellin,14,14 El Poblado,1421,Patio Bonito
+CBA_000181,05042,Santafe De Antioquia,10,10 La Candelaria,1001,Prado
+CBA_000182,05266,Envigado,99,Sin Información,9999,Sin Información
+CBA_000183,05001,Medellin,16,16 Belén,1609,La Hondanada
+CBA_000184,05001,Medellin,11,11 Laureles,1111,Lorena
+CBA_000185,05001,Medellin,09,09 Buenos Aires,0901,Juan Pablo Ii
+CBA_000186,05001,Medellin,10,10 La Candelaria,1016,Boston
+CBA_000187,05001,Medellin,90,90 Corregimiento De Santa Elena,9006,Santa Elena Sector Central
+CBA_000188,05001,Medellin,16,16 Belén,1621,Cerro Nutibara
+CBA_000189,05001,Medellin,01,01 Popular,0108,El Compromiso
+CBA_000190,05001,Medellin,16,16 Belén,1620,El Nogal-Los Almendros
+CBA_000191,05001,Medellin,08,08 Villa Hermosa,0811,Trece De Noviembre
+CBA_000192,05001,Medellin,11,11 Laureles,1117,Florida Nueva
+CBA_000193,05001,Medellin,08,08 Villa Hermosa,0814,Villatina
+CBA_000194,05001,Medellin,70,70 Corregimiento De Altavista,7097,Area De Expansion Belen Rincon
+CBA_000195,05001,Medellin,11,11 Laureles,1116,U.D. Atanasio Girardot
+CBA_000196,05001,Medellin,10,10 La Candelaria,1015,Bomboná No. 1
+CBA_000197,05001,Medellin,01,01 Popular,0104,Moscú No. 2
+CBA_000198,05001,Medellin,03,03 Manrique,0312,Oriente
+CBA_000199,05001,Medellin,03,03 Manrique,0307,Manrique Central No. 2
+CBA_000200,05001,Medellin,07,07 Robledo,0719,Fuente Clara
+CBA_000201,05001,Medellin,13,13 San Javier,1312,Betania
+CBA_000202,05001,Medellin,02,02 Santa Cruz,0209,Moscú No. 1
+CBA_000203,05001,Medellin,09,09 Buenos Aires,0910,La Milagrosa
+CBA_000204,05001,Medellin,60,60 Corregimiento De San Cristobal,6001,La Loma
+CBA_000205,05001,Medellin,02,02 Santa Cruz,0207,Moscú No. 1
+CBA_000206,05001,Medellin,04,04 Aranjuez,0404,Bermejal-Los Alamos
+CBA_000207,05001,Medellin,10,10 La Candelaria,1003,Jesús Nazareno
+CBA_000208,05001,Medellin,70,70 Corregimiento De Altavista,7004,Aguas Frias
+CBA_000209,05001,Medellin,90,90 Corregimiento De Santa Elena,9009,Suburb El Plan
+CBA_000210,05001,Medellin,06,06 Doce De Octubre,0603,Doce De Octubre No.2
+CBA_000211,05001,Medellin,14,14 El Poblado,1407,Las Lomas No.2
+CBA_000212,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8007,La Verde
+CBA_000213,05001,Medellin,06,06 Doce De Octubre,0611,El Progreso No.2
+CBA_000214,05001,Medellin,15,15 Guayabal,1507,Campo Amor
+CBA_000215,05001,Medellin,08,08 Villa Hermosa,0815,Las Estancias
+CBA_000216,05001,Medellin,01,01 Popular,0101,Santo Domingo Savio N.1
+CBA_000217,05001,Medellin,70,70 Corregimiento De Altavista,7002,Aguas Frias
+CBA_000218,05001,Medellin,07,07 Robledo,0703,San Germán
+CBA_000219,05001,Medellin,09,09 Buenos Aires,0903,Bomboná N.2
+CBA_000220,05001,Medellin,70,70 Corregimiento De Altavista,7096,Área De Expansión Altavista
+CBA_000221,05001,Medellin,01,01 Popular,0102,Santo Domingo Savio N.2
+CBA_000222,05001,Medellin,90,90 Corregimiento De Santa Elena,9003,El Plan
+CBA_000223,05001,Medellin,16,16 Belén,1613,Altavista
+CBA_000224,05001,Medellin,12,12 La America,1209,Santa Mónica
+CBA_000225,05001,Medellin,16,16 Belén,1608,La Mota
+CBA_000226,05001,Medellin,60,60 Corregimiento De San Cristobal,6001,Suburbano La Palma-El Patio
+CBA_000227,05001,Medellin,09,09 Buenos Aires,0917,Ocho De Marzo
+CBA_000228,05001,Medellin,90,90 Corregimiento De Santa Elena,9002,Media Luna
+CBA_000229,05001,Medellin,06,06 Doce De Octubre,0612,El Triunfo
+CBA_000230,05001,Medellin,04,04 Aranjuez,0403,Palermo
+CBA_000231,05001,Medellin,12,12 La America,1201,Ferrini
+CBA_000232,05001,Medellin,10,10 La Candelaria,1005,Estación Villa
+CBA_000233,05001,Medellin,13,13 San Javier,1305,Metropolitano
+CBA_000234,05001,Medellin,13,13 San Javier,1304,Los Alcázares
+CBA_000235,05001,Medellin,02,02 Santa Cruz,0203,Pablo Vi
+CBA_000236,05001,Medellin,02,02 Santa Cruz,0205,Andalucía
+CBA_000237,05001,Medellin,60,60 Corregimiento De San Cristobal,6087,Suburbano Travesias
+CBA_000238,05088,Bello,99,Sin Información,9999,Sin Información
+CBA_000239,05001,Medellin,13,13 San Javier,1317,Eduardo Santos
+CBA_000240,05001,Medellin,04,04 Aranjuez,0409,Manrique Central No. 1
+CBA_000241,05001,Medellin,12,12 La America,1205,La Floresta
+CBA_000242,05001,Medellin,03,03 Manrique,0306,El Pomar
+CBA_000243,05001,Medellin,16,16 Belén,1614,La Palma
+CBA_000244,05001,Medellin,12,12 La America,1210,Barrio Cristóbal
+CBA_000245,05001,Medellin,12,12 La America,1206,Santa Lucia
+CBA_000246,05001,Medellin,09,09 Buenos Aires,0906,Barrio Caicedo
+CBA_000247,05001,Medellin,07,07 Robledo,0712,Aures N.2
+CBA_000248,05001,Medellin,13,13 San Javier,1310,Veinte De Julio
+CBA_000249,05001,Medellin,60,60 Corregimiento De San Cristobal,6000,Cabecera Aurbana San Cristobal
+CBA_000250,05148,El Carmen De Viboral,06,06 Doce De Octubre,0601,Santander
+CBA_000251,05001,Medellin,08,08 Villa Hermosa,0819,Las Estancias
+CBA_000252,05001,Medellin,07,07 Robledo,0725,Nueva Villa De La Iguaná
+CBA_000253,05001,Medellin,12,12 La America,1202,Calasanz
+CBA_000254,05001,Medellin,08,08 Villa Hermosa,0803,San Miguel
+CBA_000255,05001,Medellin,07,07 Robledo,0706,La Pilarica
+CBA_000256,05001,Medellin,70,70 Corregimiento De Altavista,7007,La Hondonada
+CBA_000257,05001,Medellin,01,01 Popular,0106,Berlin
+CBA_000258,05001,Medellin,13,13 San Javier,1305,Santa Rosa De Lima
+CBA_000259,05001,Medellin,07,07 Robledo,0723,Área De Expansión Pajarito
+CBA_000260,05001,Medellin,60,60 Corregimiento De San Cristobal,6084,Suburbano La Loma
+CBA_000261,05001,Medellin,90,90 Corregimiento De Santa Elena,9001,El Cerro
+CBA_000262,05001,Medellin,03,03 Manrique,0315,San Jose La Cima N.2
+CBA_000263,05042,Santafe De Antioquia,13,13 San Javier,1302,Blanquizal
+CBA_000264,05001,Medellin,07,07 Robledo,0715,Villa Flora
+CBA_000265,05001,Medellin,03,03 Manrique,0313,Maria Cano Carambolas
+CBA_000266,05001,Medellin,05,05 Castilla,0510,Tricentenario
+CBA_000267,05001,Medellin,60,60 Corregimiento De San Cristobal,6011,El Picacho
+CBA_000268,05001,Medellin,16,16 Belén,1618,Nueva Villa De Aburrá
+CBA_000269,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8006,El Salado
+CBA_000270,05001,Medellin,16,16 Belén,1604,Granada
+CBA_000271,05001,Medellin,16,16 Belén,1602,Rosales
+CBA_000272,05001,Medellin,09,09 Buenos Aires,0903,Las Palmas
+CBA_000273,05001,Medellin,10,10 La Candelaria,1018,Villa Nueva
+CBA_000274,05001,Medellin,70,70 Corregimiento De Altavista,7096,Area De Expansion Altavista
+CBA_000275,05001,Medellin,05,05 Castilla,0501,Toscana
+CBA_000276,05001,Medellin,90,90 Corregimiento De Santa Elena,9001,Las Palmas
+CBA_000277,05001,Medellin,07,07 Robledo,0714,Bello Horizonte
+CBA_000278,05001,Medellin,12,12 La America,1208,Campo Alegre
+CBA_000279,05088,Bello,10,10 La Candelaria,1004,El Chagualo
+CBA_000280,05001,Medellin,70,70 Corregimiento De Altavista,7003,El Corazon El Morro
+CBA_000281,05001,Medellin,13,13 San Javier,1309,San Javier N.1
+CBA_000282,05001,Medellin,13,13 San Javier,1319,El Socorro
+CBA_000283,05001,Medellin,09,09 Buenos Aires,0905,Alejandro Echavarria
+CBA_000284,05001,Medellin,14,14 El Poblado,1418,El Poblado
+CBA_000285,05001,Medellin,15,15 Guayabal,1509,Cristo Rey
+CBA_000286,05001,Medellin,16,16 Belén,1611,Loma De Los Bernal
+CBA_000287,05001,Medellin,07,07 Robledo,0708,Altamira
+CBA_000288,05001,Medellin,08,08 Villa Hermosa,0802,La Mansión
+CBA_000289,05001,Medellin,03,03 Manrique,0304,Oriente
+CBA_000290,05001,Medellin,14,14 El Poblado,1408,Altos Del Poblado
+CBA_000291,05001,Medellin,03,03 Manrique,0314,San José La Cima No. 1
+CBA_000292,05001,Medellin,14,14 El Poblado,1410,Los Naranjos
+CBA_000293,05001,Medellin,16,16 Belén,1611,La Loma De Los Bernal
+CBA_000294,05360,Itagui,99,Sin Información,9999,Sin Información
+CBA_000295,05001,Medellin,03,03 Manrique,0314,San Jose La Cima N.1
+CBA_000296,05001,Medellin,03,03 Manrique,0310,Versalles N.2
+CBA_000297,05001,Medellin,04,04 Aranjuez,0401,Berlín
+CBA_000298,05001,Medellin,11,11 Laureles,1102,Suramericana
+CBA_000299,05001,Medellin,16,16 Belén,1615,Los Alpes
+CBA_000300,05001,Medellin,14,14 El Poblado,1406,Las Lomas No.1
+CBA_000301,05001,Medellin,13,13 San Javier,1308,Santa Lucía
+CBA_000302,05001,Medellin,70,70 Corregimiento De Altavista,7007,San Jose Del Manzanillo
+CBA_000303,05001,Medellin,08,08 Villa Hermosa,0817,La Sierra
+CBA_000304,05001,Medellin,03,03 Manrique,0310,Piedras Blancas
+CBA_000305,05001,Medellin,13,13 San Javier,1317,Antonio Nariño
+CBA_000306,05001,Medellin,60,60 Corregimiento De San Cristobal,6017,Suburbano El Llano
+CBA_000307,05001,Medellin,07,07 Robledo,0716,Palenque
+CBA_000308,05001,Medellin,06,06 Doce De Octubre,0601,Doce De Octubre No.1
+CBA_000309,05001,Medellin,05,05 Castilla,0514,Alfonso Lopez
+CBA_000310,05001,Medellin,11,11 Laureles,1107,Bolivariana
+CBA_000311,05001,Medellin,07,07 Robledo,0702,Barrio Cerro El Volador
+CBA_000312,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8098,Área De Exoancsión San Antonio De Prado
+CBA_000313,05138,Cañasgordas,99,Sin Información,9999,Sin Información
+CBA_000314,05001,Medellin,05,05 Castilla,0519,El Progreso
+CBA_000315,05001,Medellin,02,02 Santa Cruz,0206,Villa Del Socorro
+CBA_000316,05001,Medellin,12,12 La America,1201,El Pesebre
+CBA_000317,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8002,Suburbano Potrerito
+CBA_000318,05001,Medellin,15,15 Guayabal,1506,Parque Juan Pablo Ii
+CBA_000319,05001,Medellin,10,10 La Candelaria,1010,Centro Administrativo
+CBA_000320,05001,Medellin,07,07 Robledo,0702,B. Cerro  El Volador
+CBA_000321,05001,Medellin,12,12 La America,1212,Santa Teresita
+CBA_000322,05001,Medellin,16,16 Belén,1607,El Rodeo
+CBA_000323,05001,Medellin,04,04 Aranjuez,0404,Bermejal Los Alamos
+CBA_000324,05001,Medellin,70,70 Corregimiento De Altavista,7001,Altavista Sector Central
+CBA_000325,05001,Medellin,70,70 Corregimiento De Altavista,7084,Buga Patio Bonito
+CBA_000326,05001,Medellin,12,12 La America,1211,Simón Bolívar
+CBA_000327,05001,Medellin,70,70 Corregimiento De Altavista,7083,La Esperanza
+CBA_000328,05001,Medellin,14,14 El Poblado,1423,Santa María De Los Ángeles
+CBA_000329,05001,Medellin,15,15 Guayabal,1502,Tenche
+CBA_000330,05001,Medellin,03,03 Manrique,0310,Versalles No. 1
+CBA_000331,05001,Medellin,03,03 Manrique,0315,Las Granjas
+CBA_000332,05001,Medellin,09,09 Buenos Aires,0909,Cataluña
+CBA_000333,05001,Medellin,10,10 La Candelaria,1015,Bomboná N.1
+CBA_000334,05001,Medellin,12,12 La America,1207,El Danubio
+CBA_000335,05001,Medellin,06,06 Doce De Octubre,0611,Progreso N.2
+CBA_000336,05001,Medellin,10,10 La Candelaria,1020,San Diego
+CBA_000337,05001,Medellin,70,70 Corregimiento De Altavista,7006,Altavista Sector Central
+CBA_000338,05001,Medellin,04,04 Aranjuez,0412,Aranjuez
+CBA_000339,05001,Medellin,14,14 El Poblado,1417,La Florida
+CBA_000340,05001,Medellin,09,09 Buenos Aires,0916,Altos Del Poblado
+CBA_000341,05001,Medellin,14,14 El Poblado,1411,Los Balsos No.1
+CBA_000342,05088,Bello,10,10 La Candelaria,1018,Villa Nueva
+CBA_000343,05001,Medellin,60,60 Corregimiento De San Cristobal,6017,La Loma Oriental
+CBA_000344,05001,Medellin,13,13 San Javier,1313,El Corazón
+CBA_000345,05001,Medellin,70,70 Corregimiento De Altavista,7006,Area De Expansion Altavista
+CBA_000346,05001,Medellin,60,60 Corregimiento De San Cristobal,6014,La Loma
+CBA_000347,05001,Medellin,12,12 La America,1210,Simón Bolívar
+CBA_000348,05001,Medellin,70,70 Corregimiento De Altavista,7007,Altavista Sector Central
+CBA_000349,05001,Medellin,10,10 La Candelaria,1012,Perpetuo Socorro
+CBA_000350,05001,Medellin,02,02 Santa Cruz,0206,Andalucia
+CBA_000351,05001,Medellin,14,14 El Poblado,1412,San Lucas
+CBA_000352,05001,Medellin,11,11 Laureles,1113,Estadio
+CBA_000353,05001,Medellin,10,10 La Candelaria,1007,Guayaquil
+CBA_000354,05001,Medellin,14,14 El Poblado,1407,Las Lomas N.2
+CBA_000355,05001,Medellin,01,01 Popular,0110,La Esperanza N.2
+CBA_000356,05001,Medellin,70,70 Corregimiento De Altavista,7096,Altavista Sector Central
+CBA_000357,05001,Medellin,08,08 Villa Hermosa,0813,La Libertad
+CBA_000358,05001,Medellin,70,70 Corregimiento De Altavista,7004,Las Violetas
+CBA_000359,05001,Medellin,10,10 La Candelaria,1004,El Chagualo
+CBA_000360,05001,Medellin,07,07 Robledo,0712,Picacho
+CBA_000361,05360,Itagui,15,15 Guayabal,1503,Trinidad
+CBA_000362,05001,Medellin,02,02 Santa Cruz,0210,Villa Niza
+CBA_000363,05002,Abejorral,70,70 Corregimiento De Altavista,7096,Altavista Sector Central
+CBA_000364,05001,Medellin,13,13 San Javier,1311,Belencito
+CBA_000365,05001,Medellin,14,14 El Poblado,1406,Las Lomas N.1
+CBA_000366,05001,Medellin,07,07 Robledo,0725,Nueva Villa De La Iguana
+CBA_000367,05001,Medellin,14,14 El Poblado,1413,El Diamante N.2
+CBA_000368,05001,Medellin,13,13 San Javier,1308,San Javier No.2
+CBA_000369,05001,Medellin,60,60 Corregimiento De San Cristobal,6015,Suburbano La Palma-El Patio
+CBA_000370,05001,Medellin,11,11 Laureles,1103,Naranjal
+CBA_000371,05001,Medellin,60,60 Corregimiento De San Cristobal,6014,La Loma Oriental
+CBA_000372,05001,Medellin,01,01 Popular,0110,La Esperanza No. 2
+CBA_000373,05001,Medellin,70,70 Corregimiento De Altavista,7088,El Corazon El Morro
+CBA_000374,05001,Medellin,11,11 Laureles,1109,Las Acacias
+CBA_000375,05001,Medellin,11,11 Laureles,1106,U.P.B.
+CBA_000376,05360,Itagui,10,10 La Candelaria,1012,Perpetuo Socorro
+CBA_000377,05001,Medellin,70,70 Corregimiento De Altavista,7085,San Pablo
+CBA_000378,05001,Medellin,14,14 El Poblado,1415,Los Balsos No.2
+CBA_000379,05001,Medellin,14,14 El Poblado,1419,Manila
+CBA_000380,05001,Medellin,05,05 Castilla,0501,Héctor Abad Gómez
+CBA_000381,05001,Medellin,03,03 Manrique,0305,Santa Inés
+CBA_000382,05001,Medellin,70,70 Corregimiento De Altavista,7005,Suburbano Altavista
+CBA_000383,05001,Medellin,90,90 Corregimiento De Santa Elena,9006,Suburbano Santa Elena Central
+CBA_000384,05001,Medellin,10,10 La Candelaria,1006,San Benito
+CBA_000385,05670,San Roque,99,Sin Información,9999,Sin Información
+CBA_000386,05001,Medellin,13,13 San Javier,1308,San Javier N.2
+CBA_000387,05001,Medellin,13,13 San Javier,1303,Santa Rosa De Lima
+CBA_000388,05001,Medellin,07,07 Robledo,0701,Universidad Nacional
+CBA_000389,00nan,Nan,99,Sin Información,9999,Sin Información
+CBA_000390,05001,Medellin,10,10 La Candelaria,1011,Calle Nueva
+CBA_000391,05001,Medellin,07,07 Robledo,0709,Córdoba
+CBA_000392,05042,Santafe De Antioquia,09,09 Buenos Aires,0914,Asomadera No. 1
+CBA_000393,05001,Medellin,10,10 La Candelaria,1017,Los Angeles
+CBA_000394,05001,Medellin,12,12 La America,1211,Simón Bolivar
+CBA_000395,05001,Medellin,05,05 Castilla,0517,Caribe
+CBA_000396,05001,Medellin,14,14 El Poblado,1416,Alejandría
+CBA_000397,05001,Medellin,90,90 Corregimiento De Santa Elena,9008,Suburbano El Llano
+CBA_000398,05001,Medellin,04,04 Aranjuez,0401,San Isidro
+CBA_000399,05001,Medellin,70,70 Corregimiento De Altavista,7000,Corregimiento Altavista
+CBA_000400,05001,Medellin,70,70 Corregimiento De Altavista,7004,Vereda San Pablo
+CBA_000401,05001,Medellin,06,06 Doce De Octubre,0606,San Martin De Porres
+CBA_000402,05001,Medellin,05,05 Castilla,0507,Hector Abad Gomez
+CBA_000403,05001,Medellin,05,05 Castilla,0508,Belalcazar
+CBA_000404,05001,Medellin,02,02 Santa Cruz,0209,Moscu No. 1
+CBA_000405,05001,Medellin,03,03 Manrique,0303,Campo Valdés No.2
+CBA_000406,05001,Medellin,60,60 Corregimiento De San Cristobal,6004,El Uvito
+CBA_000407,05001,Medellin,08,08 Villa Hermosa,0813,San Antonio
+CBA_000408,05001,Medellin,70,70 Corregimiento De Altavista,7004,San Pablo
+CBA_000409,05001,Medellin,90,90 Corregimiento De Santa Elena,9005,Media Luna
+CBA_000410,05001,Medellin,70,70 Corregimiento De Altavista,7088,El Corazón El Morro
+CBA_000411,05001,Medellin,09,09 Buenos Aires,0914,Asomadera N.1
+CBA_000412,05001,Medellin,10,10 La Candelaria,1009,La Alpujarra
+CBA_000413,05001,Medellin,01,01 Popular,0107,La Salle
+CBA_000414,05001,Medellin,07,07 Robledo,0723,Cucaracho
+CBA_000415,05001,Medellin,16,16 Belén,1601,Fátima
+CBA_000416,05001,Medellin,07,07 Robledo,0725,B. Cerro  El Volador
+CBA_000417,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8000,Corregimiento San Antonio De Prado
+CBA_000418,05001,Medellin,03,03 Manrique,0315,San Jose De La Cima No.2
+CBA_000419,05001,Medellin,09,09 Buenos Aires,0903,Bombona No. 2
+CBA_000420,05001,Medellin,16,16 Belén,1613,Belén Altavista
+CBA_000421,05001,Medellin,60,60 Corregimiento De San Cristobal,6014,Vereda La Loma
+CBA_000422,05001,Medellin,70,70 Corregimiento De Altavista,7003,Vereda El Corazón El Morro
+CBA_000423,05001,Medellin,09,09 Buenos Aires,0917,Juan Pablo Ii
+CBA_000424,05001,Medellin,90,90 Corregimiento De Santa Elena,9001,Media Luna
+CBA_000425,05001,Medellin,03,03 Manrique,0311,El Raizal
+CBA_000426,05001,Medellin,60,60 Corregimiento De San Cristobal,6013,Cabecera Urbana San Cristobal
+CBA_000427,05001,Medellin,02,02 Santa Cruz,0205,La Isla
+CBA_000428,05001,Medellin,60,60 Corregimiento De San Cristobal,6002,Suburbano La Palma-El Patio
+CBA_000429,05001,Medellin,14,14 El Poblado,1401,Barrio Colombia
+CBA_000430,05001,Medellin,15,15 Guayabal,1501,El Rodeo
+CBA_000431,05212,Copacabana,10,10 La Candelaria,1013,Barrio Colón
+CBA_000432,05001,Medellin,50,50 Corregimiento De Palmitas,5004,Palmitas Sector Central
+CBA_000433,05001,Medellin,02,02 Santa Cruz,0202,Playon De Los Comuneros
+CBA_000434,05001,Medellin,04,04 Aranjuez,0410,Campo Valdes No. 1
+CBA_000435,05001,Medellin,10,10 La Candelaria,1001,Prado Centro
+CBA_000436,05001,Medellin,01,01 Popular,0105,Moscu No. 2
+CBA_000437,05001,Medellin,70,70 Corregimiento De Altavista,7001,Vereda Buga Patio Bonito
+CBA_000438,05001,Medellin,13,13 San Javier,1301,Ferrini
+CBA_000439,05001,Medellin,07,07 Robledo,0712,El Picacho
+CBA_000440,05001,Medellin,70,70 Corregimiento De Altavista,7005,Altavista Sector Central
+CBA_000441,05001,Medellin,16,16 Belén,1620,El Nogal Los Almendros
+CBA_000442,05001,Medellin,07,07 Robledo,0707,Bosques De San Pablo
+CBA_000443,05001,Medellin,60,60 Corregimiento De San Cristobal,6000,Corregimiento San Cristobal
+CBA_000444,05001,Medellin,16,16 Belén,1607,Diego Echavarria
+CBA_000445,05001,Medellin,08,08 Villa Hermosa,0806,Los Mangos
+CBA_000446,05001,Medellin,08,08 Villa Hermosa,0804,La Ladera
+CBA_000447,05001,Medellin,01,01 Popular,0101,Granizal
+CBA_000448,05360,Itagui,09,09 Buenos Aires,0905,Alejandro Echavarría
+CBA_000449,05001,Medellin,03,03 Manrique,0309,Versalles No. 2
+CBA_000450,05001,Medellin,05,05 Castilla,0519,Progreso
+CBA_000451,05001,Medellin,03,03 Manrique,0304,Santa Ines
+CBA_000452,05001,Medellin,09,09 Buenos Aires,0902,Barrio De Jesus
+CBA_000453,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8002,Potrerito
+CBA_000454,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8001,La Florida
+CBA_000455,05308,Girardota,09,09 Buenos Aires,0903,Bomboná No. 2
+CBA_000456,05001,Medellin,14,14 El Poblado,1423,Santa Maria De Los Angeles
+CBA_000457,05001,Medellin,11,11 Laureles,1115,Nueva Villa De La Iguaná
+CBA_000458,05001,Medellin,02,02 Santa Cruz,0211,Santa Cruz
+CBA_000459,05001,Medellin,70,70 Corregimiento De Altavista,7002,Vereda Aguas Frías
+CBA_000460,05001,Medellin,70,70 Corregimiento De Altavista,7006,Vereda La Esperanza
+CBA_000461,05001,Medellin,08,08 Villa Hermosa,0807,Enciso
+CBA_000462,05001,Medellin,08,08 Villa Hermosa,0819,Villa Lilliam
+CBA_000463,05001,Medellin,60,60 Corregimiento De San Cristobal,6017,Vereda El Llano
+CBA_000464,05001,Medellin,03,03 Manrique,0312,Piedras Blancas
+CBA_000465,05001,Medellin,13,13 San Javier,1314,Nuevos Conquistadores
+CBA_000466,05001,Medellin,14,14 El Poblado,1413,El Diamante No. 2
+CBA_000467,05607,Retiro,09,09 Buenos Aires,0903,Bomboná No. 2
+CBA_000468,05001,Medellin,07,07 Robledo,0703,San German
+CBA_000469,05001,Medellin,01,01 Popular,0104,Villa Del Socorro
+CBA_000470,05001,Medellin,60,60 Corregimiento De San Cristobal,6016,Boqueron
+CBA_000471,05001,Medellin,08,08 Villa Hermosa,0811,Piedras Blancas
+CBA_000472,05001,Medellin,01,01 Popular,0108,Aldea Pablo Vi
+CBA_000473,05001,Medellin,10,10 La Candelaria,1015,Bombona No. 1
+CBA_000474,05042,Santafe De Antioquia,10,10 La Candelaria,1019,La Candelaria
+CBA_000475,05001,Medellin,60,60 Corregimiento De San Cristobal,6016,Vereda Travesias
+CBA_000476,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8007,Vereda La Verde
+CBA_000477,05001,Medellin,11,11 Laureles,1104,San Joaquin
+CBA_000478,05001,Medellin,03,03 Manrique,0313,Carpinelo
+CBA_000479,05001,Medellin,08,08 Villa Hermosa,0807,Llanaditas
+CBA_000480,05266,Envigado,10,10 La Candelaria,1019,La Candelaria
+CBA_000481,05001,Medellin,60,60 Corregimiento De San Cristobal,6007,El Llano
+CBA_000482,05001,Medellin,13,13 San Javier,1306,Metropolitano
+CBA_000483,05001,Medellin,01,01 Popular,0107,Granizal
+CBA_000484,05001,Medellin,05,05 Castilla,0505,Boyaca
+CBA_000485,05001,Medellin,90,90 Corregimiento De Santa Elena,9008,Vereda El Llano
+CBA_000486,05212,Copacabana,09,09 Buenos Aires,0906,Barrio Caicedo
+CBA_000487,05001,Medellin,07,07 Robledo,0702,B. Cerro El Volador
+CBA_000488,05002,Abejorral,99,Sin Información,9999,Sin Información
+CBA_000489,05001,Medellin,07,07 Robledo,1008,Corazón De Jesús
+CBA_000490,05088,Bello,09,09 Buenos Aires,0907,Buenos Aires
+CBA_000491,05001,Medellin,03,03 Manrique,0302,La Salle
+CBA_000492,05088,Bello,10,10 La Candelaria,1011,Calle Nueva
+CBA_000493,05001,Medellin,60,60 Corregimiento De San Cristobal,6013,Suburbano Pedregal Alto
+CBA_000494,05001,Medellin,03,03 Manrique,0304,Las Granjas
+CBA_000495,05001,Medellin,05,05 Castilla,0512,Oleoducto
+CBA_000496,05001,Medellin,14,14 El Poblado,1405,Lalinde
+CBA_000497,05001,Medellin,03,03 Manrique,0306,Campo Valdés No. 2
+CBA_000498,05001,Medellin,16,16 Belén,1601,Fatima
+CBA_000499,05088,Bello,15,15 Guayabal,1503,Trinidad
+CBA_000500,05360,Itagui,11,11 Laureles,1101,Carlos E. Restrepo
+CBA_000501,05001,Medellin,50,50 Corregimiento De Palmitas,5008,Vereda Potrera Miserenga
+CBA_000502,05001,Medellin,90,90 Corregimiento De Santa Elena,9001,Suburbano El Tesoro
+CBA_000503,05001,Medellin,06,06 Doce De Octubre,0606,Picacho
+CBA_000504,05001,Medellin,07,07 Robledo,0710,Lopez De Mesa
+CBA_000505,05001,Medellin,90,90 Corregimiento De Santa Elena,9003,Vereda Piedras Blancas - Matasano
+CBA_000506,05001,Medellin,60,60 Corregimiento De San Cristobal,6010,Pedregal Bajo
+CBA_000507,05266,Envigado,10,10 La Candelaria,1014,Las Palmas
+CBA_000508,05380,La Estrella,99,Sin Información,9999,Sin Información
+CBA_000509,05001,Medellin,16,16 Belén,1619,Miravalle
+CBA_000510,05042,Santafe De Antioquia,70,70 Corregimiento De Altavista,7007,Area De Expansion Belen Rincon
+CBA_000511,05360,Itagui,80,80 Corregimiento De San Antonio De Prado,8000,Cabecera San Antonio De Prado
+CBA_000512,05001,Medellin,05,05 Castilla,0516,Terminal De Transporte
+CBA_000513,05001,Medellin,60,60 Corregimiento De San Cristobal,6085,Suburbano Palma - El Patio
+CBA_000514,05001,Medellin,02,02 Santa Cruz,0211,San Isidro
+CBA_000515,05088,Bello,07,07 Robledo,0714,Bello Horizonte
+CBA_000516,05001,Medellin,03,03 Manrique,0314,San Jose De La Cima No. 1
+CBA_000517,05001,Medellin,16,16 Belén,1606,Diego Echavarría
+CBA_000518,05360,Itagui,04,04 Aranjuez,0409,Manrique Central No. 1
+CBA_000519,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8001,El Vergel
+CBA_000520,05001,Medellin,15,15 Guayabal,1506,Aeroparque Juan Pablo Ii
+CBA_000521,05001,Medellin,16,16 Belén,1620,El Nogal - Los Almendros
+CBA_000522,05001,Medellin,08,08 Villa Hermosa,0812,Villatina
+CBA_000523,05001,Medellin,90,90 Corregimiento De Santa Elena,9009,El Plan
+CBA_000524,05001,Medellin,13,13 San Javier,1310,Las Independencias
+CBA_000525,05001,Medellin,07,07 Robledo,0703,Nueva Villa De La Iguaná
+CBA_000526,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8098,Cabecera San Antonio De Prado
+CBA_000527,05001,Medellin,04,04 Aranjuez,0417,Parque Norte
+CBA_000528,05001,Medellin,16,16 Belén,1613,Altavista Sector Central
+CBA_000529,05237,Don Matias,99,Sin Información,9999,Sin Información
+CBA_000530,05001,Medellin,08,08 Villa Hermosa,0807,La Libertad
+CBA_000531,05001,Medellin,05,05 Castilla,0502,Boyacá
+CBA_000532,05001,Medellin,07,07 Robledo,0716,Monteclaro
+CBA_000533,05001,Medellin,01,01 Popular,0103,Villa Del Socorro
+CBA_000534,05088,Bello,08,08 Villa Hermosa,0801,Villa Hermosa
+CBA_000535,05001,Medellin,07,07 Robledo,0712,Aures No.1
+CBA_000536,05001,Medellin,60,60 Corregimiento De San Cristobal,6009,Pedregal Alto
+CBA_000537,05001,Medellin,60,60 Corregimiento De San Cristobal,6013,El Carmelo
+CBA_000538,05001,Medellin,01,01 Popular,7085,San Pablo
+CBA_000539,05001,Medellin,08,08 Villa Hermosa,0811,Llanaditas
+CBA_000540,05001,Medellin,08,08 Villa Hermosa,0816,Villa Liliam
+CBA_000541,05001,Medellin,90,90 Corregimiento De Santa Elena,9005,Santa Elena Sector Central
+CBA_000542,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8001,Vereda La Florida
+CBA_000543,05001,Medellin,70,70 Corregimiento De Altavista,7089,San Jose Del Manzanillo
+CBA_000544,05001,Medellin,60,60 Corregimiento De San Cristobal,6097,Área De Expansión Altos De Calasanz
+CBA_000545,05001,Medellin,60,60 Corregimiento De San Cristobal,6015,Vereda Las Playas
+CBA_000546,05001,Medellin,11,11 Laureles,1112,El Velodromo
+CBA_000547,05001,Medellin,12,12 La America,1210,Barrio Cristobal
+CBA_000548,05001,Medellin,60,60 Corregimiento De San Cristobal,6002,La Palma - El Patio
+CBA_000549,05001,Medellin,10,10 La Candelaria,1002,Hospital San Vicente De Paúl
+CBA_000550,05001,Medellin,90,90 Corregimiento De Santa Elena,9011,Vereda Mazo
+CBA_000551,05001,Medellin,50,50 Corregimiento De Palmitas,5004,Corregimiento San Sebastián De Palmitas
+CBA_000552,05001,Medellin,60,60 Corregimiento De San Cristobal,6001,Vereda La Palma
+CBA_000553,05001,Medellin,14,14 El Poblado,1414,El Castillo
+CBA_000554,05001,Medellin,01,01 Popular,0103,La Isla
+CBA_000555,05001,Medellin,60,60 Corregimiento De San Cristobal,6098,Pajarito
+CBA_000556,05001,Medellin,04,04 Aranjuez,0406,Universidad De Antioquia
+CBA_000557,05001,Medellin,90,90 Corregimiento De Santa Elena,9000,Corregimiento Santa Elena
+CBA_000558,05001,Medellin,04,04 Aranjuez,0416,Jardin Botanico
+CBA_000559,05088,Bello,14,14 El Poblado,1403,Villa Carlota
+CBA_000560,05001,Medellin,50,50 Corregimiento De Palmitas,5001,Vereda La Suiza
+CBA_000561,05001,Medellin,12,12 La America,1211,Simon Bolivar
+CBA_000562,05001,Medellin,10,10 La Candelaria,1005,Estacion Villa
+CBA_000563,05001,Medellin,14,14 El Poblado,1419,Villa Carlota
+CBA_000564,05001,Medellin,03,03 Manrique,0307,La Mansión
+CBA_000565,05001,Medellin,03,03 Manrique,0301,Villa Guadalupe
+CBA_000566,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8004,Vereda Yarumalito
+CBA_000567,05001,Medellin,60,60 Corregimiento De San Cristobal,6012,Vereda Pajarito
+CBA_000568,05001,Medellin,90,90 Corregimiento De Santa Elena,9009,Vereda El Plan
+CBA_000569,05001,Medellin,04,04 Aranjuez,0402,La Rosa
+CBA_000570,05001,Medellin,60,60 Corregimiento De San Cristobal,6013,Pedregal Alto
+CBA_000571,05001,Medellin,16,16 Belén,1614,Los Alpes
+CBA_000572,05001,Medellin,06,06 Doce De Octubre,0603,Picacho
+CBA_000573,05001,Medellin,05,05 Castilla,0506,Plaza De Ferias
+CBA_000574,05001,Medellin,10,10 La Candelaria,1008,Corazón De Jesús
+CBA_000575,05088,Bello,10,10 La Candelaria,1009,La Alpujarra
+CBA_000576,05129,Caldas,99,Sin Información,9999,Sin Información
+CBA_000577,05001,Medellin,09,09 Buenos Aires,0915,Asomadera No. 2
+CBA_000578,05001,Medellin,07,07 Robledo,6011,Pajarito
+CBA_000579,05266,Envigado,14,14 El Poblado,1418,El Poblado
+CBA_000580,05001,Medellin,08,08 Villa Hermosa,0810,Sucre
+CBA_000581,05001,Medellin,10,10 La Candelaria,1010,Centro Admtivo
+CBA_000582,00nan,Nan,60,60 Corregimiento De San Cristobal,6016,Suburbano Travesias
+CBA_000583,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8005,La Verde
+CBA_000584,05001,Medellin,60,60 Corregimiento De San Cristobal,6088,Suburbano El Patio
+CBA_000585,05001,Medellin,08,08 Villa Hermosa,0813,Nan
+CBA_000586,05001,Medellin,90,90 Corregimiento De Santa Elena,9004,Vereda Barro Blanco
+CBA_000587,05001,Medellin,70,70 Corregimiento De Altavista,7005,Corregimiento Altavista
+CBA_000588,05001,Medellin,03,03 Manrique,0302,Oriente
+CBA_000589,05001,Medellin,12,12 La America,1209,Campo Alegre
+CBA_000590,05001,Medellin,60,60 Corregimiento De San Cristobal,6011,Vereda El Picacho
+CBA_000591,05001,Medellin,05,05 Castilla,0513,Alfonso López
+CBA_000592,05001,Medellin,11,11 Laureles,1110,Las Mercedes
+CBA_000593,05631,Sabaneta,99,Sin Información,9999,Sin Información
+CBA_000594,05001,Medellin,60,60 Corregimiento De San Cristobal,6008,Vereda La Ilusión
+CBA_000595,05001,Medellin,07,07 Robledo,0705,Facultad De Minas
+CBA_000596,05001,Medellin,60,60 Corregimiento De San Cristobal,6013,Pedregal Bajo
+CBA_000597,05001,Medellin,50,50 Corregimiento De Palmitas,5089,Suburbano Palmitas
+CBA_000598,05001,Medellin,07,07 Robledo,0712,Aures No.2
+CBA_000599,05001,Medellin,02,02 Santa Cruz,0208,Andalucía
+CBA_000600,05001,Medellin,07,07 Robledo,0704,Facultad Veterinaria Y Zootecnia U.De.A.
+CBA_000601,05001,Medellin,70,70 Corregimiento De Altavista,7001,Buga Patio Bonito
+CBA_000602,05001,Medellin,04,04 Aranjuez,0416,Jardín Botánico
+CBA_000603,05400,La Union,99,Sin Información,9999,Sin Información
+CBA_000604,05001,Medellin,09,09 Buenos Aires,0903,Bomboná No.2
+CBA_000605,05001,Medellin,07,07 Robledo,0718,Comuna 7: Robledo
+CBA_000606,05001,Medellin,16,16 Belén,1618,Nueva Villa Del Aburrá
+CBA_000607,05001,Medellin,70,70 Corregimiento De Altavista,7000,Altavista
+CBA_000608,05001,Medellin,50,50 Corregimiento De Palmitas,5002,La Frisola
+CBA_000609,05001,Medellin,60,60 Corregimiento De San Cristobal,6012,Pajarito
+CBA_000610,05001,Medellin,60,60 Corregimiento De San Cristobal,6012,El Picacho
+CBA_000611,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8002,La Florida
+CBA_000612,05001,Medellin,70,70 Corregimiento De Altavista,7005,Altavista
+CBA_000613,05001,Medellin,90,90 Corregimiento De Santa Elena,9011,Mazo
+CBA_000614,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8003,Potrerito
+CBA_000615,05001,Medellin,70,70 Corregimiento De Altavista,7006,La Esperanza
+CBA_000616,05001,Medellin,07,07 Robledo,0705,Facultad De Minas U. Nacional
+CBA_000617,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8003,La Montañita
+CBA_000618,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8004,Yarumalito
+CBA_000619,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8005,El Astillero
+CBA_000620,05001,Medellin,90,90 Corregimiento De Santa Elena,9011,Piedras Blancas Represa
+CBA_000621,05001,Medellin,09,09 Buenos Aires,0909,Bomboná No. 2
+CBA_000622,05001,Medellin,70,70 Corregimiento De Altavista,7005,Guayabal
+CBA_000623,05001,Medellin,04,04 Aranjuez,0409,Manrique Central No.1
+CBA_000624,05001,Medellin,60,60 Corregimiento De San Cristobal,6009,El Yolombó
+CBA_000625,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8004,El Salado
+CBA_000626,05001,Medellin,07,07 Robledo,0702,Nueva Villa De La Iguaná
+CBA_000627,05001,Medellin,90,90 Corregimiento De Santa Elena,9004,Las Palmas
+CBA_000628,05001,Medellin,13,13 San Javier,1301,Blanquizal
+CBA_000629,05001,Medellin,90,90 Corregimiento De Santa Elena,9008,El Llano
+CBA_000630,05001,Medellin,09,09 Buenos Aires,0902,Barrios De Jesús
+CBA_000631,05001,Medellin,60,60 Corregimiento De San Cristobal,6001,La Palma
+CBA_000632,05001,Medellin,90,90 Corregimiento De Santa Elena,9000,Santa Elena
+CBA_000633,05001,Medellin,50,50 Corregimiento De Palmitas,5003,Urquita
+CBA_000634,05001,Medellin,06,06 Doce De Octubre,0612,El Picacho
+CBA_000635,05001,Medellin,60,60 Corregimiento De San Cristobal,6016,Travesías
+CBA_000636,05001,Medellin,60,60 Corregimiento De San Cristobal,6017,El Llano
+CBA_000637,05001,Medellin,05,05 Castilla,0516,Terminal De Transportes Norte
+CBA_000638,05001,Medellin,05,05 Castilla,0517,El Progreso
+CBA_000639,05001,Medellin,06,06 Doce De Octubre,0606,0
+CBA_000640,05001,Medellin,07,07 Robledo,0705,Corazón De Jesús
+CBA_000641,05001,Medellin,50,50 Corregimiento De Palmitas,5003,La Volcana Guayabal
+CBA_000642,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8007,El Astillero
+CBA_000643,05001,Medellin,13,13 San Javier,8006,El Salado
+CBA_000644,05001,Medellin,03,03 Manrique,0307,El Pomar
+CBA_000645,05001,Medellin,02,02 Santa Cruz,0209,Villa Del Socorro
+CBA_000646,05001,Medellin,90,90 Corregimiento De Santa Elena,9013,Barro Blanco
+CBA_000647,05001,Medellin,01,01 Popular,9999,Sin Información
+CBA_000648,05376,La Ceja,99,Sin Información,9999,Sin Información
+CBA_000649,05001,Medellin,04,04 Aranjuez,0410,Campo Valdés No.1
+CBA_000650,05001,Medellin,60,60 Corregimiento De San Cristobal,6008,Travesias
+CBA_000651,05001,Medellin,14,14 El Poblado,1412,El Diamante No. 2
+CBA_000652,05001,Medellin,60,60 Corregimiento De San Cristobal,6014,Olaya Herrera
+CBA_000653,05001,Medellin,90,90 Corregimiento De Santa Elena,9005,Suburbano El Placer
+CBA_000654,05001,Medellin,90,90 Corregimiento De Santa Elena,9012,Piedra Gorda
+CBA_000655,05001,Medellin,10,10 La Candelaria,1014,San Diego
+CBA_000656,05001,Medellin,01,01 Popular,0105,Granizal
+CBA_000657,05001,Medellin,05,05 Castilla,0517,Terminal De Transporte
+CBA_000658,05001,Medellin,50,50 Corregimiento De Palmitas,5001,La Suiza
+CBA_000659,05001,Medellin,13,13 San Javier,1316,La Loma
+CBA_000660,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8004,La Oculta
+CBA_000661,05001,Medellin,90,90 Corregimiento De Santa Elena,9077,Suburbano El Tesoro
+CBA_000662,05030,Amaga,99,Sin Información,9999,Sin Información
+CBA_000663,05001,Medellin,60,60 Corregimiento De San Cristobal,6003,Las Playas
+CBA_000664,05042,Santafe De Antioquia,60,60 Corregimiento De San Cristobal,6097,Area De Expansion Altos De Calasanz
+CBA_000665,05001,Medellin,08,08 Villa Hermosa,0805,Batallón Girardot
+CBA_000666,05001,Medellin,60,60 Corregimiento De San Cristobal,6015,Las Playas
+CBA_000667,05001,Medellin,60,60 Corregimiento De San Cristobal,6015,San José De La Montaña
+CBA_000668,05347,Heliconia,99,Sin Información,9999,Sin Información
+CBA_000669,05501,Olaya,99,Sin Información,9999,Sin Información
+CBA_000670,05079,Barbosa,09,09 Buenos Aires,0911,Gerona
+CBA_000671,05212,Copacabana,99,Sin Información,9999,Sin Información
+CBA_000672,05001,Medellin,09,09 Buenos Aires,0915,Asomadera N.2
+CBA_000673,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8001,Área De Expansión San Antonio De Prado
+CBA_000674,05001,Medellin,03,03 Manrique,0314,La Salle
+CBA_000675,05042,Santafe De Antioquia,03,03 Manrique,0313,San José La Cima No. 1
+CBA_000676,05001,Medellin,08,08 Villa Hermosa,0815,Santa Lucia Las Estancias
+CBA_000677,05001,Medellin,50,50 Corregimiento De Palmitas,5008,Potrera Miserenga
+CBA_000678,05001,Medellin,50,50 Corregimiento De Palmitas,5005,La Aldea
+CBA_000679,05001,Medellin,70,70 Corregimiento De Altavista,7086,Suburbano Aguas Frias
+CBA_000680,05001,Medellin,70,70 Corregimiento De Altavista,7087,Suburbano Altavista
+CBA_000681,05001,Medellin,60,60 Corregimiento De San Cristobal,6002,La Palma-El Patio
+CBA_000682,05088,Bello,03,03 Manrique,0303,Campo Valdés N.2
+CBA_000683,05240,Ebejico,09,09 Buenos Aires,0916,Asomadera No. 3
+CBA_000684,05021,Alejandria,99,Sin Información,9999,Sin Información
+CBA_000685,05001,Medellin,60,60 Corregimiento De San Cristobal,6011,Aures No. 2
+CBA_000686,05088,Bello,15,15 Guayabal,1504,Santa Fé
+CBA_000687,05001,Medellin,13,13 San Javier,1310,Nuevos Conquistadores
+CBA_000688,00nan,Nan,60,60 Corregimiento De San Cristobal,6098,Área De Expansión Pajarito
+CBA_000689,05001,Medellin,90,90 Corregimiento De Santa Elena,9004,Barro Blanco
+CBA_000690,05001,Medellin,01,01 Popular,0106,La Salle
+CBA_000691,05001,Medellin,02,02 Santa Cruz,0207,Villa Niza
+CBA_000692,05088,Bello,11,11 Laureles,1101,Carlos E. Restrepo
+CBA_000693,05001,Medellin,90,90 Corregimiento De Santa Elena,9003,Piedras Blancas - Matasano
+CBA_000694,05001,Medellin,90,90 Corregimiento De Santa Elena,9010,Piedra Gorda
+CBA_000695,05154,Caucasia,14,14 El Poblado,1409,El Tesoro
+CBA_000696,05001,Medellin,50,50 Corregimiento De Palmitas,5000,Suburbano Palmitas
+CBA_000697,05001,Medellin,60,60 Corregimiento De San Cristobal,6086,Suburbano La Cuchilla
+CBA_000698,05212,Copacabana,04,04 Aranjuez,0404,Bermejal-Los Alamos
+CBA_000699,05001,Medellin,90,90 Corregimiento De Santa Elena,9007,Suburbano El Cerro
+CBA_000700,05001,Medellin,90,90 Corregimiento De Santa Elena,9003,Trece De Noviembre
+CBA_000701,05001,Medellin,07,07 Robledo,0713,Monteclaro
+CBA_000702,05001,Medellin,14,14 El Poblado,8002,La Florida
+CBA_000703,05001,Medellin,08,08 Villa Hermosa,0816,La Sierra
+CBA_000704,05001,Medellin,90,90 Corregimiento De Santa Elena,9002,Piedras Blancas
+CBA_000705,05172,Chigorodo,99,Sin Información,9999,Sin Información
+CBA_000706,05001,Medellin,60,60 Corregimiento De San Cristobal,6012,Pedregal Alto
+CBA_000707,05001,Medellin,01,01 Popular,0108,San Pablo
+CBA_000708,05088,Bello,16,16 Belén,1605,San Bernardo
+CBA_000709,05001,Medellin,60,60 Corregimiento De San Cristobal,6009,Yolombo
+CBA_000710,05088,Bello,13,13 San Javier,1314,Las Independencias
+CBA_000711,05088,Bello,14,14 El Poblado,1404,Castropol
+CBA_000712,05001,Medellin,13,13 San Javier,1315,Aguas Frias
+CBA_000713,05887,Yarumal,99,Sin Información,9999,Sin Información
+CBA_000714,05679,Santa Barbara,99,Sin Información,9999,Sin Información
+CBA_000715,05001,Medellin,02,02 Santa Cruz,0205,Pablo Vi
+CBA_000716,05001,Medellin,14,14 El Poblado,1415,Los Balsos N.2
+CBA_000717,05088,Bello,05,05 Castilla,0503,Florencia
+CBA_000718,05001,Medellin,03,03 Manrique,0302,San José La Cima No.2
+CBA_000719,05001,Medellin,90,90 Corregimiento De Santa Elena,9007,El Placer
+CBA_000720,00nan,Nan,01,01 Popular,0105,Moscú No. 2
+CBA_000721,05001,Medellin,08,08 Villa Hermosa,0807,Trece De Noviembre
+CBA_000722,05088,Bello,03,03 Manrique,0301,La Salle
+CBA_000723,05308,Girardota,16,16 Belén,1604,Granada
+CBA_000724,05001,Medellin,01,01 Popular,0108,Villa Guadalupe
+CBA_000725,05088,Bello,15,15 Guayabal,1511,La Colina
+CBA_000726,05147,Carepa,09,09 Buenos Aires,0910,La Milagrosa
+CBA_000727,05042,Santafe De Antioquia,80,80 Corregimiento De San Antonio De Prado,8000,Cabecera San Antonio De Prado
+CBA_000728,05360,Itagui,09,09 Buenos Aires,0911,Gerona
+CBA_000729,05001,Medellin,09,09 Buenos Aires,0916,Asomadera No. 3
+CBA_000730,05001,Medellin,03,03 Manrique,0313,San José La Cima No. 1
+CBA_000731,05001,Medellin,60,60 Corregimiento De San Cristobal,6014,Antonio Nariño
+CBA_000732,05001,Medellin,06,06 Doce De Octubre,0603,Santander
+CBA_000733,05001,Medellin,09,09 Buenos Aires,0916,Asomadera N.3
+CBA_000734,05001,Medellin,12,12 La America,1209,Santa Teresita
+CBA_000735,05036,Angelopolis,99,Sin Información,9999,Sin Información
+CBA_000736,05088,Bello,15,15 Guayabal,1503,Santa Fé
+CBA_000737,05690,Santo Domingo,99,Sin Información,9999,Sin Información
+CBA_000738,05001,Medellin,60,60 Corregimiento De San Cristobal,6003,El Uvito
+CBA_000739,05002,Abejorral,09,09 Buenos Aires,0903,Bomboná N.2
+CBA_000740,05045,Apartado,60,60 Corregimiento De San Cristobal,6098,Área De Expansión Pajarito
+CBA_000741,05360,Itagui,15,15 Guayabal,1506,Parque Juan Pablo Ii
+CBA_000742,05001,Medellin,90,90 Corregimiento De Santa Elena,9081,Suburbano El Placer
+CBA_000743,05308,Girardota,15,15 Guayabal,1507,Campo Amor
+CBA_000744,05001,Medellin,50,50 Corregimiento De Palmitas,5006,La Frisola
+CBA_000745,05001,Medellin,01,01 Popular,0101,Santo Domingo Savio No.1
+CBA_000746,05607,Retiro,99,Sin Información,9999,Sin Información
+CBA_000747,05001,Medellin,90,90 Corregimiento De Santa Elena,9002,El Llano
+CBA_000748,05001,Medellin,09,09 Buenos Aires,0902,Media Luna
+CBA_000749,05001,Medellin,03,03 Manrique,0310,Versalles No.2
+CBA_000750,05042,Santafe De Antioquia,11,11 Laureles,1117,Florida Nueva
+CBA_000751,05001,Medellin,01,01 Popular,0105,Moscú No.2
+CBA_000752,05001,Medellin,06,06 Doce De Octubre,0608,El Picacho
+CBA_000753,00nan,Nan,10,10 La Candelaria,1001,Prado
+CBA_000754,05809,Titiribi,99,Sin Información,9999,Sin Información
+CBA_000755,05001,Medellin,16,16 Belén,6003,Las Playas
+CBA_000756,05001,Medellin,02,02 Santa Cruz,0202,La Frontera
+CBA_000757,00nan,Nan,02,02 Santa Cruz,0207,Villa Del Socorro
+CBA_000758,05318,Guarne,99,Sin Información,9999,Sin Información
+CBA_000759,05001,Medellin,70,70 Corregimiento De Altavista,7003,El Corazón El Morro
+CBA_000760,05004,Abriaqui,99,Sin Información,9999,Sin Información
+CBA_000761,05042,Santafe De Antioquia,60,60 Corregimiento De San Cristobal,6098,Área De Expansión Pajarito
+CBA_000762,05001,Medellin,10,10 La Candelaria,1001,Villa Nueva
+CBA_000763,05001,Medellin,01,01 Popular,0102,Santo Domindo Savio No.2
+CBA_000764,00nan,Nan,06,06 Doce De Octubre,0612,El Triunfo
+CBA_000765,00nan,Nan,14,14 El Poblado,1421,Patio Bonito
+CBA_000766,00nan,Nan,15,15 Guayabal,1511,La Colina
+CBA_000767,05001,Medellin,03,03 Manrique,0309,Versalles No.1
+CBA_000768,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8008,El Vergel
+CBA_000769,05001,Medellin,02,02 Santa Cruz,0204,Pablo Vi
+CBA_000770,05001,Medellin,04,04 Aranjuez,0401,Villa Guadalupe
+CBA_000771,05001,Medellin,04,04 Aranjuez,0415,Aranjuez
+CBA_000772,05001,Medellin,08,08 Villa Hermosa,0816,Las Estancias
+CBA_000773,05001,Medellin,03,03 Manrique,0305,Manrique Oriental
+CBA_000774,05088,Bello,05,05 Castilla,0511,Castilla
+CBA_000775,00nan,Nan,80,80 Corregimiento De San Antonio De Prado,8000,Cabecera San Antonio De Prado
+CBA_000776,05001,Medellin,03,03 Manrique,0313,María Cano-Carambolas
+CBA_000777,05001,Medellin,01,01 Popular,0102,Santo Domingo Savio No.2
+CBA_000778,05001,Medellin,90,90 Corregimiento De Santa Elena,9088,Suburbano Matasano 2
+CBA_000779,05001,Medellin,06,06 Doce De Octubre,0607,López De Mesa
+CBA_000780,05001,Medellin,14,14 El Poblado,1415,La Aguacatala
+CBA_000781,05361,Ituango,99,Sin Información,9999,Sin Información
+CBA_000782,05001,Medellin,60,60 Corregimiento De San Cristobal,6089,Suburbano Pedregal Alto
+CBA_000783,00nan,Nan,13,13 San Javier,1307,Juan Xxiii La Quiebra
+CBA_000784,05001,Medellin,60,60 Corregimiento De San Cristobal,6006,La Cuchilla
+CBA_000785,05001,Medellin,04,04 Aranjuez,0405,Parque Norte
+CBA_000786,05847,Urrao,99,Sin Información,9999,Sin Información
+CBA_000787,05360,Itagui,15,15 Guayabal,1507,Campo Amor
+CBA_000788,05001,Medellin,90,90 Corregimiento De Santa Elena,9001,San Lucas
+CBA_000789,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8002,La Oculta
+CBA_000790,05088,Bello,10,10 La Candelaria,1020,San Diego
+CBA_000791,05001,Medellin,10,10 La Candelaria,9999,Sin Información
+CBA_000792,05001,Medellin,04,04 Aranjuez,0404,Bermejal-Los Álamos
+CBA_000793,05615,Rionegro,99,Sin Información,9999,Sin Información
+CBA_000794,05001,Medellin,13,13 San Javier,1312,Belencito
+CBA_000795,05088,Bello,06,06 Doce De Octubre,0601,Santander
+CBA_000796,00nan,Nan,16,16 Belén,1605,San Bernardo
+CBA_000797,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8007,La Oculta
+CBA_000798,05819,Toledo,99,Sin Información,9999,Sin Información
+CBA_000799,05001,Medellin,13,13 San Javier,1309,San Javier No.20
+CBA_000800,05079,Barbosa,99,Sin Información,9999,Sin Información
+CBA_000801,05088,Bello,04,04 Aranjuez,0405,Moravia
+CBA_000802,05001,Medellin,13,13 San Javier,1309,San Javier No.10
+CBA_000803,05001,Medellin,70,70 Corregimiento De Altavista,7089,San José Del Manzanillo
+CBA_000804,05001,Medellin,13,13 San Javier,1309,San Javier No.19
+CBA_000805,05837,Turbo,99,Sin Información,9999,Sin Información
+CBA_000806,05001,Medellin,90,90 Corregimiento De Santa Elena,9083,Suburbano Mirador Del Poblado
+CBA_000807,05045,Apartado,99,Sin Información,9999,Sin Información
+CBA_000808,05360,Itagui,15,15 Guayabal,1502,Tenche
+CBA_000809,05495,Nechi,99,Sin Información,9999,Sin Información
+CBA_000810,05001,Medellin,09,09 Buenos Aires,0908,Buenos Aires
+CBA_000811,05042,Santafe De Antioquia,04,04 Aranjuez,0413,Aranjuez
+CBA_000812,05001,Medellin,10,10 La Candelaria,0101,Santo Domingo Savio No. 1
+CBA_000813,05001,Medellin,06,06 Doce De Octubre,0611,Progreso No.2
+CBA_000814,05001,Medellin,90,90 Corregimiento De Santa Elena,9003,Oriente
+CBA_000815,05001,Medellin,16,16 Belén,1610,Altavista Sector Central
+CBA_000816,05001,Medellin,08,08 Villa Hermosa,0812,El Pinal
+CBA_000817,05001,Medellin,50,50 Corregimiento De Palmitas,5007,La Urquita
+CBA_000818,05088,Bello,02,02 Santa Cruz,0201,La Isla
+CBA_000819,05001,Medellin,09,09 Buenos Aires,0914,Asomadera No.1
+CBA_000820,05001,Medellin,05,05 Castilla,0515,Cementerio Universal
+CBA_000821,05543,Peque,99,Sin Información,9999,Sin Información
+CBA_000822,05001,Medellin,50,50 Corregimiento De Palmitas,5006,Potrera Miserenga
+CBA_000823,05001,Medellin,04,04 Aranjuez,0410,Manrique Central No. 1
+CBA_000824,05001,Medellin,12,12 La America,1207,Campo Alegre
+CBA_000825,05212,Copacabana,12,12 La America,1211,Simón Bolívar
+CBA_000826,05001,Medellin,60,60 Corregimiento De San Cristobal,6011,Pajarito
+CBA_000827,05101,Ciudad Bolivar,10,10 La Candelaria,1019,La Candelaria
+CBA_000828,05088,Bello,06,06 Doce De Octubre,0607,Kennedy
+CBA_000829,05001,Medellin,10,10 La Candelaria,1016,Villa Nueva
+CBA_000830,05001,Medellin,09,09 Buenos Aires,0913,Gerona
+CBA_000831,05789,Tamesis,99,Sin Información,9999,Sin Información
+CBA_000832,05001,Medellin,90,90 Corregimiento De Santa Elena,9086,Suburbano El Plan
+CBA_000833,05380,La Estrella,16,16 Belén,1603,Belén
+CBA_000834,05088,Bello,10,10 La Candelaria,1012,Perpetuo Socorro
+CBA_000835,05697,El Santuario,99,Sin Información,9999,Sin Información
+CBA_000836,05001,Medellin,16,16 Belén,1608,El Rincón
+CBA_000837,00nan,Nan,13,13 San Javier,1318,Antonio Nariño
+CBA_000838,05001,Medellin,14,14 El Poblado,1417,Las Lomas No.1
+CBA_000839,00nan,Nan,01,01 Popular,0101,Santo Domingo Savio No.1
+CBA_000840,05148,El Carmen De Viboral,99,Sin Información,9999,Sin Información
+CBA_000841,05088,Bello,03,03 Manrique,0307,Manrique Central No. 2
+CBA_000842,05044,Anza,99,Sin Información,9999,Sin Información
+CBA_000843,05001,Medellin,08,08 Villa Hermosa,0805,Piedras Blancas
+CBA_000844,05034,Andes,99,Sin Información,9999,Sin Información
+CBA_000845,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8089,Suburbano Potrerito
+CBA_000846,05001,Medellin,90,90 Corregimiento De Santa Elena,9005,El Placer
+CBA_000847,05001,Medellin,08,08 Villa Hermosa,0806,Piedras Blancas
+CBA_000848,05045,Apartado,05,05 Castilla,0508,Belalcázar
+CBA_000849,05088,Bello,06,06 Doce De Octubre,0602,Doce De Octubre No.1
+CBA_000850,05001,Medellin,13,13 San Javier,1302,Area De Expansion Altos De Calasanz
+CBA_000851,00nan,Nan,12,12 La America,1208,Campo Alegre
+CBA_000852,05001,Medellin,01,01 Popular,0112,María Cano Carambolas
+CBA_000853,05197,Cocorna,08,08 Villa Hermosa,0812,La Libertad
+CBA_000854,05001,Medellin,01,01 Popular,0107,El Compromiso
+CBA_000855,00nan,Nan,07,07 Robledo,0725,Nueva Villa De La Iguaná
+CBA_000856,00nan,Nan,09,09 Buenos Aires,0913,Loreto
+CBA_000857,00nan,Nan,07,07 Robledo,0722,Olaya Herrera
+CBA_000858,05440,Marinilla,09,09 Buenos Aires,0909,Cataluña
+CBA_000859,05001,Medellin,70,70 Corregimiento De Altavista,7098,Área De Expansión El Noral
+CBA_000860,05148,El Carmen De Viboral,09,09 Buenos Aires,0916,Asomadera No. 3
+CBA_000861,05001,Medellin,05,05 Castilla,0513,Castilla
+CBA_000862,00nan,Nan,09,09 Buenos Aires,0909,Cataluña
+CBA_000863,05001,Medellin,09,09 Buenos Aires,0901,Ocho De Marzo
+CBA_000864,05001,Medellin,03,03 Manrique,0305,La Cruz
+CBA_000865,05001,Medellin,03,03 Manrique,0309,Manrique Oriental
+CBA_000866,05001,Medellin,06,06 Doce De Octubre,0611,El Triunfo
+CBA_000867,05001,Medellin,08,08 Villa Hermosa,0804,Llanaditas
+CBA_000868,05088,Bello,05,05 Castilla,0504,Tejelo
+CBA_000869,05088,Bello,04,04 Aranjuez,0408,San Pedro
+CBA_000870,05360,Itagui,60,60 Corregimiento De San Cristobal,6098,Área De Expansión Pajarito
+CBA_000871,00nan,Nan,06,06 Doce De Octubre,0607,Kennedy
+CBA_000872,05660,San Luis,99,Sin Información,9999,Sin Información
+CBA_000873,00nan,Nan,08,08 Villa Hermosa,0819,Las Estancias
+CBA_000874,05001,Medellin,16,16 Belén,1614,San Bernardo
+CBA_000875,05088,Bello,09,09 Buenos Aires,0913,Loreto
+CBA_000876,05360,Itagui,10,10 La Candelaria,1005,Estación Villa
+CBA_000877,05360,Itagui,15,15 Guayabal,1511,La Colina
+CBA_000878,05001,Medellin,70,70 Corregimiento De Altavista,7098,Area De Expansion El Noral
+CBA_000879,05266,Envigado,10,10 La Candelaria,1004,El Chagualo
+CBA_000880,05001,Medellin,01,01 Popular,0105,San Pablo
+CBA_000881,05088,Bello,08,08 Villa Hermosa,0807,Los Mangos
+CBA_000882,05308,Girardota,60,60 Corregimiento De San Cristobal,6014,Suburbano La Loma
+CBA_000883,05615,Rionegro,11,11 Laureles,1103,Naranjal
+CBA_000884,05001,Medellin,06,06 Doce De Octubre,0607,Picacho
+CBA_000885,05360,Itagui,04,04 Aranjuez,0407,Sevilla
+CBA_000886,05001,Medellin,01,01 Popular,0104,Popular
+CBA_000887,05266,Envigado,14,14 El Poblado,1401,Barrio Colombia
+CBA_000888,05360,Itagui,13,13 San Javier,1307,Juan Xxiii La Quiebra
+CBA_000889,05002,Abejorral,13,13 San Javier,1307,Juan Xxiii La Quiebra
+CBA_000890,05360,Itagui,11,11 Laureles,1105,Los Conquistadores
+CBA_000891,05360,Itagui,08,08 Villa Hermosa,0803,San Miguel
+CBA_000892,05360,Itagui,04,04 Aranjuez,0404,Bermejal-Los Alamos
+CBA_000893,05042,Santafe De Antioquia,99,Sin Información,9999,Sin Información
+CBA_000894,00nan,Nan,08,08 Villa Hermosa,0815,Las Estancias
+CBA_000895,05604,Remedios,99,Sin Información,9999,Sin Información
+CBA_000896,05209,Concordia,99,Sin Información,9999,Sin Información
+CBA_000897,05001,Medellin,60,60 Corregimiento De San Cristobal,6005,Naranjal
+CBA_000898,05001,Medellin,90,90 Corregimiento De Santa Elena,9002,Santa Elena Sector Central
+CBA_000899,05001,Medellin,08,08 Villa Hermosa,0804,0
+CBA_000900,05001,Medellin,03,03 Manrique,0303,El Pomar
+CBA_000901,00nan,Nan,01,01 Popular,0111,La Avanzada
+CBA_000902,05001,Medellin,16,16 Belén,1618,Belén
+CBA_000903,05001,Medellin,01,01 Popular,0104,Santo Domingo Savio No. 1
+CBA_000904,05001,Medellin,01,01 Popular,0101,Popular
+CBA_000905,05001,Medellin,09,09 Buenos Aires,0916,Asomadera No. 2
+CBA_000906,05647,San Andres De Cuerquia,16,16 Belén,1616,Las Violetas
+CBA_000907,05001,Medellin,13,13 San Javier,1314,El Corazón
+CBA_000908,05390,La Pintada,99,Sin Información,9999,Sin Información
+CBA_000909,05088,Bello,10,10 La Candelaria,1006,San Benito
+CBA_000910,05042,Santafe De Antioquia,09,09 Buenos Aires,0912,El Salvador
+CBA_000911,05088,Bello,02,02 Santa Cruz,0205,La Francia
+CBA_000912,05001,Medellin,60,60 Corregimiento De San Cristobal,6097,Juan Xxiii La Quiebra
+CBA_000913,05045,Apartado,06,06 Doce De Octubre,0606,San Martín De Porres
+CBA_000914,05088,Bello,16,16 Belén,1604,Granada
+CBA_000915,05088,Bello,10,10 La Candelaria,1001,Prado
+CBA_000916,05001,Medellin,13,13 San Javier,1311,Betania
+CBA_000917,05887,Yarumal,10,10 La Candelaria,1012,Perpetuo Socorro
+CBA_000918,05380,La Estrella,04,04 Aranjuez,0413,Aranjuez
+CBA_000919,05790,Taraza,07,07 Robledo,0707,Bosques De San Pablo
+CBA_000920,05001,Medellin,11,11 Laureles,1106,Universidad Pontificia Bolivariana
+CBA_000921,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8000,La Oculta
+CBA_000922,00nan,Nan,04,04 Aranjuez,0402,La Rosa
+CBA_000923,05001,Medellin,03,03 Manrique,0309,El Raizal
+CBA_000924,05360,Itagui,16,16 Belén,1604,Granada
+CBA_000925,05088,Bello,16,16 Belén,1602,Rosales
+CBA_000926,05360,Itagui,13,13 San Javier,1301,Blanquizal
+CBA_000927,05001,Medellin,04,04 Aranjuez,0411,La Piñuela
+CBA_000928,00nan,Nan,12,12 La America,1203,Los Pinos
+CBA_000929,05001,Medellin,60,60 Corregimiento De San Cristobal,6011,Picachito
+CBA_000930,05001,Medellin,05,05 Castilla,0509,Castilla
+CBA_000931,05360,Itagui,04,04 Aranjuez,0415,Miranda
+CBA_000932,05001,Medellin,10,10 La Candelaria,1012,Barrio Colombia
+CBA_000933,05001,Medellin,60,60 Corregimiento De San Cristobal,6088,Suburbano El Llano
+CBA_000934,05088,Bello,04,04 Aranjuez,0414,Brasilia
+CBA_000935,05001,Medellin,08,08 Villa Hermosa,0815,Media Luna
+CBA_000936,05088,Bello,07,07 Robledo,0725,Nueva Villa De La Iguaná
+CBA_000937,05360,Itagui,03,03 Manrique,0305,El Raizal
+CBA_000938,05001,Medellin,05,05 Castilla,0511,Girardot
+CBA_000939,05001,Medellin,90,90 Corregimiento De Santa Elena,9008,El Llano Se
+CBA_000940,05088,Bello,10,10 La Candelaria,1007,Guayaquil
+CBA_000941,05360,Itagui,10,10 La Candelaria,1008,Corazón De Jesús
+CBA_000942,05001,Medellin,03,03 Manrique,0304,Campo Valdés No. 2
+CBA_000943,05308,Girardota,14,14 El Poblado,1409,El Tesoro
+CBA_000944,05001,Medellin,14,14 El Poblado,1416,Los Balsos No.2
+CBA_000945,05360,Itagui,15,15 Guayabal,1509,Cristo Rey
+CBA_000946,05001,Medellin,13,13 San Javier,1319,San Javier No.2
+CBA_000947,05088,Bello,60,60 Corregimiento De San Cristobal,6011,El Picacho
+CBA_000948,05790,Taraza,99,Sin Información,9999,Sin Información
+CBA_000949,05353,Hispania,99,Sin Información,9999,Sin Información
+CBA_000950,05001,Medellin,08,08 Villa Hermosa,0803,Prado
+CBA_000951,05001,Medellin,10,10 La Candelaria,1020,Castropol
+CBA_000952,05042,Santafe De Antioquia,01,01 Popular,0107,San Pablo
+CBA_000953,05001,Medellin,07,07 Robledo,0713,Palenque
+CBA_000954,05001,Medellin,07,07 Robledo,0716,Aures No.1
+CBA_000955,00nan,Nan,60,60 Corregimiento De San Cristobal,6012,Pedregal Alto
+CBA_000956,05001,Medellin,08,08 Villa Hermosa,0805,Villa Hermosa
+CBA_000957,05001,Medellin,03,03 Manrique,0313,Piedras Blancas
+CBA_000958,05101,Ciudad Bolivar,99,Sin Información,9999,Sin Información
+CBA_000959,05212,Copacabana,16,16 Belén,1607,Diego Echavarría
+CBA_000960,05001,Medellin,07,07 Robledo,0719,Cucaracho
+CBA_000961,05483,Nariño,99,Sin Información,9999,Sin Información
+CBA_000962,05001,Medellin,60,60 Corregimiento De San Cristobal,6004,Suburbano La Cuchilla
+CBA_000963,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,6000,Cabecera Urbana San Cristobal
+CBA_000964,05360,Itagui,10,10 La Candelaria,1006,San Benito
+CBA_000965,05088,Bello,15,15 Guayabal,1502,Tenche
+CBA_000966,05001,Medellin,04,04 Aranjuez,0413,Bermejal-Los Alamos
+CBA_000967,05001,Medellin,50,50 Corregimiento De Palmitas,5003,Suburbano Urquita
+CBA_000968,05266,Envigado,07,07 Robledo,0717,Robledo
+CBA_000969,05440,Marinilla,99,Sin Información,9999,Sin Información
+CBA_000970,05266,Envigado,80,80 Corregimiento De San Antonio De Prado,8000,Cabecera San Antonio De Prado
+CBA_000971,05088,Bello,14,14 El Poblado,1401,Barrio Colombia
+CBA_000972,05266,Envigado,16,16 Belén,1608,La Mota
+CBA_000973,05088,Bello,04,04 Aranjuez,0409,Manrique Central No. 1
+CBA_000974,05376,La Ceja,90,90 Corregimiento De Santa Elena,9001,Suburbano Mirador Del Poblado
+CBA_000975,05088,Bello,02,02 Santa Cruz,0204,La Frontera
+CBA_000976,05088,Bello,60,60 Corregimiento De San Cristobal,6015,Suburbano La Palma-El Patio
+CBA_000977,05001,Medellin,70,70 Corregimiento De Altavista,7002,San Pablo
+CBA_000978,05368,Jerico,10,10 La Candelaria,1001,Prado
+CBA_000979,05001,Medellin,09,09 Buenos Aires,0917,Asomadera N.2
+CBA_000980,05001,Medellin,13,13 San Javier,1306,Juan Xxiii La Quiebra
+CBA_000981,05001,Medellin,60,60 Corregimiento De San Cristobal,6016,Pedregal Alto
+CBA_000982,05148,El Carmen De Viboral,09,09 Buenos Aires,0911,Gerona
+CBA_000983,05147,Carepa,99,Sin Información,9999,Sin Información
+CBA_000984,05147,Carepa,07,07 Robledo,0709,Córdoba
+CBA_000985,05266,Envigado,03,03 Manrique,0309,Versalles No. 2
+CBA_000986,05002,Abejorral,08,08 Villa Hermosa,0810,El Pinal
+CBA_000987,05001,Medellin,03,03 Manrique,0309,Batallón Girardot
+CBA_000988,05631,Sabaneta,70,70 Corregimiento De Altavista,7097,Area De Expansion Belen Rincon
+CBA_000989,05001,Medellin,03,03 Manrique,0304,El Raizal
+CBA_000990,05360,Itagui,14,14 El Poblado,1418,El Poblado
+CBA_000991,05088,Bello,15,15 Guayabal,1507,Campo Amor
+CBA_000992,05042,Santafe De Antioquia,13,13 San Javier,1301,El Pesebre
+CBA_000993,05002,Abejorral,60,60 Corregimiento De San Cristobal,6087,Suburbano Travesias
+CBA_000994,05360,Itagui,15,15 Guayabal,1504,Santa Fé
+CBA_000995,05360,Itagui,04,04 Aranjuez,0410,Campo Valdés No. 1
+CBA_000996,05001,Medellin,90,90 Corregimiento De Santa Elena,9003,La Cruz
+CBA_000997,05042,Santafe De Antioquia,14,14 El Poblado,1404,Castropol
+CBA_000998,05360,Itagui,15,15 Guayabal,1502,Trinidad
+CBA_000999,05615,Rionegro,03,03 Manrique,0308,Manrique Oriental
+CBA_001000,05360,Itagui,09,09 Buenos Aires,0907,Buenos Aires
+CBA_001001,00nan,Nan,12,12 La America,1213,Calasanz Parte Alta
+CBA_001002,05088,Bello,16,16 Belén,1614,La Palma
+CBA_001003,05042,Santafe De Antioquia,03,03 Manrique,0308,Manrique Oriental
+CBA_001004,05001,Medellin,03,03 Manrique,0308,Manrique Central No. 2
+CBA_001005,05615,Rionegro,09,09 Buenos Aires,0914,Asomadera No. 1
+CBA_001006,05001,Medellin,60,60 Corregimiento De San Cristobal,6014,Aguas Frias
+CBA_001007,05001,Medellin,09,09 Buenos Aires,0912,Las Palmas
+CBA_001008,05001,Medellin,14,14 El Poblado,1406,Castropol
+CBA_001009,05789,Tamesis,08,08 Villa Hermosa,0819,Villa Liliam
+CBA_001010,05031,Amalfi,99,Sin Información,9999,Sin Información
+CBA_001011,05360,Itagui,04,04 Aranjuez,0408,San Pedro
+CBA_001012,05615,Rionegro,01,01 Popular,0103,Popular
+CBA_001013,05266,Envigado,16,16 Belén,1603,Belén
+CBA_001014,05308,Girardota,09,09 Buenos Aires,0910,La Milagrosa
+CBA_001015,05001,Medellin,90,90 Corregimiento De Santa Elena,9001,Juan Pablo Ii
+CBA_001016,05001,Medellin,15,15 Guayabal,1511,La Hondonada
+CBA_001017,05129,Caldas,06,06 Doce De Octubre,0608,Picacho
+CBA_001018,05001,Medellin,08,08 Villa Hermosa,0817,Las Estancias
+CBA_001019,05001,Medellin,16,16 Belén,1611,Altavista
+CBA_001020,05001,Medellin,05,05 Castilla,0503,Las Brisas
+CBA_001021,05360,Itagui,90,90 Corregimiento De Santa Elena,9008,Piedras Blancas
+CBA_001022,05001,Medellin,90,90 Corregimiento De Santa Elena,9001,Suburbano Mirador Del Poblado
+CBA_001023,05308,Girardota,90,90 Corregimiento De Santa Elena,9001,Las Palmas
+CBA_001024,05042,Santafe De Antioquia,02,02 Santa Cruz,0211,La Rosa
+CBA_001025,05088,Bello,10,10 La Candelaria,1014,Las Palmas
+CBA_001026,05615,Rionegro,11,11 Laureles,1108,Laureles
+CBA_001027,05266,Envigado,12,12 La America,1202,Calasanz
+CBA_001028,05001,Medellin,60,60 Corregimiento De San Cristobal,9002,El Llano
+CBA_001029,05240,Ebejico,99,Sin Información,9999,Sin Información
+CBA_001030,05266,Envigado,06,06 Doce De Octubre,0608,Picacho
+CBA_001031,05001,Medellin,08,08 Villa Hermosa,0809,Alejandro Echavarría
+CBA_001032,05001,Medellin,01,01 Popular,0104,San Pablo
+CBA_001033,05001,Medellin,15,15 Guayabal,1507,Santa Fé
+CBA_001034,05001,Medellin,06,06 Doce De Octubre,0609,El Picacho
+CBA_001035,05148,El Carmen De Viboral,14,14 El Poblado,1418,El Poblado
+CBA_001036,05001,Medellin,01,01 Popular,0112,Piedras Blancas
+CBA_001037,05001,Medellin,15,15 Guayabal,1511,Guayabal
+CBA_001038,05001,Medellin,03,03 Manrique,0303,Campo Valdés No. 1
+CBA_001039,05001,Medellin,06,06 Doce De Octubre,0612,El Progreso No.2
+CBA_001040,05001,Medellin,70,70 Corregimiento De Altavista,7097,El Rincón
+CBA_001041,05001,Medellin,11,11 Laureles,1116,Unidad Deportiva Atanasio Girardot
+CBA_001042,05380,La Estrella,80,80 Corregimiento De San Antonio De Prado,8000,Cabecera San Antonio De Prado
+CBA_001043,05030,Amaga,10,10 La Candelaria,1019,La Candelaria
+CBA_001044,00nan,Nan,60,60 Corregimiento De San Cristobal,6000,Cabecera Urbana San Cristobal
+CBA_001045,05088,Bello,01,01 Popular,0105,Moscú No. 2
+CBA_001046,05380,La Estrella,04,04 Aranjuez,0405,Moravia
+CBA_001047,05250,El Bagre,99,Sin Información,9999,Sin Información
+CBA_001048,05036,Angelopolis,14,14 El Poblado,1409,Altos Del Poblado
+CBA_001049,05321,Guatape,99,Sin Información,9999,Sin Información
+CBA_001050,05001,Medellin,01,01 Popular,0102,La Avanzada
+CBA_001051,05001,Medellin,03,03 Manrique,0309,Piedras Blancas
+CBA_001052,05088,Bello,04,04 Aranjuez,0404,Bermejal-Los Alamos
+CBA_001053,05001,Medellin,06,06 Doce De Octubre,0604,La Esperanza
+CBA_001054,05001,Medellin,16,16 Belén,1615,Altavista
+CBA_001055,05042,Santafe De Antioquia,08,08 Villa Hermosa,0819,Villa Liliam
+CBA_001056,05042,Santafe De Antioquia,01,01 Popular,0112,Carpinelo
+CBA_001057,05266,Envigado,09,09 Buenos Aires,0909,Cataluña
+CBA_001058,05266,Envigado,14,14 El Poblado,1412,San Lucas
+CBA_001059,00nan,Nan,07,07 Robledo,0711,El Diamante
+CBA_001060,05001,Medellin,12,12 La America,1201,Calasanz Parte Alta
+CBA_001061,05631,Sabaneta,11,11 Laureles,1112,El Velódromo
+CBA_001062,05761,Sopetran,04,04 Aranjuez,0409,Manrique Central No. 1
+CBA_001063,05088,Bello,10,10 La Candelaria,1019,La Candelaria
+CBA_001064,05001,Medellin,07,07 Robledo,0703,B. Cerro  El Volador
+CBA_001065,05360,Itagui,10,10 La Candelaria,1004,El Chagualo
+CBA_001066,05615,Rionegro,07,07 Robledo,0717,Robledo
+CBA_001067,00nan,Nan,05,05 Castilla,0514,Alfonso López
+CBA_001068,05631,Sabaneta,60,60 Corregimiento De San Cristobal,6000,Cabecera Urbana San Cristobal
+CBA_001069,05001,Medellin,80,80 Corregimiento De San Antonio De Prado,8008,Yarumalito
+CBA_001070,05001,Medellin,06,06 Doce De Octubre,0609,La Esperanza
+CBA_001071,05001,Medellin,06,06 Doce De Octubre,0608,Picachito
+CBA_001072,05001,Medellin,60,60 Corregimiento De San Cristobal,6004,La Cuchilla
+CBA_001073,05088,Bello,02,02 Santa Cruz,0202,Playón De Los Comuneros
+CBA_001074,05318,Guarne,07,07 Robledo,0717,Robledo
+CBA_001075,05631,Sabaneta,08,08 Villa Hermosa,0813,Villatina
+CBA_001076,00nan,Nan,04,04 Aranjuez,0413,Aranjuez
+CBA_001077,05001,Medellin,01,01 Popular,0109,La Esperanza N.2
+CBA_001078,05042,Santafe De Antioquia,06,06 Doce De Octubre,0601,Santander
+CBA_001079,05042,Santafe De Antioquia,16,16 Belén,1603,Belén
+CBA_001080,05042,Santafe De Antioquia,07,07 Robledo,0717,Robledo
+CBA_001081,05042,Santafe De Antioquia,03,03 Manrique,0302,Las Granjas
+CBA_001082,05001,Medellin,05,05 Castilla,0519,Bosques De San Pablo
+CBA_001083,05134,Campamento,03,03 Manrique,0311,La Cruz
+CBA_001084,05002,Abejorral,16,16 Belén,1603,Belén
+CBA_001085,05042,Santafe De Antioquia,08,08 Villa Hermosa,0808,Enciso
