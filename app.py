@@ -10,42 +10,47 @@ import plotly.graph_objects as go
 DATA_PATH = Path("data/processed/SerieMensual.csv")
 
 
-# -------------------------------------------------------------------
-# Carga de datos
-# -------------------------------------------------------------------
 @st.cache_data
 def load_data(path: Path = DATA_PATH) -> pd.DataFrame:
-    """Carga la serie mensual consolidada con todos los campos necesarios."""
+    """Carga la serie mensual consolidada."""
     df = pd.read_csv(path, parse_dates=["fecha"])
 
-    # Aseguramos tipos básicos
+    # Tipos básicos
     df["anio_hecho"] = df["anio_hecho"].astype(int)
     df["mes_num"] = df["mes_num"].astype(int)
-    df["nombre_municipio"] = df["nombre_municipio"].astype(str)
-    df["estrato"] = df["estrato"].astype(str)
-    df["sexo_victima"] = df["sexo_victima"].astype(str)
-    df["sexo_agresor"] = df["sexo_agresor"].astype(str)
+
+    # Columnas de texto
+    text_cols = [
+        "nombre_municipio",
+        "estrato",
+        "sexo_victima",
+        "sexo_agresor",
+        "naturaleza",
+        "nat_viosex",
+    ]
+    for col in text_cols:
+        if col in df.columns:
+            df[col] = df[col].astype(str)
+        else:
+            df[col] = "Sin Dato"
 
     return df
 
 
-# -------------------------------------------------------------------
-# Entrenamiento del modelo (similar al legacy)
-# -------------------------------------------------------------------
 @st.cache_resource
 def train_model_for(
     municipio: str,
     estrato: str,
     sexo_victima: str,
     sexo_agresor: str,
+    naturaleza: str,
+    nat_viosex: str,
 ) -> Tuple[Prophet, pd.DataFrame]:
-    """
-    Filtra según los cuatro niveles (o 'Todos'), agrupa por mes,
-    entrena un Prophet y devuelve (modelo, ts) donde ts tiene ['ds','y'] mensual.
-    """
+
     df = load_data()
     df_f = df.copy()
 
+    # Filtros
     if municipio != "Todos":
         df_f = df_f[df_f["nombre_municipio"] == municipio]
     if estrato != "Todos":
@@ -54,11 +59,15 @@ def train_model_for(
         df_f = df_f[df_f["sexo_victima"] == sexo_victima]
     if sexo_agresor != "Todos":
         df_f = df_f[df_f["sexo_agresor"] == sexo_agresor]
+    if naturaleza != "Todos":
+        df_f = df_f[df_f["naturaleza"] == naturaleza]
+    if nat_viosex != "Todos":
+        df_f = df_f[df_f["nat_viosex"] == nat_viosex]
 
     if df_f.empty:
         raise ValueError("No hay datos para la combinación de filtros seleccionada.")
 
-    # Agregamos por fecha (mensual), por si los filtros no dejan una sola fila por mes
+    # Agrupar por mes
     ts = (
         df_f.groupby("fecha", as_index=False)["casos"]
         .sum()
@@ -67,127 +76,96 @@ def train_model_for(
     )
 
     if ts["y"].sum() == 0:
-        raise ValueError("La serie resultante tiene 0 casos en todo el histórico.")
+        raise ValueError("La serie resultante tiene 0 casos.")
 
-    # Modelo Prophet con estacionalidad anual (mensual)
     model = Prophet(
-        yearly_seasonality=True,
-        weekly_seasonality=False,
-        daily_seasonality=False,
+        yearly_seasonality=True, weekly_seasonality=False, daily_seasonality=False
     )
     model.fit(ts)
 
     return model, ts
 
 
-# -------------------------------------------------------------------
-# Función principal
-# -------------------------------------------------------------------
 def main() -> None:
-    st.set_page_config(
-        layout="wide",
-        page_title="Pronóstico de Casos de Violencia",
-    )
-
+    st.set_page_config(layout="wide", page_title="Pronóstico de Casos de Violencia")
     st.title("Pronóstico De Casos De Violencia En El Departamento De Antioquia")
 
     df = load_data()
 
     st.sidebar.header("Filtros")
 
-    # 1) Municipio
-    muns = ["Todos"] + sorted(df["nombre_municipio"].dropna().unique())
-    sel_mun = st.sidebar.selectbox("Municipio", muns)
+    # Selectores (con orden alfabético para facilitar búsqueda)
+    # 1. Municipio
+    muns = ["Todos"] + sorted(df["nombre_municipio"].unique())
+    sel_mun = st.sidebar.selectbox("Municipio (Ocurrencia)", muns)
 
-    # 2) Estrato (filtrado por municipio)
-    df_mun = df if sel_mun == "Todos" else df[df["nombre_municipio"] == sel_mun]
-    estratos = ["Todos"] + sorted(df_mun["estrato"].dropna().unique())
+    # Filtro cascada
+    df_f = df if sel_mun == "Todos" else df[df["nombre_municipio"] == sel_mun]
+
+    # 2. Naturaleza (Texto descriptivo)
+    nats = ["Todos"] + sorted(df_f["naturaleza"].unique())
+    sel_nat = st.sidebar.selectbox("Modalidad", nats)
+    if sel_nat != "Todos":
+        df_f = df_f[df_f["naturaleza"] == sel_nat]
+
+    # 3. Violencia Sexual (Texto descriptivo)
+    vios = ["Todos"] + sorted(df_f["nat_viosex"].unique())
+    sel_vio = st.sidebar.selectbox("Tipo Violencia Sexual", vios)
+    if sel_vio != "Todos":
+        df_f = df_f[df_f["nat_viosex"] == sel_vio]
+
+    # Otros filtros
+    estratos = ["Todos"] + sorted(df_f["estrato"].unique())
     sel_est = st.sidebar.selectbox("Estrato", estratos)
+    if sel_est != "Todos":
+        df_f = df_f[df_f["estrato"] == sel_est]
 
-    # 3) Sexo víctima (filtrado por municipio + estrato)
-    df_est = df_mun if sel_est == "Todos" else df_mun[df_mun["estrato"] == sel_est]
-    sex_vict = ["Todos"] + sorted(df_est["sexo_victima"].dropna().unique())
-    sel_sex_vict = st.sidebar.selectbox("Sexo de la víctima", sex_vict)
+    sex_vict = ["Todos"] + sorted(df_f["sexo_victima"].unique())
+    sel_sex_vict = st.sidebar.selectbox("Sexo Víctima", sex_vict)
+    if sel_sex_vict != "Todos":
+        df_f = df_f[df_f["sexo_victima"] == sel_sex_vict]
 
-    # 4) Sexo agresor (filtrado por los tres anteriores)
-    df_vict = (
-        df_est
-        if sel_sex_vict == "Todos"
-        else df_est[df_est["sexo_victima"] == sel_sex_vict]
-    )
-    sex_agr = ["Todos"] + sorted(df_vict["sexo_agresor"].dropna().unique())
-    sel_sex_agr = st.sidebar.selectbox("Sexo del agresor", sex_agr)
+    sex_agr = ["Todos"] + sorted(df_f["sexo_agresor"].unique())
+    sel_sex_agr = st.sidebar.selectbox("Sexo Agresor", sex_agr)
 
-    # Horizonte de predicción (en meses, porque la serie es mensual)
     meses = st.sidebar.slider("Meses a pronosticar", 3, 60, 24, step=3)
 
     if st.sidebar.button("Generar Pronóstico"):
         try:
-            # Entrena y obtiene la serie histórica (mensual)
             model, ts = train_model_for(
-                sel_mun, sel_est, sel_sex_vict, sel_sex_agr
+                sel_mun, sel_est, sel_sex_vict, sel_sex_agr, sel_nat, sel_vio
             )
 
-            # Forecast
             future = model.make_future_dataframe(periods=meses, freq="MS")
             fcst = model.predict(future)
 
-            # Separa histórico y pronóstico futuro
             last_hist = ts["ds"].max()
             fcst_future = fcst[fcst["ds"] > last_hist].copy()
 
-            if fcst_future.empty:
-                st.warning(
-                    "El horizonte de pronóstico seleccionado no genera meses futuros."
-                )
-                return
+            # Clip negativos
+            cols_clip = ["yhat", "yhat_lower", "yhat_upper"]
+            fcst_future[cols_clip] = fcst_future[cols_clip].clip(lower=0)
 
-            # No negativos
-            fcst_future["yhat"] = fcst_future["yhat"].clip(lower=0)
-            fcst_future["yhat_lower"] = fcst_future["yhat_lower"].clip(lower=0)
-            fcst_future["yhat_upper"] = fcst_future["yhat_upper"].clip(lower=0)
+            # Histórico suavizado
+            ts["y_smooth"] = ts["y"].rolling(3, center=True, min_periods=1).mean()
 
-            # === SUAVIZAR HISTÓRICO (PROMEDIO MÓVIL 3 MESES) ===
-            ts_plot = ts.copy()
-            ts_plot["y_smooth"] = (
-                ts_plot["y"]
-                .rolling(window=3, center=True, min_periods=1)
-                .mean()
-            )
+            # Titulo dinámico
+            parts = []
+            if sel_nat != "Todos":
+                parts.append(sel_nat)
+            if sel_vio != "Todos":
+                parts.append(sel_vio)
+            subtitle = ", ".join(parts) if parts else "General"
 
-            # Construcción de título dinámico (similar al legacy)
-            filtros_detalle = []
-            if sel_est != "Todos":
-                filtros_detalle.append(f"Estrato {sel_est}")
-            if sel_sex_vict != "Todos":
-                filtros_detalle.append(f"Víctimas sexo {sel_sex_vict}")
-            if sel_sex_agr != "Todos":
-                filtros_detalle.append(f"Agresores sexo {sel_sex_agr}")
-
-            primary = (
-                "Casos de violencia"
-                if not filtros_detalle
-                else "Casos de violencia – " + ", ".join(filtros_detalle)
-            )
-            secondary = sel_mun if sel_mun != "Todos" else "Antioquia"
-            chart_title = f"Predicción para {primary} en {secondary}"
-
-            # ---------------------------
-            #   GRÁFICO (ESTILO LEGACY)
-            # ---------------------------
             fig = go.Figure()
-
-            # Histórico suavizado (sin marcadores)
             fig.add_trace(
                 go.Scatter(
-                    x=ts_plot["ds"],
-                    y=ts_plot["y_smooth"],
-                    name="Histórico (prom. móvil 3 meses)",
+                    x=ts["ds"],
+                    y=ts["y_smooth"],
+                    name="Histórico (suavizado)",
                     mode="lines",
                 )
             )
-
-            # Pronóstico
             fig.add_trace(
                 go.Scatter(
                     x=fcst_future["ds"],
@@ -196,51 +174,37 @@ def main() -> None:
                     mode="lines",
                 )
             )
-
-            # Intervalo de confianza
             fig.add_trace(
                 go.Scatter(
-                    x=pd.concat(
-                        [fcst_future["ds"], fcst_future["ds"][::-1]]
-                    ),
+                    x=pd.concat([fcst_future["ds"], fcst_future["ds"][::-1]]),
                     y=pd.concat(
-                        [
-                            fcst_future["yhat_upper"],
-                            fcst_future["yhat_lower"][::-1],
-                        ]
+                        [fcst_future["yhat_upper"], fcst_future["yhat_lower"][::-1]]
                     ),
                     fill="toself",
                     fillcolor="rgba(0,100,80,0.2)",
                     line=dict(color="rgba(0,0,0,0)"),
-                    name="Intervalo de confianza",
+                    name="Confianza",
                 )
             )
 
-            # Línea separadora entre histórico y futuro
-            max_hist_y = float(ts_plot["y_smooth"].max()) * 1.1
             fig.add_shape(
                 type="line",
                 x0=last_hist,
                 x1=last_hist,
                 y0=0,
-                y1=max_hist_y,
-                line=dict(color="gray", dash="dash"),
+                y1=ts["y_smooth"].max() * 1.1,
+                line=dict(dash="dash", color="gray"),
             )
 
             fig.update_layout(
-                title=chart_title,
+                title=f"Pronóstico: {subtitle} en {sel_mun}",
                 xaxis_title="Fecha",
                 yaxis_title="Casos",
-                legend_title="Series",
-                autosize=True,
-                margin=dict(l=40, r=40, t=80, b=40),
             )
-
             st.plotly_chart(fig, use_container_width=True)
 
         except ValueError as e:
-            st.warning(str(e))
-
+            st.error(f"Error: {e}")
 
 
 if __name__ == "__main__":
