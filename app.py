@@ -1,8 +1,8 @@
-from pathlib import Path
-from typing import Tuple
-
+import io
 import pandas as pd
 import streamlit as st
+from pathlib import Path
+from typing import Tuple
 from prophet import Prophet
 import plotly.graph_objects as go
 
@@ -202,6 +202,20 @@ def main() -> None:
                 yaxis_title="Casos",
             )
             st.plotly_chart(fig, use_container_width=True)
+
+            st.markdown("### Exportar Resultados")
+
+            buffer = io.BytesIO()
+
+            with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
+                fcst_future.to_excel(writer, index=False, sheet_name="Prediccion")
+
+            st.download_button(
+                label="Descargar Predicción en Excel",
+                data=buffer.getvalue(),
+                file_name=f"prediccion_{sel_mun}_{subtitle}.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            )
 
         except ValueError as e:
             st.error(f"Error: {e}")
