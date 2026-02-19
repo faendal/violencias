@@ -205,15 +205,32 @@ def main() -> None:
 
             st.markdown("### Exportar Resultados")
 
-            buffer = io.BytesIO()
+            export_df = fcst_future.copy()
 
+            column_mapping = {
+                "ds": "Fecha",
+                "yhat": "Casos Pronosticados",
+                "yhat_lower": "Límite Mínimo (Confianza)",
+                "yhat_upper": "Límite Máximo (Confianza)",
+                "trend": "Tendencia",
+            }
+
+            export_df = export_df[list(column_mapping.keys())].rename(
+                columns=column_mapping
+            )
+
+            export_df["Fecha"] = export_df["Fecha"].dt.strftime("%Y-%m-%d")
+
+            buffer = io.BytesIO()
             with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
-                fcst_future.to_excel(writer, index=False, sheet_name="Prediccion")
+                export_df.to_excel(
+                    writer, index=False, sheet_name="Pronóstico de Violencia"
+                )
 
             st.download_button(
                 label="Descargar Predicción en Excel",
                 data=buffer.getvalue(),
-                file_name=f"prediccion_{sel_mun}_{subtitle}.xlsx",
+                file_name=f"pronostico_{sel_mun}_{subtitle}.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             )
 
