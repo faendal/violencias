@@ -375,7 +375,7 @@ def main() -> None:
                     writer, index=False, sheet_name=f"Pronostico_{agrupacion}"
                 )
                 params_df.to_excel(
-                    writer, index=False, sheet_name="Matematicas_Prophet"
+                    writer, index=False, sheet_name="Parametros_Prophet"
                 )
                 filtros_df.to_excel(writer, index=False, sheet_name="Filtros_Aplicados")
 
@@ -383,7 +383,7 @@ def main() -> None:
                 "_".join(parts).replace(", ", "_") if parts else "General"
             )
             st.download_button(
-                label=f"Descargar Modelo en Excel (Nivel: {agrupacion})",
+                label=f"Descargar Informe en Excel)",
                 data=buffer.getvalue(),
                 file_name=f"pronostico_{sel_mun}_{subtitle_filename}.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
