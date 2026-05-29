@@ -120,7 +120,24 @@ def main() -> None:
     if sel_vio != "Todos":
         df_f = df_f[df_f["nat_viosex"] == sel_vio]
 
-    edades = ["Todos"] + sorted(df_f["rango_edad"].unique())
+    orden_logico_edades = [
+        "0-2",
+        "2-7",
+        "7-12",
+        "12-18",
+        "18-24",
+        "25-34",
+        "35-44",
+        "45-54",
+        "54-65",
+        "65+",
+        "Sin Dato",
+    ]
+    edades_presentes = df_f["rango_edad"].unique().tolist()
+    edades_sorted = [e for e in orden_logico_edades if e in edades_presentes]
+    edades_extras = [e for e in edades_presentes if e not in orden_logico_edades]
+    edades = ["Todos"] + edades_sorted + edades_extras
+
     sel_edad = st.sidebar.selectbox("Rango de Edad", edades)
     if sel_edad != "Todos":
         df_f = df_f[df_f["rango_edad"] == sel_edad]
@@ -218,12 +235,11 @@ def main() -> None:
                 xaxis_title="Fecha",
                 yaxis_title="Casos",
             )
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
             st.markdown("### Exportar Resultados")
 
             export_df = fcst_future.copy()
-
             column_mapping = {
                 "ds": "Fecha",
                 "yhat": "Casos Pronosticados",
@@ -231,60 +247,106 @@ def main() -> None:
                 "yhat_upper": "Límite Máximo (Confianza)",
                 "trend": "Tendencia",
             }
-
             export_df = export_df[list(column_mapping.keys())].rename(
                 columns=column_mapping
             )
-
             export_df["Fecha"] = export_df["Fecha"].dt.strftime("%Y-%m-%d")
 
-            params_data = {
-                "Parámetro / Filtro": [
-                    "Rango de Años Utilizado",
-                    "Municipio",
-                    "Modalidad",
-                    "Tipo Violencia Sexual",
-                    "Rango de Edad",
-                    "Estrato",
-                    "Sexo Víctima",
-                    "Sexo Agresor",
-                    "Meses a Pronosticar",
-                    "Prophet: Yearly Seasonality",
-                    "Prophet: Weekly Seasonality",
-                    "Prophet: Daily Seasonality",
-                ],
-                "Valor Seleccionado": [
-                    f"{sel_years[0]} - {sel_years[1]}",
-                    sel_mun,
-                    sel_nat,
-                    sel_vio,
-                    sel_edad,
-                    sel_est,
-                    sel_sex_vict,
-                    sel_sex_agr,
-                    meses,
-                    str(model.yearly_seasonality),
-                    str(model.weekly_seasonality),
-                    str(model.daily_seasonality),
-                ],
-            }
-            params_df = pd.DataFrame(params_data)
+            prophet_params = [
+                {
+                    "Parámetro Matemático": "Crecimiento (Growth)",
+                    "Valor": str(model.growth),
+                },
+                {
+                    "Parámetro Matemático": "Escala de Normalización de 'y' (y_scale)",
+                    "Valor": float(model.y_scale),
+                },
+                {
+                    "Parámetro Matemático": "Escala de Prior para Puntos de Cambio",
+                    "Valor": float(model.changepoint_prior_scale),
+                },
+                {
+                    "Parámetro Matemático": "Escala de Prior para Estacionalidad",
+                    "Valor": float(model.seasonality_prior_scale),
+                },
+                {
+                    "Parámetro Matemático": "Total de Puntos de Cambio Detectados",
+                    "Valor": len(model.changepoints),
+                },
+            ]
+
+            if hasattr(model, "params") and model.params is not None:
+                prophet_params.extend(
+                    [
+                        {
+                            "Parámetro Matemático": "Tasa de Crecimiento Base (k)",
+                            "Valor": float(model.params["k"][0][0]),
+                        },
+                        {
+                            "Parámetro Matemático": "Offset / Intercepto de Tendencia (m)",
+                            "Valor": float(model.params["m"][0][0]),
+                        },
+                        {
+                            "Parámetro Matemático": "Ruido de Observación (sigma_obs)",
+                            "Valor": float(model.params["sigma_obs"][0][0]),
+                        },
+                    ]
+                )
+
+            for name, props in model.seasonalities.items():
+                prophet_params.append(
+                    {
+                        "Parámetro Matemático": f"Estacionalidad '{name}' (Orden de Fourier)",
+                        "Valor": props["fourier_order"],
+                    }
+                )
+                prophet_params.append(
+                    {
+                        "Parámetro Matemático": f"Estacionalidad '{name}' (Prior Scale)",
+                        "Valor": props["prior_scale"],
+                    }
+                )
+
+            params_df = pd.DataFrame(prophet_params)
+
+            filtros_df = pd.DataFrame(
+                {
+                    "Filtro Aplicado": [
+                        "Años",
+                        "Municipio",
+                        "Modalidad",
+                        "Violencia Sexual",
+                        "Rango de Edad",
+                        "Estrato",
+                        "Sexo Víctima",
+                        "Sexo Agresor",
+                    ],
+                    "Valor": [
+                        f"{sel_years[0]} - {sel_years[1]}",
+                        sel_mun,
+                        sel_nat,
+                        sel_vio,
+                        sel_edad,
+                        sel_est,
+                        sel_sex_vict,
+                        sel_sex_agr,
+                    ],
+                }
+            )
 
             buffer = io.BytesIO()
             with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
-                export_df.to_excel(
-                    writer, index=False, sheet_name="Pronóstico de Violencia"
-                )
+                export_df.to_excel(writer, index=False, sheet_name="Predicciones")
                 params_df.to_excel(
-                    writer, index=False, sheet_name="Parámetros del Modelo"
+                    writer, index=False, sheet_name="Matematicas_Prophet"
                 )
+                filtros_df.to_excel(writer, index=False, sheet_name="Filtros_Aplicados")
 
             subtitle_filename = (
                 "_".join(parts).replace(", ", "_") if parts else "General"
             )
-
             st.download_button(
-                label="Descargar Predicción en Excel",
+                label="Descargar Modelo Completo en Excel",
                 data=buffer.getvalue(),
                 file_name=f"pronostico_{sel_mun}_{subtitle_filename}.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
