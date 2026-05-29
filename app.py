@@ -6,7 +6,6 @@ from typing import Tuple
 from prophet import Prophet
 import plotly.graph_objects as go
 
-# Ruta al consolidado mensual
 DATA_PATH = Path("data/processed/SerieMensual.csv")
 
 
@@ -15,11 +14,9 @@ def load_data(path: Path = DATA_PATH) -> pd.DataFrame:
     """Carga la serie mensual consolidada."""
     df = pd.read_csv(path, parse_dates=["fecha"])
 
-    # Tipos básicos
     df["anio_hecho"] = df["anio_hecho"].astype(int)
     df["mes_num"] = df["mes_num"].astype(int)
 
-    # Columnas de texto
     text_cols = [
         "nombre_municipio",
         "estrato",
@@ -27,13 +24,13 @@ def load_data(path: Path = DATA_PATH) -> pd.DataFrame:
         "sexo_agresor",
         "naturaleza",
         "nat_viosex",
+        "rango_edad",
     ]
     for col in text_cols:
         if col in df.columns:
             df[col] = df[col].astype(str)
         else:
             df[col] = "Sin Dato"
-
     return df
 
 
@@ -45,10 +42,15 @@ def train_model_for(
     sexo_agresor: str,
     naturaleza: str,
     nat_viosex: str,
+    rango_edad: str,
+    year_min: int,
+    year_max: int,
 ) -> Tuple[Prophet, pd.DataFrame]:
 
     df = load_data()
     df_f = df.copy()
+
+    df_f = df_f[(df_f["anio_hecho"] >= year_min) & (df_f["anio_hecho"] <= year_max)]
 
     # Filtros
     if municipio != "Todos":
@@ -63,11 +65,12 @@ def train_model_for(
         df_f = df_f[df_f["naturaleza"] == naturaleza]
     if nat_viosex != "Todos":
         df_f = df_f[df_f["nat_viosex"] == nat_viosex]
+    if rango_edad != "Todos":
+        df_f = df_f[df_f["rango_edad"] == rango_edad]
 
     if df_f.empty:
         raise ValueError("No hay datos para la combinación de filtros seleccionada.")
 
-    # Agrupar por mes
     ts = (
         df_f.groupby("fecha", as_index=False)["casos"]
         .sum()
@@ -94,27 +97,34 @@ def main() -> None:
 
     st.sidebar.header("Filtros")
 
-    # Selectores (con orden alfabético para facilitar búsqueda)
-    # 1. Municipio
-    muns = ["Todos"] + sorted(df["nombre_municipio"].unique())
+    min_year = int(df["anio_hecho"].min())
+    max_year = int(df["anio_hecho"].max())
+    sel_years = st.sidebar.slider(
+        "Rango de Años (Ocurrencia)", min_year, max_year, (min_year, max_year)
+    )
+
+    df_f = df[(df["anio_hecho"] >= sel_years[0]) & (df["anio_hecho"] <= sel_years[1])]
+
+    muns = ["Todos"] + sorted(df_f["nombre_municipio"].unique())
     sel_mun = st.sidebar.selectbox("Municipio (Ocurrencia)", muns)
+    if sel_mun != "Todos":
+        df_f = df_f[df_f["nombre_municipio"] == sel_mun]
 
-    # Filtro cascada
-    df_f = df if sel_mun == "Todos" else df[df["nombre_municipio"] == sel_mun]
-
-    # 2. Naturaleza (Texto descriptivo)
     nats = ["Todos"] + sorted(df_f["naturaleza"].unique())
     sel_nat = st.sidebar.selectbox("Modalidad", nats)
     if sel_nat != "Todos":
         df_f = df_f[df_f["naturaleza"] == sel_nat]
 
-    # 3. Violencia Sexual (Texto descriptivo)
     vios = ["Todos"] + sorted(df_f["nat_viosex"].unique())
     sel_vio = st.sidebar.selectbox("Tipo Violencia Sexual", vios)
     if sel_vio != "Todos":
         df_f = df_f[df_f["nat_viosex"] == sel_vio]
 
-    # Otros filtros
+    edades = ["Todos"] + sorted(df_f["rango_edad"].unique())
+    sel_edad = st.sidebar.selectbox("Rango de Edad", edades)
+    if sel_edad != "Todos":
+        df_f = df_f[df_f["rango_edad"] == sel_edad]
+
     estratos = ["Todos"] + sorted(df_f["estrato"].unique())
     sel_est = st.sidebar.selectbox("Estrato", estratos)
     if sel_est != "Todos":
@@ -127,13 +137,23 @@ def main() -> None:
 
     sex_agr = ["Todos"] + sorted(df_f["sexo_agresor"].unique())
     sel_sex_agr = st.sidebar.selectbox("Sexo Agresor", sex_agr)
+    if sel_sex_agr != "Todos":
+        df_f = df_f[df_f["sexo_agresor"] == sel_sex_agr]
 
     meses = st.sidebar.slider("Meses a pronosticar", 3, 60, 24, step=3)
 
     if st.sidebar.button("Generar Pronóstico"):
         try:
             model, ts = train_model_for(
-                sel_mun, sel_est, sel_sex_vict, sel_sex_agr, sel_nat, sel_vio
+                sel_mun,
+                sel_est,
+                sel_sex_vict,
+                sel_sex_agr,
+                sel_nat,
+                sel_vio,
+                sel_edad,
+                sel_years[0],
+                sel_years[1],
             )
 
             future = model.make_future_dataframe(periods=meses, freq="MS")
@@ -142,14 +162,11 @@ def main() -> None:
             last_hist = ts["ds"].max()
             fcst_future = fcst[fcst["ds"] > last_hist].copy()
 
-            # Clip negativos
             cols_clip = ["yhat", "yhat_lower", "yhat_upper"]
             fcst_future[cols_clip] = fcst_future[cols_clip].clip(lower=0)
 
-            # Histórico suavizado
             ts["y_smooth"] = ts["y"].rolling(3, center=True, min_periods=1).mean()
 
-            # Titulo dinámico
             parts = []
             if sel_nat != "Todos":
                 parts.append(sel_nat)
@@ -221,16 +238,55 @@ def main() -> None:
 
             export_df["Fecha"] = export_df["Fecha"].dt.strftime("%Y-%m-%d")
 
+            params_data = {
+                "Parámetro / Filtro": [
+                    "Rango de Años Utilizado",
+                    "Municipio",
+                    "Modalidad",
+                    "Tipo Violencia Sexual",
+                    "Rango de Edad",
+                    "Estrato",
+                    "Sexo Víctima",
+                    "Sexo Agresor",
+                    "Meses a Pronosticar",
+                    "Prophet: Yearly Seasonality",
+                    "Prophet: Weekly Seasonality",
+                    "Prophet: Daily Seasonality",
+                ],
+                "Valor Seleccionado": [
+                    f"{sel_years[0]} - {sel_years[1]}",
+                    sel_mun,
+                    sel_nat,
+                    sel_vio,
+                    sel_edad,
+                    sel_est,
+                    sel_sex_vict,
+                    sel_sex_agr,
+                    meses,
+                    str(model.yearly_seasonality),
+                    str(model.weekly_seasonality),
+                    str(model.daily_seasonality),
+                ],
+            }
+            params_df = pd.DataFrame(params_data)
+
             buffer = io.BytesIO()
             with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
                 export_df.to_excel(
                     writer, index=False, sheet_name="Pronóstico de Violencia"
                 )
+                params_df.to_excel(
+                    writer, index=False, sheet_name="Parámetros del Modelo"
+                )
+
+            subtitle_filename = (
+                "_".join(parts).replace(", ", "_") if parts else "General"
+            )
 
             st.download_button(
                 label="Descargar Predicción en Excel",
                 data=buffer.getvalue(),
-                file_name=f"pronostico_{sel_mun}_{subtitle}.xlsx",
+                file_name=f"pronostico_{sel_mun}_{subtitle_filename}.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             )
 

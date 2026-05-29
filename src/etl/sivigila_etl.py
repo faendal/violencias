@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 import pandas as pd
 import unicodedata
@@ -10,9 +10,6 @@ import unicodedata
 DATA_RAW = Path("data/raw")
 DATA_PROCESSED = Path("data/processed")
 
-# ----------------------------------------------------------------------
-# Diccionarios de Mapeo (Según Metadata)
-# ----------------------------------------------------------------------
 MAP_NATURALEZA = {
     "1": "Violencia Física",
     "2": "Violencia Psicológica",
@@ -45,9 +42,6 @@ MONTH_NAME_ES: Dict[int, str] = {
 }
 
 
-# ----------------------------------------------------------------------
-# Helpers generales
-# ----------------------------------------------------------------------
 def normalize_text(value: str) -> str:
     """Normaliza texto: quita tildes, deja mayúsculas y espacios simples."""
     if value is None:
@@ -74,9 +68,6 @@ def generate_sequential_ids(n: int, prefix: str, width: int = 6) -> List[str]:
     return [f"{prefix}{i:0{width}d}" for i in range(1, n + 1)]
 
 
-# ----------------------------------------------------------------------
-# Carga de datos base
-# ----------------------------------------------------------------------
 def load_dane_municipios(path: Path) -> pd.DataFrame:
     """Carga el maestro DANE (municipios)."""
     if not path.exists():
@@ -104,6 +95,35 @@ def load_dane_municipios(path: Path) -> pd.DataFrame:
     return df
 
 
+def categorize_age(df: pd.DataFrame, col: str = "edad_") -> pd.DataFrame:
+    """Clasifica la edad numérica en rangos predefinidos."""
+    if col not in df.columns:
+        return df
+
+    edad_num = pd.to_numeric(df[col], errors="coerce")
+
+    bins = [-1, 2, 7, 12, 18, 24, 34, 44, 54, 65, 200]
+    labels = [
+        "0-2",
+        "2-7",
+        "7-12",
+        "12-18",
+        "18-24",
+        "25-34",
+        "35-44",
+        "45-54",
+        "54-65",
+        "65+",
+    ]
+
+    df["rango_edad"] = pd.cut(edad_num, bins=bins, labels=labels, right=True).astype(
+        str
+    )
+
+    df["rango_edad"] = df["rango_edad"].replace("nan", "Sin Dato")
+    return df
+
+
 def load_sivigila(path: Path) -> pd.DataFrame:
     """Carga el CSV de SIVIGILA usando fec_not como fecha principal."""
     if not path.exists():
@@ -111,18 +131,17 @@ def load_sivigila(path: Path) -> pd.DataFrame:
 
     df = pd.read_csv(path, dtype=str, low_memory=False)
 
-    # Fechas - dayfirst=True para evitar warnings con fechas dd/mm/yyyy
     df["fec_not"] = pd.to_datetime(df["fec_not"], errors="coerce", dayfirst=True)
     if "fec_hecho" in df.columns:
         df["fec_hecho"] = pd.to_datetime(
             df["fec_hecho"], errors="coerce", dayfirst=True
         )
 
-    # Filtrar rango de interés según fec_not
     mask_rango = (df["fec_not"] >= "2013-01-01") & (df["fec_not"] <= "2022-12-09")
     df = df[mask_rango].copy()
 
-    # Códigos Divipola de OCURRENCIA
+    df = categorize_age(df)
+
     if "cod_dpto_o" in df.columns:
         df["cod_dpto_o"] = df["cod_dpto_o"].astype(str).str.zfill(2)
     if "cod_mun_o" in df.columns:
@@ -131,9 +150,6 @@ def load_sivigila(path: Path) -> pd.DataFrame:
     return df
 
 
-# ----------------------------------------------------------------------
-# Filtro a Antioquia y mapeo municipal (POR OCURRENCIA)
-# ----------------------------------------------------------------------
 def filter_antioquia_and_map_municipios(
     df_siv: pd.DataFrame,
     df_dane: pd.DataFrame,
@@ -143,19 +159,15 @@ def filter_antioquia_and_map_municipios(
     if "cod_dpto_o" not in df_siv.columns or "cod_mun_o" not in df_siv.columns:
         raise KeyError("Faltan columnas 'cod_dpto_o' o 'cod_mun_o' en SIVIGILA.")
 
-    # Normalización de códigos
     df_siv["cod_dpto_o"] = df_siv["cod_dpto_o"].astype(str).str.zfill(2)
     df_siv["cod_mun_o"] = df_siv["cod_mun_o"].astype(str).str.zfill(3)
 
-    # Filtro: Ocurrió en Antioquia (05)
     df_ant = df_siv[df_siv["cod_dpto_o"] == "05"].copy()
     print(f"Registros totales SIVIGILA: {len(df_siv):,}")
     print(f"Registros OCURRIDOS en Antioquia: {len(df_ant):,}")
 
-    # Maestro DANE solo Antioquia
     df_dane_ant = df_dane[df_dane["cod_dpto"] == "05"].copy()
 
-    # Merge usando códigos de OCURRENCIA
     df_merged = df_ant.merge(
         df_dane_ant[["cod_dpto", "nom_dpto", "cod_mpio", "nom_mpio", "cod_mpio_dane"]],
         how="left",
@@ -164,19 +176,14 @@ def filter_antioquia_and_map_municipios(
         suffixes=("", "_dane"),
     )
 
-    # Asignamos los campos geográficos oficiales
     df_merged["cod_mpio_resi"] = df_merged["cod_mpio_dane"]
     df_merged["nom_mpio_resi"] = df_merged["nom_mpio"]
 
-    # Rellenamos municipios no encontrados
     df_merged["nom_mpio_resi"] = df_merged["nom_mpio_resi"].fillna("SIN MAPEAR")
 
     return df_merged
 
 
-# ----------------------------------------------------------------------
-# Construcción de dimensiones
-# ----------------------------------------------------------------------
 def build_dim_tiempo(df: pd.DataFrame) -> pd.DataFrame:
     """Dimensión de tiempo basada en la fecha de notificación."""
     dim = df[["fec_not", "semana", "año", "periodo_epid", "mes_caso"]].copy()
@@ -247,9 +254,6 @@ def build_dim_evento(df: pd.DataFrame) -> pd.DataFrame:
     existing = [c for c in cols if c in df.columns]
     dim = df[existing].copy()
 
-    # --- APLICAMOS TRADUCCIONES AQUÍ ---
-
-    # 1. Naturaleza
     if "naturaleza" in dim.columns:
         dim["naturaleza"] = (
             dim["naturaleza"].astype(str).str.replace(r"\.0$", "", regex=True)
@@ -258,21 +262,18 @@ def build_dim_evento(df: pd.DataFrame) -> pd.DataFrame:
             dim["naturaleza"].map(MAP_NATURALEZA).fillna("Otro/Desconocido")
         )
 
-    # 2. Violencia Sexual
     if "nat_viosex" in dim.columns:
         dim["nat_viosex"] = (
             dim["nat_viosex"].astype(str).str.replace(r"\.0$", "", regex=True)
         )
         dim["nat_viosex"] = dim["nat_viosex"].map(MAP_VIO_SEXUAL).fillna("No Aplica")
 
-    # Eliminamos duplicados
     dim = dim.drop_duplicates().reset_index(drop=True)
     dim["id_evento"] = generate_sequential_ids(len(dim), prefix="EVN_")
 
     return dim[["id_evento"] + existing]
 
 
-# Wrappers para otras dimensiones
 def build_dim_victima(df: pd.DataFrame) -> pd.DataFrame:
     cols = [
         "sexo_",
@@ -281,6 +282,7 @@ def build_dim_victima(df: pd.DataFrame) -> pd.DataFrame:
         "ocupacion_",
         "per_etn_",
         "tip_ss_",
+        "rango_edad",
     ]
     return build_dim_generic(df, cols, "id_victima", "VIC_")
 
@@ -295,9 +297,6 @@ def build_dim_acciones(df: pd.DataFrame) -> pd.DataFrame:
     return build_dim_generic(df, cols, "id_accion", "ACC_")
 
 
-# ----------------------------------------------------------------------
-# Tabla de hechos y serie mensual
-# ----------------------------------------------------------------------
 def build_fact_hechos(
     df_ant: pd.DataFrame,
     dim_tiempo: pd.DataFrame,
@@ -309,21 +308,17 @@ def build_fact_hechos(
     """Construye la tabla de hechos."""
     df_fact = df_ant.copy()
 
-    # FK Tiempo
     dt = dim_tiempo[["id_tiempo", "fecha"]].copy()
-    # Eliminamos 'fecha' después del merge para evitar colisiones
     df_fact = df_fact.merge(dt, how="left", left_on="fec_not", right_on="fecha").drop(
         columns=["fecha"]
     )
 
-    # FK Municipio
     df_fact["cod_mpio_resi"] = df_fact["cod_mpio_resi"].astype(str).str.zfill(5)
     dm = dim_mpio[["id_municipio", "cod_mpio_dane"]].copy()
     df_fact = df_fact.merge(
         dm, how="left", left_on="cod_mpio_resi", right_on="cod_mpio_dane"
     )
 
-    # Pre-procesamiento de códigos en Fact para merge con DimEvento traducida
     if "naturaleza" in df_fact.columns:
         df_fact["naturaleza"] = (
             df_fact["naturaleza"].astype(str).str.replace(r"\.0$", "", regex=True)
@@ -340,17 +335,14 @@ def build_fact_hechos(
             df_fact["nat_viosex"].map(MAP_VIO_SEXUAL).fillna("No Aplica")
         )
 
-    # Merge con DimEvento
     join_cols = [c for c in dim_evento.columns if c != "id_evento"]
     df_fact = df_fact.merge(dim_evento, how="left", on=join_cols)
 
-    # FK Victima
     v_cols = [
         c for c in dim_victima.columns if c != "id_victima" and c in df_fact.columns
     ]
     df_fact = df_fact.merge(dim_victima, how="left", on=v_cols)
 
-    # FK Agresor
     g_cols = [
         c for c in dim_agresor.columns if c != "id_agresor" and c in df_fact.columns
     ]
@@ -359,10 +351,6 @@ def build_fact_hechos(
     df_fact["casos"] = 1
     df_fact["id_hecho"] = generate_sequential_ids(len(df_fact), prefix="HEC_")
 
-    # --- FIX CLAVE ---
-    # Seleccionamos SOLO las columnas de IDs y métricas.
-    # Esto elimina las columnas descriptivas (como sexo_, estrato_) de la tabla de hechos.
-    # De esta forma, cuando hagamos merge con las dimensiones más adelante, no habrá duplicados.
     fact_cols = [
         "id_hecho",
         "id_tiempo",
@@ -374,7 +362,6 @@ def build_fact_hechos(
         "casos",
         "fec_not",
     ]
-    # Filtramos para asegurarnos de que existen (por si alguna dimensión no se creó)
     final_cols = [c for c in fact_cols if c in df_fact.columns]
 
     return df_fact[final_cols]
@@ -390,7 +377,6 @@ def build_serie_mensual_consolidado(
 ) -> pd.DataFrame:
     """Construye el consolidado mensual con textos descriptivos."""
 
-    # Unimos con dimensiones. Al estar limpia la 'fact', los nombres vendrán puros de las dimensiones.
     ft = (
         fact.merge(
             dim_tiempo[["id_tiempo", "fecha", "anio_hecho", "mes_num"]],
@@ -403,7 +389,7 @@ def build_serie_mensual_consolidado(
             how="left",
         )
         .merge(
-            dim_victima[["id_victima", "sexo_", "estrato_"]],
+            dim_victima[["id_victima", "sexo_", "estrato_", "rango_edad"]],
             on="id_victima",
             how="left",
         )
@@ -423,6 +409,7 @@ def build_serie_mensual_consolidado(
     ft["sexo_victima"] = ft["sexo_"]
     ft["sexo_agresor"] = ft["sexo_agre"]
     ft["estrato"] = ft["estrato_"].fillna("Sin Dato")
+    ft["rango_edad"] = ft["rango_edad"].fillna("Sin Dato")
 
     ft["naturaleza"] = ft["naturaleza"].fillna("Otro/Desconocido")
     ft["nat_viosex"] = ft["nat_viosex"].fillna("No Aplica")
@@ -437,6 +424,7 @@ def build_serie_mensual_consolidado(
         "sexo_agresor",
         "naturaleza",
         "nat_viosex",
+        "rango_edad",
     ]
 
     serie = ft.groupby(group_cols, as_index=False)["casos"].sum()
@@ -449,9 +437,6 @@ def build_serie_mensual_consolidado(
     return serie.sort_values(["nombre_municipio", "fecha"])
 
 
-# ----------------------------------------------------------------------
-# Main
-# ----------------------------------------------------------------------
 def main() -> None:
     DATA_RAW.mkdir(parents=True, exist_ok=True)
     DATA_PROCESSED.mkdir(parents=True, exist_ok=True)
@@ -462,10 +447,8 @@ def main() -> None:
     df_dane = load_dane_municipios(dane_path)
     df_siv = load_sivigila(siv_path)
 
-    # 1. Filtro y Mapa
     df_ant = filter_antioquia_and_map_municipios(df_siv, df_dane)
 
-    # 2. Dimensiones
     dim_tiempo = build_dim_tiempo(df_ant)
     dim_mpio = build_dim_municipio(df_ant)
     dim_victima = build_dim_victima(df_ant)
@@ -473,17 +456,14 @@ def main() -> None:
     dim_acciones = build_dim_acciones(df_ant)
     dim_evento = build_dim_evento(df_ant)
 
-    # 3. Hechos
     fact_hechos = build_fact_hechos(
         df_ant, dim_tiempo, dim_mpio, dim_victima, dim_evento, dim_agresor
     )
 
-    # 4. Serie
     serie_mensual = build_serie_mensual_consolidado(
         fact_hechos, dim_tiempo, dim_mpio, dim_victima, dim_evento, dim_agresor
     )
 
-    # 5. Exportar
     excel_path = DATA_PROCESSED / "SIVIGILA_Violencias_Modelo.xlsx"
     with pd.ExcelWriter(excel_path, engine="openpyxl") as writer:
         dim_tiempo.to_excel(writer, sheet_name="DimTiempo", index=False)
