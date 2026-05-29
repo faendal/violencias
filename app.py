@@ -82,7 +82,13 @@ def train_model_for(
         raise ValueError("La serie resultante tiene 0 casos.")
 
     model = Prophet(
-        yearly_seasonality=True, weekly_seasonality=False, daily_seasonality=False
+        yearly_seasonality=True,
+        weekly_seasonality=False,
+        daily_seasonality=False,
+        changepoint_range=0.95,
+        changepoint_prior_scale=0.5,
+        seasonality_prior_scale=5.0,
+        seasonality_mode="multiplicative",
     )
     model.fit(ts)
 
@@ -160,6 +166,9 @@ def main() -> None:
     meses = st.sidebar.slider("Meses a pronosticar", 3, 60, 24, step=3)
 
     if st.sidebar.button("Generar Pronóstico"):
+        st.session_state["mostrar_pronostico"] = True
+
+    if st.session_state.get("mostrar_pronostico", False):
         try:
             model, ts = train_model_for(
                 sel_mun,
@@ -173,7 +182,27 @@ def main() -> None:
                 sel_years[1],
             )
 
-            future = model.make_future_dataframe(periods=meses, freq="MS")
+            st.markdown("---")
+            col_drill, _ = st.columns([2, 1])
+            with col_drill:
+                agrupacion = st.radio(
+                    "**Nivel de detalle temporal:**",
+                    options=["Día", "Mes", "Trimestre", "Semestre", "Año"],
+                    index=0,
+                    horizontal=True,
+                )
+
+            freq_dict = {
+                "Día": "D",
+                "Mes": "MS",
+                "Trimestre": "QS",
+                "Semestre": "6MS",
+                "Año": "YS",
+            }
+            freq = freq_dict[agrupacion]
+
+            dias_pronostico = int(meses * 30.4368)
+            future = model.make_future_dataframe(periods=dias_pronostico, freq="D")
             fcst = model.predict(future)
 
             last_hist = ts["ds"].max()
@@ -182,7 +211,12 @@ def main() -> None:
             cols_clip = ["yhat", "yhat_lower", "yhat_upper"]
             fcst_future[cols_clip] = fcst_future[cols_clip].clip(lower=0)
 
-            ts["y_smooth"] = ts["y"].rolling(3, center=True, min_periods=1).mean()
+            ts_agg = ts.set_index("ds").resample(freq).sum().reset_index()
+            fcst_agg = fcst_future.set_index("ds").resample(freq).sum().reset_index()
+
+            ts_agg["y_smooth"] = (
+                ts_agg["y"].rolling(3, center=True, min_periods=1).mean()
+            )
 
             parts = []
             if sel_nat != "Todos":
@@ -194,26 +228,24 @@ def main() -> None:
             fig = go.Figure()
             fig.add_trace(
                 go.Scatter(
-                    x=ts["ds"],
-                    y=ts["y_smooth"],
+                    x=ts_agg["ds"],
+                    y=ts_agg["y_smooth"],
                     name="Histórico (suavizado)",
                     mode="lines",
                 )
             )
             fig.add_trace(
                 go.Scatter(
-                    x=fcst_future["ds"],
-                    y=fcst_future["yhat"],
+                    x=fcst_agg["ds"],
+                    y=fcst_agg["yhat"],
                     name="Pronóstico",
                     mode="lines",
                 )
             )
             fig.add_trace(
                 go.Scatter(
-                    x=pd.concat([fcst_future["ds"], fcst_future["ds"][::-1]]),
-                    y=pd.concat(
-                        [fcst_future["yhat_upper"], fcst_future["yhat_lower"][::-1]]
-                    ),
+                    x=pd.concat([fcst_agg["ds"], fcst_agg["ds"][::-1]]),
+                    y=pd.concat([fcst_agg["yhat_upper"], fcst_agg["yhat_lower"][::-1]]),
                     fill="toself",
                     fillcolor="rgba(0,100,80,0.2)",
                     line=dict(color="rgba(0,0,0,0)"),
@@ -226,20 +258,20 @@ def main() -> None:
                 x0=last_hist,
                 x1=last_hist,
                 y0=0,
-                y1=ts["y_smooth"].max() * 1.1,
+                y1=ts_agg["y_smooth"].max() * 1.1,
                 line=dict(dash="dash", color="gray"),
             )
 
             fig.update_layout(
-                title=f"Pronóstico: {subtitle} en {sel_mun}",
+                title=f"Pronóstico: {subtitle} en {sel_mun} (Agrupado por {agrupacion})",
                 xaxis_title="Fecha",
-                yaxis_title="Casos",
+                yaxis_title="Casos Consolidados",
             )
             st.plotly_chart(fig, width="stretch")
 
             st.markdown("### Exportar Resultados")
 
-            export_df = fcst_future.copy()
+            export_df = fcst_agg.copy()
             column_mapping = {
                 "ds": "Fecha",
                 "yhat": "Casos Pronosticados",
@@ -247,9 +279,10 @@ def main() -> None:
                 "yhat_upper": "Límite Máximo (Confianza)",
                 "trend": "Tendencia",
             }
-            export_df = export_df[list(column_mapping.keys())].rename(
-                columns=column_mapping
-            )
+            available_cols = [
+                c for c in column_mapping.keys() if c in export_df.columns
+            ]
+            export_df = export_df[available_cols].rename(columns=column_mapping)
             export_df["Fecha"] = export_df["Fecha"].dt.strftime("%Y-%m-%d")
 
             prophet_params = [
@@ -320,6 +353,7 @@ def main() -> None:
                         "Estrato",
                         "Sexo Víctima",
                         "Sexo Agresor",
+                        "Agrupación Exportada",
                     ],
                     "Valor": [
                         f"{sel_years[0]} - {sel_years[1]}",
@@ -330,13 +364,16 @@ def main() -> None:
                         sel_est,
                         sel_sex_vict,
                         sel_sex_agr,
+                        agrupacion,
                     ],
                 }
             )
 
             buffer = io.BytesIO()
             with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
-                export_df.to_excel(writer, index=False, sheet_name="Predicciones")
+                export_df.to_excel(
+                    writer, index=False, sheet_name=f"Pronostico_{agrupacion}"
+                )
                 params_df.to_excel(
                     writer, index=False, sheet_name="Matematicas_Prophet"
                 )
@@ -346,7 +383,7 @@ def main() -> None:
                 "_".join(parts).replace(", ", "_") if parts else "General"
             )
             st.download_button(
-                label="Descargar Modelo Completo en Excel",
+                label=f"Descargar Modelo en Excel (Nivel: {agrupacion})",
                 data=buffer.getvalue(),
                 file_name=f"pronostico_{sel_mun}_{subtitle_filename}.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
