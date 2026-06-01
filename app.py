@@ -211,6 +211,14 @@ def main() -> None:
             cols_clip = ["yhat", "yhat_lower", "yhat_upper"]
             fcst_future[cols_clip] = fcst_future[cols_clip].clip(lower=0)
 
+            df_diario = fcst_future[["ds", "yhat"]].copy()
+            df_diario.columns = ["Fecha", "Casos Pronosticados"]
+            st.session_state["df_prophet"] = df_diario
+            st.session_state["sim_params"] = {
+                "municipio": sel_mun,
+                "dias": dias_pronostico,
+            }
+
             ts_agg = ts.set_index("ds").resample(freq).sum().reset_index()
             fcst_agg = fcst_future.set_index("ds").resample(freq).sum().reset_index()
 
