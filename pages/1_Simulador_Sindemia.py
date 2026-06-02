@@ -1,14 +1,15 @@
 import pandas as pd
 import streamlit as st
+import plotly.express as px
 import plotly.graph_objects as go
 from src.agent_based_simulation.model import SindemiaViolenciaModel
 
 st.set_page_config(layout="wide", page_title="Simulador: Arquitectura de la Exclusión")
-st.title("Simulador de Interacción Institucional (ABS)")
+st.title("Simulador Sindicémico y Cuellos de Botella")
 
-if "df_prophet" not in st.session_state:
+if "df_prophet" not in st.session_state or "sim_params" not in st.session_state:
     st.warning(
-        "No hay datos de pronóstico cargados en memoria. Por favor, ve a la página principal, ajusta los filtros y haz clic en 'Generar Pronóstico'."
+        "Debes generar primero un pronóstico en la página principal para cargar el sembrado empírico."
     )
     st.stop()
 
@@ -16,31 +17,29 @@ df_prophet = st.session_state["df_prophet"]
 sim_params = st.session_state["sim_params"]
 
 st.markdown(
-    f"**Contexto de la Simulación:** Municipio: {sim_params['municipio']} | Horizonte: {sim_params['dias']} días"
+    f"**Sembrado Empírico Activo:** Municipio: `{sim_params['municipio']}` | Simulación de `{sim_params['dias']}` días"
 )
 
 with st.sidebar:
-    st.header("Intervención en Políticas Públicas")
-    st.markdown(
-        "Ajusta los recursos del sistema para observar el impacto en el subregistro."
-    )
-    capacidad = st.slider(
-        "Capacidad Diaria (Atención x Inst.)", min_value=1, max_value=50, value=15
-    )
-    num_instituciones = st.slider(
-        "Número de Puntos de Atención", min_value=1, max_value=20, value=5
-    )
+    st.header("Ruta Institucional: Sector Salud")
+    num_inst_salud = st.number_input("Puntos de Atención (Salud)", 1, 20, 2)
+    cap_salud = st.slider("Capacidad Diaria (Salud)", 1, 50, 10, key="csalud")
 
-if st.button("Ejecutar Simulación", type="primary"):
-    with st.spinner(
-        "Procesando interacciones diarias entre entorno y sistema de salud..."
-    ):
+    st.header("Ruta Institucional: Sector Justicia")
+    num_inst_justicia = st.number_input("Comisarías / Fiscalía", 1, 20, 5)
+    cap_justicia = st.slider("Capacidad Diaria (Justicia)", 1, 50, 15, key="cjusticia")
+
+if st.button("Ejecutar Simulación Dinámica", type="primary"):
+    with st.spinner("Procesando agentes y ciclos de retroalimentación..."):
 
         modelo = SindemiaViolenciaModel(
-            num_mujeres=1000,
-            num_instituciones=num_instituciones,
-            capacidad_institucional=capacidad,
+            num_mujeres=2000,
+            num_inst_salud=num_inst_salud,
+            num_inst_justicia=num_inst_justicia,
+            cap_salud=cap_salud,
+            cap_justicia=cap_justicia,
             df_prophet=df_prophet,
+            sim_params=sim_params,
         )
 
         for _ in range(sim_params["dias"]):
@@ -49,54 +48,118 @@ if st.button("Ejecutar Simulación", type="primary"):
         resultados = modelo.datacollector.get_model_vars_dataframe()
         resultados["Fecha"] = df_prophet["Fecha"].values[: len(resultados)]
 
-        fig = go.Figure()
+        col1, col2 = st.columns(2)
 
-        fig.add_trace(
-            go.Scatter(
-                x=resultados["Fecha"],
-                y=resultados["Violencia Real (Ocurrida)"],
-                mode="lines",
-                name="Realidad del Territorio (Oculta)",
-                line=dict(color="#E53935", width=2),
+        with col1:
+            fig1 = go.Figure()
+            fig1.add_trace(
+                go.Scatter(
+                    x=resultados["Fecha"],
+                    y=resultados["Violencia Real (Ocurrida)"],
+                    mode="lines",
+                    name="Realidad Oculta",
+                    line=dict(color="#E53935"),
+                )
             )
-        )
-
-        fig.add_trace(
-            go.Scatter(
-                x=resultados["Fecha"],
-                y=resultados["Casos Capturados (SIVIGILA)"],
-                mode="lines",
-                name="Captura Efectiva Institucional",
-                line=dict(color="#1E88E5", width=2),
+            fig1.add_trace(
+                go.Scatter(
+                    x=resultados["Fecha"],
+                    y=resultados["Capturas SIVIGILA"],
+                    mode="lines",
+                    name="Registro SIVIGILA",
+                    line=dict(color="#1E88E5"),
+                )
             )
-        )
-
-        fig.add_trace(
-            go.Scatter(
-                x=pd.concat([resultados["Fecha"], resultados["Fecha"][::-1]]),
-                y=pd.concat(
-                    [
-                        resultados["Violencia Real (Ocurrida)"],
-                        resultados["Casos Capturados (SIVIGILA)"][::-1],
-                    ]
-                ),
-                fill="toself",
-                fillcolor="rgba(229, 57, 53, 0.2)",
-                line=dict(color="rgba(255,255,255,0)"),
-                name="Brecha (Subregistro Estructural)",
+            fig1.add_trace(
+                go.Scatter(
+                    x=pd.concat([resultados["Fecha"], resultados["Fecha"][::-1]]),
+                    y=pd.concat(
+                        [
+                            resultados["Violencia Real (Ocurrida)"],
+                            resultados["Capturas SIVIGILA"][::-1],
+                        ]
+                    ),
+                    fill="toself",
+                    fillcolor="rgba(229, 57, 53, 0.1)",
+                    line=dict(color="rgba(255,255,255,0)"),
+                    name="Brecha",
+                )
             )
-        )
+            fig1.update_layout(
+                title="Subregistro Estructural Global", template="plotly_white"
+            )
+            st.plotly_chart(fig1, use_container_width=True)
 
-        fig.update_layout(
-            title="Dinámica de Captura del Sistema frente a la Tendencia Real",
-            xaxis_title="Fecha Proyectada",
-            yaxis_title="Cantidad de Casos Diarios",
-            template="plotly_white",
-            hovermode="x unified",
-        )
+        with col2:
+            fig2 = go.Figure()
+            fig2.add_trace(
+                go.Scatter(
+                    x=resultados["Fecha"],
+                    y=resultados["Brecha Saturación"],
+                    mode="lines",
+                    stackgroup="one",
+                    name="Rechazo por Saturación",
+                    fillcolor="#FFB74D",
+                )
+            )
+            fig2.add_trace(
+                go.Scatter(
+                    x=resultados["Fecha"],
+                    y=resultados["Abandono Geográfico"],
+                    mode="lines",
+                    stackgroup="one",
+                    name="Abandono Geográfico (Rural)",
+                    fillcolor="#81C784",
+                )
+            )
+            fig2.add_trace(
+                go.Scatter(
+                    x=resultados["Fecha"],
+                    y=resultados["Abandono Desconfianza"],
+                    mode="lines",
+                    stackgroup="one",
+                    name="Abandono por Desconfianza",
+                    fillcolor="#E57373",
+                )
+            )
+            fig2.update_layout(
+                title="Anatomía de la Exclusión (Causas de no denuncia)",
+                template="plotly_white",
+            )
+            st.plotly_chart(fig2, width="stretch")
 
-        st.plotly_chart(fig, use_container_width=True)
+        col3, col4 = st.columns(2)
 
-        st.info(
-            "**Análisis de la Brecha:** El área roja sombreada ilustra de manera gráfica el volumen de víctimas que, por saturación de recursos institucionales o barreras geográficas asociadas a la ruralidad dispersa, no logran formalizar la notificación, generando los fenómenos de subregistro observados en la data histórica."
-        )
+        with col3:
+            fig3 = px.area(
+                resultados,
+                x="Fecha",
+                y="Revictimización",
+                title="Casos Crónicos (Víctimas de múltiples ataques)",
+                color_discrete_sequence=["#8E24AA"],
+            )
+            fig3.update_layout(template="plotly_white")
+            st.plotly_chart(fig3, use_container_width=True)
+
+        with col4:
+            st.markdown("### Métricas Finales de Impacto")
+            st.metric(
+                "Total Agresiones Simuladas",
+                int(resultados["Violencia Real (Ocurrida)"].sum()),
+            )
+            st.metric(
+                "Capturadas por SIVIGILA", int(resultados["Capturas SIVIGILA"].sum())
+            )
+            eficiencia = (
+                (
+                    resultados["Capturas SIVIGILA"].sum()
+                    / resultados["Violencia Real (Ocurrida)"].sum()
+                )
+                * 100
+                if resultados["Violencia Real (Ocurrida)"].sum() > 0
+                else 0
+            )
+            st.metric("Tasa de Efectividad del Sistema", f"{eficiencia:.1f}%")
+            st.info(
+                "**Conclusión:** Un porcentaje bajo de efectividad demuestra la necesidad urgente de fortalecer las rutas diferenciadas, ya que el backlog institucional genera un ciclo de desconfianza que alimenta la revictimización crónica observada a la izquierda."
+            )

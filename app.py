@@ -214,9 +214,17 @@ def main() -> None:
             df_diario = fcst_future[["ds", "yhat"]].copy()
             df_diario.columns = ["Fecha", "Casos Pronosticados"]
             st.session_state["df_prophet"] = df_diario
+
+            dist_estrato = df_f["estrato"].value_counts(normalize=True).to_dict()
+            dist_edad = df_f["rango_edad"].value_counts(normalize=True).to_dict()
+            dist_naturaleza = df_f["naturaleza"].value_counts(normalize=True).to_dict()
+
             st.session_state["sim_params"] = {
                 "municipio": sel_mun,
                 "dias": dias_pronostico,
+                "dist_estrato": dist_estrato,
+                "dist_edad": dist_edad,
+                "dist_naturaleza": dist_naturaleza,
             }
 
             ts_agg = ts.set_index("ds").resample(freq).sum().reset_index()
