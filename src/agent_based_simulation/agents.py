@@ -1,71 +1,63 @@
 import mesa
-import random
 
 
-class MujerAgente(mesa.Agent):
-    def __init__(self, unique_id, model, estrato, edad, zona):
+class ExpedienteAgente(mesa.Agent):
+    def __init__(self, unique_id, model, estrato, edad, naturaleza, ruta_requerida):
         super().__init__(unique_id, model)
+        # ADN Empírico del caso
         self.estrato = estrato
         self.edad = edad
-        self.zona = zona
+        self.naturaleza = naturaleza
 
-        self.violencia_sufrida = False
-        self.naturaleza_violencia = None
-        self.reportado_exitosamente = False
-        self.veces_violentada = 0
+        # Diccionario de servicios que el caso NECESITA (True/False) según SIVIGILA
+        self.ruta_requerida = ruta_requerida
 
-        self.intentos_fallidos = 0
-        self.abandono_geografico = False
-        self.abandono_desconfianza = False
-        self.abandono_saturacion = False
+        # Diccionario de estado actual ('Pendiente', 'Atendido', 'No Aplica')
+        self.estado_ruta = {
+            servicio: "Pendiente" if requerido else "No Aplica"
+            for servicio, requerido in ruta_requerida.items()
+        }
+
+        # Memoria individual del expediente (Teoría de colas)
+        self.dias_en_espera_total = 0
+        self.fallo_administrativo = False
 
     def step(self):
-        if self.violencia_sufrida and not self.reportado_exitosamente:
-            if self.abandono_desconfianza or self.abandono_geografico:
-                return
+        # Si tiene algún servicio pendiente, el expediente envejece en el sistema
+        if "Pendiente" in self.estado_ruta.values():
+            self.dias_en_espera_total += 1
 
-            if self.zona == "Rural" and random.random() < 0.65:
-                self.abandono_geografico = True
-                return
+            # Si un expediente pasa más de 30 días sin completarse, se considera impunidad/fallo
+            if self.dias_en_espera_total > 30:
+                self.fallo_administrativo = True
 
-            tipo_institucion_buscada = (
-                "Salud" if self.naturaleza_violencia == "Sexual" else "Justicia"
-            )
-
-            instituciones = [
-                ag
-                for ag in self.model.schedule.agents
-                if isinstance(ag, InstitucionAgente)
-                and ag.tipo == tipo_institucion_buscada
-            ]
-
-            if instituciones:
-                institucion = random.choice(instituciones)
-                resultado = institucion.recibir_denuncia()
-
-                if resultado == "Atendido":
-                    self.reportado_exitosamente = True
-                    self.abandono_saturacion = False
-                elif resultado == "Rechazado":
-                    self.intentos_fallidos += 1
-                    self.abandono_saturacion = True
-
-                    if self.intentos_fallidos >= 3:
-                        self.abandono_desconfianza = True
+    def esta_completado(self):
+        return "Pendiente" not in self.estado_ruta.values()
 
 
-class InstitucionAgente(mesa.Agent):
-    def __init__(self, unique_id, model, capacidad_diaria, tipo):
+class DependenciaAgente(mesa.Agent):
+    def __init__(self, unique_id, model, tipo_servicio, capacidad_diaria):
         super().__init__(unique_id, model)
+        self.tipo_servicio = tipo_servicio  # Ej: 'Salud Mental', 'Proteccion'
         self.capacidad_diaria = capacidad_diaria
-        self.tipo = tipo
         self.casos_atendidos_hoy = 0
 
     def step(self):
+        # Al inicio de cada día, la dependencia renueva sus cupos
         self.casos_atendidos_hoy = 0
 
-    def recibir_denuncia(self):
-        if self.casos_atendidos_hoy < self.capacidad_diaria:
+    def procesar_cola(self, cola_pendientes):
+        """Toma la lista de expedientes que requieren este servicio y los procesa (FIFO)"""
+        casos_procesados = 0
+
+        while self.casos_atendidos_hoy < self.capacidad_diaria and cola_pendientes:
+            # Extraer el caso más antiguo de la cola
+            expediente_actual = cola_pendientes.pop(0)
+
+            # Marcar este servicio como atendido en el expediente
+            expediente_actual.estado_ruta[self.tipo_servicio] = "Atendido"
+
             self.casos_atendidos_hoy += 1
-            return "Atendido"
-        return "Rechazado"
+            casos_procesados += 1
+
+        return casos_procesados
