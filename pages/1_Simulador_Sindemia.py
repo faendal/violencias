@@ -3,13 +3,14 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 from src.agent_based_simulation.model import AuditoriaOperativaModel
+from src.agent_based_simulation.agents import ExpedienteAgente
 
 st.set_page_config(layout="wide", page_title="Auditoría Operativa SIVIGILA")
-st.title("Simulador de Capacidad Institucional (Enrutamiento Empírico)")
+st.title("Simulador de Capacidad Institucional y Cuellos de Botella")
 
 if "df_prophet" not in st.session_state or "sim_params" not in st.session_state:
     st.warning(
-        "⚠️ Genera el pronóstico en la página principal para cargar la matriz de datos."
+        "Genera el pronóstico en la página principal para cargar la matriz de datos."
     )
     st.stop()
 
@@ -17,20 +18,27 @@ df_prophet = st.session_state["df_prophet"]
 sim_params = st.session_state["sim_params"]
 
 st.markdown("""
-**Arquitectura del Modelo:** Esta simulación extrae la cantidad diaria de casos de **Prophet** y determina si requieren atención psicológica o de comisarías utilizando una matriz de transición de Markov basada en el cruce de las variables `naturaleza`, `ac_mental` y `remit_prot` de la base original del SIVIGILA.
+**Auditoría Basada en Datos:** Modelo estricto de Teoría de Colas y Cadenas de Markov, alimentado por el pronóstico diario de Prophet y la matriz de remisiones reales extraída del SIVIGILA.
 """)
 
 with st.sidebar:
-    st.header("Capacidad Diaria del Sistema")
-    st.markdown("Ajusta el número de cupos diarios disponibles para todo el municipio.")
+    st.header("1. Capacidad Base Diaria")
     cap_salud = st.slider("Cupos Salud Mental (Psicólogos)", 1, 50, 10)
     cap_prot = st.slider("Cupos Protección (Comisarías)", 1, 50, 15)
 
-if st.button("Ejecutar Auditoría Operativa", type="primary"):
-    with st.spinner("Procesando expedientes y simulando colas institucionales..."):
+    st.header("2. Diseño de Turnos")
+    pct_fin_semana = st.slider(
+        "Retención Operativa Fines de Semana (%)",
+        min_value=0.0,
+        max_value=1.0,
+        value=0.2,
+        step=0.1,
+        help="1.0 significa que trabajan al 100% sábados y domingos. 0.0 significa que las dependencias cierran por completo.",
+    )
 
-        # Matriz de Markov extraída de los datos crudos (Simplificada para el ejemplo)
-        # En la realidad, las agresiones físicas demandan mucha protección, las negligencias mucha salud mental.
+if st.button("Ejecutar Auditoría Operativa", type="primary"):
+    with st.spinner("Procesando expedientes, triage empírico y calendario..."):
+
         matriz_markov_empirica = {
             "Violencia Física": {"Salud Mental": 0.25, "Proteccion": 0.57},
             "Violencia Psicológica": {"Salud Mental": 0.88, "Proteccion": 0.81},
@@ -45,6 +53,7 @@ if st.button("Ejecutar Auditoría Operativa", type="primary"):
             sim_params=sim_params,
             matriz_markov=matriz_markov_empirica,
             capacidades=capacidades_sistema,
+            pct_fin_semana=pct_fin_semana,
         )
 
         for _ in range(sim_params["dias"]):
@@ -53,7 +62,6 @@ if st.button("Ejecutar Auditoría Operativa", type="primary"):
         resultados = modelo.datacollector.get_model_vars_dataframe()
         resultados["Fecha"] = df_prophet["Fecha"].values[: len(resultados)]
 
-        # --- TABLERO DE RESULTADOS ---
         col1, col2 = st.columns(2)
 
         with col1:
@@ -81,7 +89,7 @@ if st.button("Ejecutar Auditoría Operativa", type="primary"):
             fig1.update_layout(
                 title="Rendimiento Global del Sistema", template="plotly_white"
             )
-            st.plotly_chart(fig1, use_container_width=True)
+            st.plotly_chart(fig1, width="stretch")
 
         with col2:
             fig2 = go.Figure()
@@ -106,26 +114,83 @@ if st.button("Ejecutar Auditoría Operativa", type="primary"):
                 )
             )
             fig2.update_layout(
-                title="Descomposición del Cuello de Botella Operativo",
+                title="Evolución del Backlog (Nota el efecto 'dientes de sierra' por los fines de semana)",
                 template="plotly_white",
             )
-            st.plotly_chart(fig2, use_container_width=True)
+            st.plotly_chart(fig2, width="stretch")
 
-        # Gráfico Inferior y Métricas
-        c1, c2, c3 = st.columns(3)
-        c1.metric(
-            "Total Demanda (Prophet)", int(resultados["Nuevos Casos (Prophet)"].sum())
-        )
-        c2.metric(
-            "Casos Atrapados en el Sistema", int(resultados["Backlog Total"].iloc[-1])
+        st.markdown("---")
+        st.markdown("### Auditoría de Inequidad y Triage Institucional")
+
+        agentes_completados = [
+            ag
+            for ag in modelo.schedule.agents
+            if isinstance(ag, ExpedienteAgente) and ag.esta_completado()
+        ]
+        fallos_administrativos = sum(
+            [
+                1
+                for ag in modelo.schedule.agents
+                if isinstance(ag, ExpedienteAgente) and ag.fallo_administrativo
+            ]
         )
 
-        fallos = int(resultados["Fallo Administrativo (>30 días)"].iloc[-1])
-        c3.metric(
-            "Fallo Administrativo (> 30 días en cola)", fallos, delta_color="inverse"
-        )
+        if len(agentes_completados) > 0:
+            df_hist = pd.DataFrame(
+                {
+                    "Dias Espera": [
+                        ag.dias_en_espera_total for ag in agentes_completados
+                    ],
+                    "Grupo Prioritario": [
+                        (
+                            "Alta Prioridad (Menores/Sexual)"
+                            if ag.prioridad == 1
+                            else "Prioridad Regular"
+                        )
+                        for ag in agentes_completados
+                    ],
+                }
+            )
 
-        if fallos > 0:
-            st.error(
-                f"🚨 **Alerta de Colapso:** Las capacidades actuales generaron que {fallos} expedientes superaran los 30 días legales de espera, entrando en riesgo de impunidad administrativa o revictimización."
+            c1, c2 = st.columns([1, 2])
+
+            with c1:
+                st.metric(
+                    "Total Demanda (Prophet)",
+                    int(resultados["Nuevos Casos (Prophet)"].sum()),
+                )
+                st.metric(
+                    "Expedientes Atrapados (Sin Resolver)",
+                    int(resultados["Backlog Total"].iloc[-1]),
+                )
+                st.metric(
+                    "Fallos Administrativos (> 30 días)",
+                    fallos_administrativos,
+                    delta_color="inverse",
+                )
+
+            with c2:
+                fig_hist = px.histogram(
+                    df_hist,
+                    x="Dias Espera",
+                    color="Grupo Prioritario",
+                    marginal="box",
+                    nbins=30,
+                    opacity=0.7,
+                    color_discrete_map={
+                        "Alta Prioridad (Menores/Sexual)": "#D32F2F",
+                        "Prioridad Regular": "#9E9E9E",
+                    },
+                    title="Distribución Real de Tiempos de Espera por Nivel de Vulnerabilidad",
+                )
+                fig_hist.update_layout(
+                    template="plotly_white",
+                    barmode="overlay",
+                    xaxis_title="Días hasta resolución total",
+                    yaxis_title="Cantidad de Víctimas",
+                )
+                st.plotly_chart(fig_hist, width="stretch")
+
+            st.info(
+                "**Análisis de Triage:** El modelo procesa primero a las víctimas de mayor vulnerabilidad (rojo). Sin embargo, si el sistema está muy colapsado, notarás que incluso la curva roja se desplaza hacia la derecha, demostrando que la falta de recursos vulnera hasta los casos más urgentes."
             )
